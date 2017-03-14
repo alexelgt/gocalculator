@@ -1,6 +1,6 @@
 function language(){
 
-  if (navigator.language == "es-es" || navigator.language == "es") {
+  if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
     $(".STRING_IV_CALCULATOR").html("Calculadora IV");
     $(".STRING_CP_CALCULATOR").html("Calculadora PC");
     $(".STRING_CALCULATE_IV").html("Calcular IV");
@@ -45,7 +45,6 @@ function ventanaemergente(id,id2) {
 
     }
 }
-
 
 function notaneasteregg(Pokemon) {
   if (Pokemon == "easteregg") {
