@@ -8,6 +8,7 @@ function Get_CP() {
 
 	/*==== Set variables 1/2 ====*/
 	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
+	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
 	var Pokemon_CP = window[Pokemon_Name_CP];
 	var Level = parseFloat(document.getElementById("Level").value);
 	/*===Set variables 1/2 ==*/
@@ -16,7 +17,7 @@ function Get_CP() {
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_CP == 'undefined'){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
 		}
 		else {
@@ -25,7 +26,7 @@ function Get_CP() {
 		return;
 	}
 	if (Level < 1 || Level > 40 || (Level - Math.floor(Level) != 0 && Level - Math.floor(Level) != 0.5)) {
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Nivel incorrecto.</div>");
 		}
 		else {
@@ -44,7 +45,7 @@ function Get_CP() {
 	/*== Get CP and HP ==*/
 
 	/*=== Set output ===*/
-	if (navigator.language == "es-es" || navigator.language == "es") {
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th></tr><tr><td>PC</td><td>HP</td></tr></table>");
@@ -61,7 +62,8 @@ function Get_CP_Hatched() {
 	$("#Output_CP_Hatched").html("<hr class='hrseparador'>");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_Hatched = (document.getElementById("Pokemon_Name_Hatched").value); Pokemon_Name_Hatched = Pokemon_Name_Hatched.toLowerCase();
+	var Pokemon_Name_Hatched = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_Hatched = Pokemon_Name_Hatched.toLowerCase();
+	Pokemon_Name_Hatched = Input_Problematic_Pokemon(Pokemon_Name_Hatched);
 	var Pokemon_Hatched = window[Pokemon_Name_Hatched];
 	/*== Set variables 1/2 ==*/
 
@@ -69,7 +71,7 @@ function Get_CP_Hatched() {
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_Hatched == 'undefined'){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
 		}
 		else {
@@ -85,7 +87,7 @@ function Get_CP_Hatched() {
 	/*== Get CP min and CP max ==*/
 
 	/*=== Set output ===*/
-	if (navigator.language == "es-es" || navigator.language == "es") {
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
 
 		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<table><tr><th>" + CP_Min + "</th><th>"+ CP_Max + "</th></tr><tr><td>PC mínimo</td><td>PC máximo</td></tr></table>");
@@ -105,6 +107,7 @@ function Get_IV() {
 	$("#Output_IV_3").html("");
 
 	var Pokemon_Name_IV = (document.getElementById("Pokemon_Name_IV").value); Pokemon_Name_IV = Pokemon_Name_IV.toLowerCase();
+	Pokemon_Name_IV = Input_Problematic_Pokemon(Pokemon_Name_IV);
 	var Pokemon_IV = window[Pokemon_Name_IV];
 
 	notaneasteregg(Pokemon_Name_IV);
@@ -114,7 +117,7 @@ function Get_IV() {
 
 	/*==== Check if inputs are correct 1/3 ====*/
 	if (typeof Pokemon_IV == 'undefined'){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
 		}
 		else {
@@ -123,7 +126,7 @@ function Get_IV() {
 		return;
 	}
 	if (!HP){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>HP no establecido.</div>");
 		}
 		else {
@@ -132,7 +135,7 @@ function Get_IV() {
 		return;
 	}
 	if (!CP){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>PC no establecido.</div>");
 		}
 		else {
@@ -187,7 +190,6 @@ function Get_IV() {
 		}
 	}
 
-
 	var number_matches=0;
 	for (var i = 0; i < number_guess; i++) {
 		for (var j = 0; j <= 15; j++) {
@@ -201,7 +203,7 @@ function Get_IV() {
 
 	/*==== Check if inputs are correct 2/3 ====*/
 	if (number_matches == 0){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>No se ha encontrado combinacion.</div>");
 		}
 		else {
@@ -234,7 +236,7 @@ function Get_IV() {
 		}
 	}
 
-	if (navigator.language == "es-es" || navigator.language == "es") {
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		matches[0][0]="Nivel";
 	}
 	else {
@@ -393,7 +395,7 @@ function Get_IV() {
 	}
 
 	if (showlist == 0){
-		if (navigator.language == "es-es" || navigator.language == "es") {
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 			$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>No se ha encontrado combinacion.</div>");
 		}
 		else {
@@ -415,7 +417,7 @@ function Get_IV() {
 		}
 
 		for (var i = 0; i < Pokemon_IV.Evolutions.length; i++) {
-			if (navigator.language == "es-es" || navigator.language == "es") {
+			if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 				CP_Evolutions[0][i] = "PC " + Pokemon_IV.Evolutions[i];
 			}
 			else {
@@ -431,7 +433,7 @@ function Get_IV() {
 	}
 
 	// mostrar
-	if (navigator.language == "es-es" || navigator.language == "es") {
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_IV_1").html($('#Output_IV_1').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
 	}
 	else {
