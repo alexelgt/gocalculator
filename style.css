@@ -21,6 +21,16 @@ a{
 	-webkit-user-select: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0)
 }
+
+input:focus::-webkit-contacts-auto-fill-button{
+	visibility: hidden;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    visibility: hidden;
+}
 /*== Basico ==*/
 
 /*==== Titulo ====*/
@@ -42,27 +52,26 @@ a{
 	flex-flow: row wrap;
 	justify-content: space-around;
 	position: relative;
+	box-sizing: border-box;
 	width: 420px;
-	height: 53px;
+	min-height: 48px;
+	max-height: 48px;
 	margin: 0 auto;
+	line-height: 25px;
+
 }
 
 #menu a{
-	float: left;
+	flo2at: left;
+	border-bottom: rgba(0,0,0,0) solid 2px;
 	width: 50%;
 	box-sizing: border-box;
 	padding: 0 10px;
-	height: 53px;
-	border-bottom: rgba(0,0,0,0) solid 2px;
+	min-height: 50px;
+	max-height: 55px;
 	margin: 0;
 }
 
-#menu a:first-child{
-	margin-left: 0
-}
-#menu a:last-child{
-	margin-right: 0
-}
 #menu a.seleccionado,#menu a:hover{
 	border-bottom: #44696c solid 2px;
 }
@@ -90,6 +99,10 @@ a{
 	padding: 10px 20px;
 	float: left;
 	width: 440px;
+}
+
+#cuerpo.calcularpc_pokemon{
+	width:100%;
 }
 /*== Estructura ==*/
 
@@ -141,7 +154,7 @@ h2.informacion{
 	text-transform:none;
 	padding: 0 20px;
 	text-align: justify;
-	width: 420px;
+	width: 900px;
 	margin: 0 auto;
 }
 /*== Texto ==*/
@@ -224,6 +237,10 @@ select.frase{
 	width: 108px
 }
 
+select.informacion{
+	background-color: #aff1e0;
+}
+
 #select_block{
 	display: flex;
 	flex-flow: row wrap;
@@ -240,7 +257,7 @@ select.frase{
 	font-weight: bold;
 	box-sizing: border-box;
 	float: left;
-	padding: 12px 30px 0 30px;
+	padding: 11px 30px 0 30px;
 	height: 38px;
 	background-image: linear-gradient(90deg, #a2db95, #24ccaa);
 	background-color: #a2db95;
@@ -250,10 +267,12 @@ select.frase{
 }
 
 #select_text.frase{
-	width: 200px;
+	width: 150px;
 }
 
 input, textarea{
+	-webkit-appearance: none;
+	text-transform: capitalize;
 	background-color: #fff;
 	min-width: 100%;
 	max-width: 100%;
@@ -309,6 +328,7 @@ button:hover{
 }
 
 button#button_info{
+	z-index: 10;
 	background-color: #1c8796;
 	background-image: none;
 	border-radius: 100px;
@@ -424,7 +444,6 @@ input[type=checkbox]{
 	flex-flow: row wrap;
 	justify-content: space-around;
 	position: relative;
-	height: 40px;
 	line-height: 40px;
 	margin: 0 auto;
 }
@@ -434,6 +453,15 @@ input[type=checkbox]{
 table{
 	border-collapse: collapse;
 	margin: 0 auto 10px;
+}
+
+th.informacion{
+	color: #68f0ce!important;
+	border-right: 2px solid #68f0ce;
+}
+
+td.informacion{
+	color: #b5f3e4!important
 }
 
 th{
@@ -470,6 +498,12 @@ th:last-child,th#ultimo{
 	/*== Estructura ==*/
 }
 
+@media (max-width: 920px){
+	#cuerpo.calcularpc_pokemon{
+		width:440px;
+	}
+}
+
 @media (max-width: 610px){
 	/*==== Estructura ====*/
 	#estructura{
@@ -489,9 +523,11 @@ th:last-child,th#ultimo{
 	/*==== Menu ====*/
 	#menu{
 		width: 100%;
+		max-height: 50px;
+		max-height: 60px;
 	}
 	#menu a{
-		padding: 1px 10px;
+		max-height: 67px;
 	}
 	/*== Menu ==*/
 
@@ -499,9 +535,13 @@ th:last-child,th#ultimo{
 	h2 {
 		font-size: 17px;
 	}
-	h2.informacion{
-		width: 100%
-	}
+
 	/*== Texto ==*/
+}
+
+@media (max-width: 940px){
+	h2.informacion{
+		width: auto
+	}
 }
 /*== Media ==*/

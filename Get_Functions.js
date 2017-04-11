@@ -8,6 +8,7 @@ function Get_CP() {
 
 	/*==== Set variables 1/2 ====*/
 	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
+	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
 	var Pokemon_CP = window[Pokemon_Name_CP];
 	var Level = parseFloat(document.getElementById("Level").value);
 	/*===Set variables 1/2 ==*/
@@ -61,7 +62,8 @@ function Get_CP_Hatched() {
 	$("#Output_CP_Hatched").html("<hr class='hrseparador'>");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_Hatched = (document.getElementById("Pokemon_Name_Hatched").value); Pokemon_Name_Hatched = Pokemon_Name_Hatched.toLowerCase();
+	var Pokemon_Name_Hatched = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_Hatched = Pokemon_Name_Hatched.toLowerCase();
+	Pokemon_Name_Hatched = Input_Problematic_Pokemon(Pokemon_Name_Hatched);
 	var Pokemon_Hatched = window[Pokemon_Name_Hatched];
 	/*== Set variables 1/2 ==*/
 
@@ -105,6 +107,7 @@ function Get_IV() {
 	$("#Output_IV_3").html("");
 
 	var Pokemon_Name_IV = (document.getElementById("Pokemon_Name_IV").value); Pokemon_Name_IV = Pokemon_Name_IV.toLowerCase();
+	Pokemon_Name_IV = Input_Problematic_Pokemon(Pokemon_Name_IV);
 	var Pokemon_IV = window[Pokemon_Name_IV];
 
 	notaneasteregg(Pokemon_Name_IV);
@@ -186,7 +189,6 @@ function Get_IV() {
 			}
 		}
 	}
-
 
 	var number_matches=0;
 	for (var i = 0; i < number_guess; i++) {
