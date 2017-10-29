@@ -753,7 +753,7 @@ var dragonite = {
 };
 
 var mewtwo = {
-    Stats  : [330, 200, 212],
+    Stats  : [300, 182, 193],
     Evolutions : null
 };
 
@@ -1100,7 +1100,7 @@ var raikou = {
 };
 
 var entei = {
-    Stats  : [235, 180, 230],
+    Stats  : [235, 176, 230],
     Evolutions : null
 };
 
@@ -1128,12 +1128,35 @@ var lugia = {
 };
 
 var hooh = {
-    Stats      : [263, 301, 212],
+    Stats      : [239, 301, 274],
     Evolutions : null
 };
 
 var celebi = {
     Stats      : [210, 210, 200],
+    Evolutions : null
+};
+
+var sableye = {
+    Stats  : [141, 141, 100],
+    Evolutions : null
+};
+
+var shuppet = {
+    Stats      : [138, 66, 88],
+    Evolutions : ["banette"]
+};
+var banette = {
+    Stats  : [251, 212, 200],
+    Evolutions : null
+};
+
+var duskull = {
+    Stats      : [70, 162, 40],
+    Evolutions : ["dusclops"]
+};
+var dusclops = {
+    Stats  : [124, 234, 80],
     Evolutions : null
 };
 
