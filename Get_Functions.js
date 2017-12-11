@@ -48,12 +48,12 @@ function Get_CP() {
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
 
-		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th></tr><tr><td>PC</td><td>HP</td></tr></table>");
+		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>PC</td><td>HP</td><td>%IV</td></tr></table>");
 	}
 	else {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:</div>");
 
-		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th></tr><tr><td>CP</td><td>HP</td></tr></table>");
+		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>CP</td><td>HP</td><td>%IV</td></tr></table>");
 	}
 }
 
@@ -139,7 +139,7 @@ function Get_CP_Raids() {
 
 	}
 
-	$( "#Output_CP_Raids_2" ).append( "<tr><th>15</th><th>15</th><th>15</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],25) + "</th></tr>" );
+	$( "#Output_CP_Raids_2" ).append( "<tr><th>15</th><th>15</th><th>15</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],25) + "</th><th>100</th></tr>" );
 
 
 	if($("#showall_raids").is(':checked')) {
@@ -149,7 +149,7 @@ function Get_CP_Raids() {
 					for(var IV_HP=15; IV_HP>=10; IV_HP--) {
 
 						if (IV_Total == IV_A + IV_D + IV_HP) {
-							$( "#Output_CP_Raids_2" ).append( "<tr><th>" + IV_A + "</th><th>"+ IV_D + "</th><th>" + IV_HP + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[IV_A, IV_D, IV_HP],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[IV_A, IV_D, IV_HP],25) + "</th></tr>" );
+							$( "#Output_CP_Raids_2" ).append( "<tr><th>" + IV_A + "</th><th>"+ IV_D + "</th><th>" + IV_HP + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[IV_A, IV_D, IV_HP],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[IV_A, IV_D, IV_HP],25) + "</th><th>" + Math.round(IV_Total/45*100) + "</th></tr>" );
 						}
 
 					}
@@ -158,15 +158,15 @@ function Get_CP_Raids() {
 		}
 	}
 
-	$( "#Output_CP_Raids_2" ).append( "<tr><th>10</th><th>10</th><th>10</th><th>" + CP_Formula(Pokemon_CP_Raid,[10, 10, 10],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[10, 10, 10],25) + "</th></tr>" );
+	$( "#Output_CP_Raids_2" ).append( "<tr><th>10</th><th>10</th><th>10</th><th>" + CP_Formula(Pokemon_CP_Raid,[10, 10, 10],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[10, 10, 10],25) + "</th><th>67</th></tr>" );
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC N20</td><td>PC N25</td></tr>" );
+		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC N20</td><td>PC N25</td><td>%IV</td></tr>" );
 
 
 	}
 	else {
-		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC L20</td><td>PC L25</td></tr>" );
+		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC L20</td><td>PC L25</td><td>%IV</td></tr>" );
 
 	}
 
