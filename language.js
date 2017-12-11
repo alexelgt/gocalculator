@@ -21,6 +21,11 @@ function language(){
     $(".STRING_CALCULATE_CP_EGG").html("Calcular PC huevo");
     $(".STRING_LEVEL").html("Nivel");
 
+    $(".STRING_CP_RAIDS").html("PC raids");
+    $(".STRING_SHOW_ALL_RESULTS").html("Mostrar todos los resultados");
+
+
+
     $(".STRING_INCORRECT").html("Nivel");
 
     $(".STRING_INFORMATION").html("Información");
