@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#13/12/2017-20:58
+#13/12/2017-21:24
 
 CACHE:
 background.jpeg
@@ -19,6 +19,7 @@ language.js
 Problematic_Pokemon.js
 Set_Pokemon.js
 Stardusttolevel.js
+Leveltostardust.js
 style.css
 jquery.flexdatalist.css
 index.html

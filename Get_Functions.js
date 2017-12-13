@@ -136,7 +136,7 @@ function Get_CP_Wild() {
 	$("#Output_CP_Wild_2").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP_Wild = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_CP_Wild = "Mewtwo";//(document.getElementById("Pokemon_Name_CP").value);
 	var Pokemon_Name_CP_Wild_String = Pokemon_Name_CP_Wild;
 	Pokemon_Name_CP_Wild = Pokemon_Name_CP_Wild.toLowerCase();
 	Pokemon_Name_CP_Wild = Input_Problematic_Pokemon(Pokemon_Name_CP_Wild);
@@ -167,12 +167,12 @@ function Get_CP_Wild() {
 
 	if($("#showall_wild").is(':checked')) {
 		for(var Level=35; Level>=1; Level--) {
-			$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Level + "</th></tr>" );
+			$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Level + " (" + Leveltostardust(Level) + ")</th></tr>" );
 		}
 	}
 	else {
-		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>35</th></tr>" );
-		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>30</th></tr>" );
+		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>35 (8000)</th></tr>" );
+		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>30 (5000)</th></tr>" );
 	}
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
