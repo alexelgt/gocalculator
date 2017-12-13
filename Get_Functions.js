@@ -57,54 +57,11 @@ function Get_CP() {
 	}
 }
 
-function Get_CP_Hatched() {
-	/*==== Clear the output ====*/
-	$("#Output_CP_Hatched").html("<hr class='hrseparador'>");
-
-	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_Hatched = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_Hatched = Pokemon_Name_Hatched.toLowerCase();
-	Pokemon_Name_Hatched = Input_Problematic_Pokemon(Pokemon_Name_Hatched);
-	var Pokemon_Hatched = window[Pokemon_Name_Hatched];
-	/*== Set variables 1/2 ==*/
-
-	notaneasteregg(Pokemon_Name_Hatched);
-
-	/*==== Check if inputs are correct ====*/
-	if (typeof Pokemon_Hatched == 'undefined'){
-		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-			$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
-		}
-		else {
-			$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
-		}
-		return;
-	}
-	/*== Check if inputs are correct ==*/
-
-	/*==== Get CP min and CP max ====*/
-	var CP_Min = CP_Formula(Pokemon_Hatched,[10, 10, 10],20);
-	var CP_Max = CP_Formula(Pokemon_Hatched,[15, 15, 15],20);
-	/*== Get CP min and CP max ==*/
-
-	/*=== Set output ===*/
-	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
-
-		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<table><tr><th>" + CP_Min + "</th><th>"+ CP_Max + "</th></tr><tr><td>PC mínimo</td><td>PC máximo</td></tr></table>");
-
-	}
-	else {
-		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<div id='output_text'>The results obtained are:</div>");
-
-		$("#Output_CP_Hatched").html($('#Output_CP_Hatched').html() + "<table><tr><th>" + CP_Min + "</th><th>"+ CP_Max + "</th></tr><tr><td>Min CP</td><td>Max CP</td></tr></table>");
-
-	}
-}
-
 function Get_CP_Raids() {
 	/*==== Clear the output ====*/
 	$("#Output_CP_Raids").html("<hr class='hrseparador'>");
 	$("#Output_CP_Raids_2").html("");
+	$("#Output_CP_Raids_3").html("");
 
 	/*==== Set variables 1/2 ====*/
 	var Pokemon_Name_CP_Raid = (document.getElementById("Pokemon_Name_CP").value);
@@ -131,12 +88,9 @@ function Get_CP_Raids() {
 	/*=== Set output ===*/
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_CP_Raids").html($('#Output_CP_Raids').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Raid_String + "</h4></div>");
-
-
 	}
 	else {
-		$("#Output_CP_Raids").html($('#Output_CP_Raids').html() + "<div id='output_text'>The results obtained are:</div>");
-
+		$("#Output_CP_Raids").html($('#Output_CP_Raids').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Raid_String + "</h4></div>");
 	}
 
 	$( "#Output_CP_Raids_2" ).append( "<tr><th>15</th><th>15</th><th>15</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],20) + "</th><th>" + CP_Formula(Pokemon_CP_Raid,[15, 15, 15],25) + "</th><th>100</th></tr>" );
@@ -162,11 +116,70 @@ function Get_CP_Raids() {
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC N20</td><td>PC N25</td><td>%IV</td></tr>" );
-
-
 	}
 	else {
 		$( "#Output_CP_Raids_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC L20</td><td>PC L25</td><td>%IV</td></tr>" );
+	}
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_CP_Raids_3").html($('#Output_CP_Raids_3').html() + "<div id='output_text'>Los resultados para nivel 25 son solo para Pokémon obtenidos de raids.</div>");
+	}
+	else {
+		$("#Output_CP_Raids_3").html($('#Output_CP_Raids_3').html() + "<div id='output_text'>The results for level 25 are only for Pokémon obtained from raids.</div>");
+	}
+
+}
+
+function Get_CP_Wild() {
+	/*==== Clear the output ====*/
+	$("#Output_CP_Wild").html("<hr class='hrseparador'>");
+	$("#Output_CP_Wild_2").html("");
+
+	/*==== Set variables 1/2 ====*/
+	var Pokemon_Name_CP_Wild = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_CP_Wild_String = Pokemon_Name_CP_Wild;
+	Pokemon_Name_CP_Wild = Pokemon_Name_CP_Wild.toLowerCase();
+	Pokemon_Name_CP_Wild = Input_Problematic_Pokemon(Pokemon_Name_CP_Wild);
+	var Pokemon_CP_Wild = window[Pokemon_Name_CP_Wild];
+	/*===Set variables 1/2 ==*/
+
+	notaneasteregg(Pokemon_Name_CP);
+
+	/*==== Check if inputs are correct ====*/
+	if (typeof Pokemon_CP_Wild == 'undefined'){
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_CP_Wild").html($('#Output_CP_Wild').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
+		}
+		else {
+			$("#Output_CP_Wild").html($('#Output_CP_Wild').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+		}
+		return;
+	}
+	/*== Check if inputs are correct ==*/
+
+	/*=== Set output ===*/
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_CP_Wild").html($('#Output_CP_Wild').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Wild_String + "</h4></div>");
+	}
+	else {
+		$("#Output_CP_Wild").html($('#Output_CP_Wild').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Wild_String + "</h4></div>");
+	}
+
+	if($("#showall_wild").is(':checked')) {
+		for(var Level=35; Level>=1; Level--) {
+			$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],Level) + "</th><th>" + Level + "</th></tr>" );
+		}
+	}
+	else {
+		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],35) + "</th><th>35</th></tr>" );
+		$( "#Output_CP_Wild_2" ).append( "<tr><th>" + CP_Formula(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>" + Get_HP(Pokemon_CP_Wild,[15, 15, 15],30) + "</th><th>30</th></tr>" );
+	}
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$( "#Output_CP_Wild_2" ).append( "<tr><td>PC</td><td>HP</td><td>Nivel</td></tr>" );
+	}
+	else {
+		$( "#Output_CP_Wild_2" ).append( "<tr><td>CP</td><td>HP</td><td>Level</td></tr>" );
 
 	}
 

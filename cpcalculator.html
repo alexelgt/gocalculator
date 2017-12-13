@@ -57,108 +57,97 @@
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calcularpc">
-					<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
+				<div id="cuerpo" class="calculariv">
+					<div style="width:100%">
+						<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
 
-					<h4 class="STRING_LEVEL">Level</h4>
+						<h4 class="STRING_LEVEL">Level</h4>
 
-					<input onfocus="this.value = '';" type="number" min="0" id="Level" value="40.0">
+						<input onfocus="this.value = '';" type="number" min="0" id="Level" value="40.0">
 
-					<h4>IV</h4>
+						<h4>IV</h4>
 
-					<div id="select_block">
-						<div>
-							<span id="select_text">A</span>
-							<select id="IV_A">
-		    				<option>0</option>
-		    				<option>1</option>
-		    				<option>2</option>
-		    				<option>3</option>
-		    				<option>4</option>
-		    				<option>5</option>
-		    				<option>6</option>
-		    				<option>7</option>
-		    				<option>8</option>
-		    				<option>9</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option selected="selected">15</option>
-							</select>
+						<div id="select_block">
+							<div>
+								<span id="select_text">A</span>
+								<select id="IV_A">
+		    					<option>0</option>
+		    					<option>1</option>
+		    					<option>2</option>
+		    					<option>3</option>
+		    					<option>4</option>
+		    					<option>5</option>
+		    					<option>6</option>
+		    					<option>7</option>
+		    					<option>8</option>
+		    					<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+									<option>13</option>
+									<option>14</option>
+									<option selected="selected">15</option>
+								</select>
+							</div>
+
+							<div>
+								<span id="select_text">D</span>
+								<select id="IV_D">
+		    					<option>0</option>
+		    					<option>1</option>
+		    					<option>2</option>
+		    					<option>3</option>
+		    					<option>4</option>
+		    					<option>5</option>
+		    					<option>6</option>
+		    					<option>7</option>
+		    					<option>8</option>
+		    					<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+									<option>13</option>
+									<option>14</option>
+									<option selected="selected">15</option>
+								</select>
+							</div>
+
+							<div>
+								<span id="select_text">HP</span>
+								<select id="IV_HP">
+		    					<option>0</option>
+		    					<option>1</option>
+		    					<option>2</option>
+		    					<option>3</option>
+		    					<option>4</option>
+		    					<option>5</option>
+		    					<option>6</option>
+		    					<option>7</option>
+		    					<option>8</option>
+		    					<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+									<option>13</option>
+									<option>14</option>
+									<option selected="selected">15</option>
+								</select>
+							</div>
 						</div>
 
-						<div>
-							<span id="select_text">D</span>
-							<select id="IV_D">
-		    				<option>0</option>
-		    				<option>1</option>
-		    				<option>2</option>
-		    				<option>3</option>
-		    				<option>4</option>
-		    				<option>5</option>
-		    				<option>6</option>
-		    				<option>7</option>
-		    				<option>8</option>
-		    				<option>9</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option selected="selected">15</option>
-							</select>
-						</div>
+						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
 
-						<div>
-							<span id="select_text">HP</span>
-							<select id="IV_HP">
-		    				<option>0</option>
-		    				<option>1</option>
-		    				<option>2</option>
-		    				<option>3</option>
-		    				<option>4</option>
-		    				<option>5</option>
-		    				<option>6</option>
-		    				<option>7</option>
-		    				<option>8</option>
-		    				<option>9</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option selected="selected">15</option>
-							</select>
-						</div>
+						<div id="Output_CP" class="output"></div>
 					</div>
 
-					<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
-
-					<div id="Output_CP" class="output"></div>
-
 				</div>
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
 				<div id="cuerpo" class="calcularpc">
 
-					<h3 class="STRING_CALCULATE_CP_EGG">Calculate CP egg</h3>
-
-					<button onclick="Get_CP_Hatched()" class="STRING_OBTAIN">Obtain</button>
-
-					<div id="Output_CP_Hatched" class="output"></div>
-
-				</div>
-				<!--== cuerpo ==-->
-
-				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calculariv">
-
-
 					<div style="width:100%">
-						<h3 class="STRING_CP_RAIDS">CP raids</h3>
+						<h3 class="STRING_CP_RAIDS">CP raids and eggs</h3>
 
 						<div id="checkbox_element">
 							<div>
@@ -169,17 +158,42 @@
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div style="width:100%">
 						<button onclick="Get_CP_Raids()" class="STRING_OBTAIN">Obtain</button>
 
 						<div id="Output_CP_Raids" class="output"></div>
 						<table id="Output_CP_Raids_2" class="output"></table>
+						<div id="Output_CP_Raids_3" class="output"></div>
 					</div>
 
 				</div>
 				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+
+					<div style="width:100%">
+						<h3 class="STRING_PERFECT_CP">Wild perfect CP</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS">Show all results</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_wild">
+									<label for="showall_wild"></label>
+								</div>
+							</div>
+						</div>
+
+						<button onclick="Get_CP_Wild()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_CP_Wild" class="output"></div>
+						<table id="Output_CP_Wild_2" class="output"></table>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
 			</div>
 			<!--== estructura ==-->
 

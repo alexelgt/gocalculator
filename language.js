@@ -18,15 +18,12 @@ function language(){
     $(".STRING_OBTAIN").html("Obtener");
 
     $(".STRING_CALCULATE_CP").html("Calcular PC");
-    $(".STRING_CALCULATE_CP_EGG").html("Calcular PC huevo");
     $(".STRING_LEVEL").html("Nivel");
 
-    $(".STRING_CP_RAIDS").html("PC raids");
+    $(".STRING_CP_RAIDS").html("PC raids y huevos");
     $(".STRING_SHOW_ALL_RESULTS").html("Mostrar todos los resultados");
 
-
-
-    $(".STRING_INCORRECT").html("Nivel");
+    $(".STRING_PERFECT_CP").html("PC perfecto salvaje");
 
     $(".STRING_INFORMATION").html("Información");
 
