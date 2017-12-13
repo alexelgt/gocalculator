@@ -136,7 +136,7 @@ function Get_CP_Wild() {
 	$("#Output_CP_Wild_2").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP_Wild = "Mewtwo";//(document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_CP_Wild = (document.getElementById("Pokemon_Name_CP").value);
 	var Pokemon_Name_CP_Wild_String = Pokemon_Name_CP_Wild;
 	Pokemon_Name_CP_Wild = Pokemon_Name_CP_Wild.toLowerCase();
 	Pokemon_Name_CP_Wild = Input_Problematic_Pokemon(Pokemon_Name_CP_Wild);
