@@ -629,7 +629,13 @@ th:last-child,th#ultimo{
 
 @media (max-width: 410px){
 	#nivel_container{
-		width:150px;
+		width:160px;
+	}
+}
+
+@media (max-width: 400px){
+	#nivel_container{
+		width:130px;
 	}
 }
 
