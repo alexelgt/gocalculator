@@ -14,20 +14,21 @@ function ventanaemergente(id,id2) {
     document.getElementById(id2).style.display = "none";
 
     if (id == "informacion") {
-      document.body.style.background = "none";
-      document.body.style.backgroundColor = "#2a6c79";
+      document.getElementById("bg").style.background = "none";
+      document.getElementById("bg").style.backgroundColor = "#2a6c79";
+
     }
     else if (id == "ocultar") {
-      document.body.style.background = "url('background.jpeg') no-repeat fixed";
+      document.getElementById("bg").style.background = "url('background.jpeg')";
 
     }
 }
 
 function notaneasteregg(Pokemon) {
   if (Pokemon == "easteregg") {
-    document.body.style.background = "url('egg.png') repeat fixed, url('background.jpeg') no-repeat fixed";
+    document.getElementById("bg").style.background = "url('egg.png') repeat fixed, url('background.jpeg')";
   }
   else {
-    document.body.style.background = "url('background.jpeg') no-repeat fixed";
+    document.getElementById("bg").style.background = "url('background.jpeg')";
   }
 }

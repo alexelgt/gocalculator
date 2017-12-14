@@ -12,9 +12,10 @@ body{
   -moz-appearance: none;
   appearance: none;
 }
-.bg {
+#bg {
     position: fixed;
     display: block;
+		background: url('background.jpeg');
     top: 0;
     left: 0;
     width: 100%;
