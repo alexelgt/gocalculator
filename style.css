@@ -635,8 +635,17 @@ th:last-child,th#ultimo{
 
 @media (max-width: 400px){
 	#nivel_container{
-		width:140px;
+		width:160px;
 	}
+
+
+	#cuerpo{
+		background-color: red;
+		box-shadow: none;
+		margin: 10px 0;
+		padding: 10px 10px;
+	}
+
 }
 
 @media (max-width: 940px){
