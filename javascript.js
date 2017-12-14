@@ -14,12 +14,12 @@ function ventanaemergente(id,id2) {
     document.getElementById(id2).style.display = "none";
 
     if (id == "informacion") {
-      document.getElementById("bg").style.background = "none";
+      document.getElementById("bg").style.backgroundImage = "none";
       document.getElementById("bg").style.backgroundColor = "#2a6c79";
 
     }
     else if (id == "ocultar") {
-      document.getElementById("bg").style.background = "url('background.jpeg')";
+      document.getElementById("bg").style.backgroundImage = "url('background.jpeg')";
 
     }
 }

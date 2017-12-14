@@ -15,7 +15,7 @@ body{
 #bg {
     position: fixed;
     display: block;
-		background: url('background.jpeg');
+		background-image: url('background.jpeg');
     top: 0;
     left: 0;
     width: 100%;
