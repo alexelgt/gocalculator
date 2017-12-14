@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#14/12/2017-14:13
+#14/12/2017-16:11
 
 CACHE:
 background.jpeg
@@ -20,6 +20,7 @@ Problematic_Pokemon.js
 Set_Pokemon.js
 Stardusttolevel.js
 Leveltostardust.js
+Leveltocandy.js
 multirange.js
 sliders.js
 style.css

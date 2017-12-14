@@ -28,6 +28,7 @@
 		<script src="CP_Formula.js" type="text/javascript"></script>
 		<script src="Stardusttolevel.js" type="text/javascript"></script>
 		<script src="Leveltostardust.js" type="text/javascript"></script>
+		<script src="Leveltocandy.js" type="text/javascript"></script>
 	</head>
 
 	<body onload="start()">
@@ -56,95 +57,126 @@
 
 					<input onfocus="this.value = '';" type="text" spellcheck="false" id="Pokemon_Name_CP" class="flexdatalist" data-min-length="2" data-selection-required="true" data-data="List_Pokemon.json" data-search-in="name">
 
+					<h4>IV</h4>
+
+					<div id="select_block">
+						<div>
+							<span id="select_text">A</span>
+							<select id="IV_A">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+
+						<div>
+							<span id="select_text">D</span>
+							<select id="IV_D">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+
+						<div>
+							<span id="select_text">HP</span>
+							<select id="IV_HP">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+					</div>
+
 				</div>
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calculariv">
+				<div id="cuerpo" class="calcularpc">
 					<div style="width:100%">
 						<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
 
 						<h4 class="STRING_LEVEL">Level</h4>
 
 						<div id="estructura_nivel">
-							<!--<div id="showlevel" class="Level_min">1</div>-->
-							<div id="nivel_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single" id="Level"></div>
-							<div id="showlevel" class="Level_max">40</div>
-						</div>
-
-						<h4>IV</h4>
-
-						<div id="select_block">
-							<div>
-								<span id="select_text">A</span>
-								<select id="IV_A">
-		    					<option>0</option>
-		    					<option>1</option>
-		    					<option>2</option>
-		    					<option>3</option>
-		    					<option>4</option>
-		    					<option>5</option>
-		    					<option>6</option>
-		    					<option>7</option>
-		    					<option>8</option>
-		    					<option>9</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option selected="selected">15</option>
-								</select>
-							</div>
-
-							<div>
-								<span id="select_text">D</span>
-								<select id="IV_D">
-		    					<option>0</option>
-		    					<option>1</option>
-		    					<option>2</option>
-		    					<option>3</option>
-		    					<option>4</option>
-		    					<option>5</option>
-		    					<option>6</option>
-		    					<option>7</option>
-		    					<option>8</option>
-		    					<option>9</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option selected="selected">15</option>
-								</select>
-							</div>
-
-							<div>
-								<span id="select_text">HP</span>
-								<select id="IV_HP">
-		    					<option>0</option>
-		    					<option>1</option>
-		    					<option>2</option>
-		    					<option>3</option>
-		    					<option>4</option>
-		    					<option>5</option>
-		    					<option>6</option>
-		    					<option>7</option>
-		    					<option>8</option>
-		    					<option>9</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option selected="selected">15</option>
-								</select>
-							</div>
+							<!--<div id="showlevel" class="Level_min_CP">1</div>-->
+							<div id="nivel_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single" id="Level_CP"></div>
+							<div id="showlevel" class="Level_max_CP">40</div>
 						</div>
 
 						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
 
 						<div id="Output_CP" class="output"></div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+					<div style="width:100%">
+						<h3 class="STRING_CANDY_STARDUST_COST">Candies and stardusts cost</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS_POKEMON">Use Pokémon's data</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_candy_dust">
+									<label for="showall_candy_dust"></label>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="STRING_LEVEL_RANGE">Level range</h4>
+
+						<div id="estructura_nivel">
+							<div id="showlevel" class="Level_min">1</div>
+							<div id="nivel_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
+							<div id="showlevel" class="Level_max">40</div>
+						</div>
+
+						<button onclick="Get_Candy_Dust()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_Candy_Dust" class="output"></div>
 					</div>
 
 				</div>

@@ -1,5 +1,11 @@
 function Get_HP(Pokemon,IV,Level){
-	return Math.trunc( (Pokemon.Stats[2]+IV[2]) * CP_Multiplier(Level) )
+	HP = Math.trunc( (Pokemon.Stats[2]+IV[2]) * CP_Multiplier(Level) );
+	if (HP < 10) {
+    return 10
+  }
+  else {
+    return HP
+  }
 }
 
 function Get_CP() {
@@ -10,7 +16,7 @@ function Get_CP() {
 	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
 	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
 	var Pokemon_CP = window[Pokemon_Name_CP];
-	var Level = parseFloat(document.getElementById("Level").valueHigh);
+	var Level = parseFloat(document.getElementById("Level_CP").valueHigh);
 	/*===Set variables 1/2 ==*/
 
 	notaneasteregg(Pokemon_Name_CP);
@@ -22,15 +28,6 @@ function Get_CP() {
 		}
 		else {
 			$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
-		}
-		return;
-	}
-	if (Level < 1 || Level > 40 || (Level - Math.floor(Level) != 0 && Level - Math.floor(Level) != 0.5)) {
-		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-			$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Nivel incorrecto.</div>");
-		}
-		else {
-			$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Incorrect level.</div>");
 		}
 		return;
 	}
@@ -54,6 +51,75 @@ function Get_CP() {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:</div>");
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>CP</td><td>HP</td><td>%IV</td></tr></table>");
+	}
+}
+
+function Get_Candy_Dust() {
+	/*==== Clear the output ====*/
+	$("#Output_Candy_Dust").html("<hr class='hrseparador'>");
+
+	/*==== Set variables 1/2 ====*/
+	var Pokemon_Name_Candy_Dust = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_Candy_Dust_String = Pokemon_Name_Candy_Dust;
+	Pokemon_Name_Candy_Dust = Pokemon_Name_Candy_Dust.toLowerCase();
+	Pokemon_Name_Candy_Dust = Input_Problematic_Pokemon(Pokemon_Name_Candy_Dust);
+	var Pokemon_Candy_Dust = window[Pokemon_Name_Candy_Dust];
+	var Level_Max_Candy_Dust = parseFloat(document.getElementById("Level").valueHigh);
+	var Level_Min_Candy_Dust = parseFloat(document.getElementById("Level").valueLow);
+	/*===Set variables 1/2 ==*/
+
+	notaneasteregg(Pokemon_Name_Candy_Dust);
+
+	/*=== Set variables 2/2 ===*/
+	var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
+
+	/*==== Get Dust and Candies ====*/
+	var Dust_Cost = - Leveltostardust(Level_Max_Candy_Dust);
+	var Candy_Cost = - Leveltocandy(Level_Max_Candy_Dust);
+
+	for (var Level = Level_Min_Candy_Dust; Level <= Level_Max_Candy_Dust; Level+=0.5) {
+		Dust_Cost += Leveltostardust(Level);
+		Candy_Cost += Leveltocandy(Level);
+	}
+	/*== Get Dust and Candies ==*/
+
+	/*=== Set output ===*/
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'>Los resultados obtenidos son:</div><div id='output_text'>El coste de caramelos es: " + Candy_Cost + "<br>El coste de polvosestelares es: " + Dust_Cost + "</div>");
+	}
+	else {
+		$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'>The results obtained are:</div><div id='output_text'>The amount of candies required are: " + Candy_Cost + "<br>The amount of stardusts required are: " + Dust_Cost + "</div>");
+	}
+
+	if($("#showall_candy_dust").is(':checked')){
+
+		/*==== Check if inputs are correct ====*/
+		if (typeof Pokemon_Candy_Dust == 'undefined'){
+			if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+				$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
+			}
+			else {
+				$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+			}
+			return;
+		}
+		/*== Check if inputs are correct ==*/
+
+		/*==== Get CP and HP ====*/
+			var CP_Max = CP_Formula(Pokemon_Candy_Dust,IV,Level_Max_Candy_Dust);
+			var HP_CP_Max = Get_HP(Pokemon_Candy_Dust,IV,Level_Max_Candy_Dust);
+			var CP_Min = CP_Formula(Pokemon_Candy_Dust,IV,Level_Min_Candy_Dust);
+			var HP_CP_Min = Get_HP(Pokemon_Candy_Dust,IV,Level_Min_Candy_Dust);
+			var CP_Difference = CP_Max - CP_Min;
+			var HP_Difference = HP_CP_Max - HP_CP_Min;
+		/*== Get CP and HP ==*/
+
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'><h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_Candy_Dust_String + "</h4></div><table><tr><th>" + CP_Max + " (+" + CP_Difference + ")</th><th>" + HP_CP_Max + " (+" + HP_Difference + ")</th><th>" + Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>PC</td><td>HP</td><td>%IV</td></tr></table>");
+		}
+		else {
+			$("#Output_Candy_Dust").html($('#Output_Candy_Dust').html() + "<div id='output_text'><h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_Candy_Dust_String + "</h4></div><table><tr><th>" + CP_Max + " (+" + CP_Difference + ")</th><th>" + HP_CP_Max + " (+" + HP_Difference + ")</th><th>" + Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>CP</td><td>HP</td><td>%IV</td></tr></table>");
+		}
 	}
 }
 

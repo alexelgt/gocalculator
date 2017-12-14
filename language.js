@@ -20,6 +20,10 @@ function language(){
     $(".STRING_CALCULATE_CP").html("Calcular PC");
     $(".STRING_LEVEL").html("Nivel");
 
+    $(".STRING_CANDY_STARDUST_COST").html("Coste de caramelos y polvosestelares");
+    $(".STRING_LEVEL_RANGE").html("Rango de nivel");
+    $(".STRING_SHOW_ALL_RESULTS_POKEMON").html("Usar datos del Pokémon");
+
     $(".STRING_CP_RAIDS").html("PC raids y huevos");
     $(".STRING_SHOW_ALL_RESULTS").html("Mostrar todos los resultados");
 
