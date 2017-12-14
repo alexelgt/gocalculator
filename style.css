@@ -1,4 +1,13 @@
 /*==== Basico ====*/
+html {
+  background: url("background.jpeg") no-repeat top center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+  height: 100%;
+	min-height: 100%;
+}
 body{
 	width: 100%;
 	min-height: 100%;
@@ -6,7 +15,6 @@ body{
 	margin: 0;
 	font-family: "Helvetica";
 	font-size: 16px;
-	background: url("background.jpeg") no-repeat fixed;
 	-webkit-touch-callout: none;
 	-webkit-appearance: none;
   -moz-appearance: none;
