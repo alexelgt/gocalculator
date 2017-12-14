@@ -13,7 +13,9 @@ function Get_CP() {
 	$("#Output_CP").html("<hr class='hrseparador'>");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
+	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_CP_String = Pokemon_Name_CP;
+	Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
 	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
 	var Pokemon_CP = window[Pokemon_Name_CP];
 	var Level = parseFloat(document.getElementById("Level_CP").valueHigh);
@@ -43,12 +45,12 @@ function Get_CP() {
 
 	/*=== Set output ===*/
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Los resultados obtenidos son:</div>");
+		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_String + "</h4></div>");
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>PC</td><td>HP</td><td>%IV</td></tr></table>");
 	}
 	else {
-		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:</div>");
+		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Raid_String + "</h4></div>");
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>CP</td><td>HP</td><td>%IV</td></tr></table>");
 	}
