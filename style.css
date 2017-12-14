@@ -89,9 +89,10 @@ input::-webkit-inner-spin-button {
 	max-width: 920px;}
 
 #estructura_nivel{
+	position: relative;
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: center;
+	justify-content: space-between;
 	width: 100%;
 }
 
@@ -110,6 +111,16 @@ input::-webkit-inner-spin-button {
 
 #cuerpo.calcularpc_pokemon{
 	width:100%;
+}
+
+#nivel_container{
+	position: relative;
+	margin-top: 14px;
+	width:100%;
+}
+
+#nivel_container.multiple{
+	margin-top: 4px;
 }
 /*== Estructura ==*/
 
@@ -461,8 +472,7 @@ input[type=checkbox]{
 @supports (--css: variables) {
 	input[type="range"].multirange {
 		padding: 0;
-		top:-24px;
-		margin: 14px 0;
+		margin: 0px 0;
 		display: block;
 		vertical-align: top;
 		height: 10px;
@@ -478,7 +488,7 @@ input[type=checkbox]{
 		position: relative;
 		border: none;
 		background: none;
-		top:0
+		bottom:-10px;
 	}
 
 	input[type="range"].single.multirange.original {
@@ -570,9 +580,6 @@ th:last-child,th#ultimo{
 		flex-flow: row wrap;
 		justify-content: space-around;
 	}
-	#nivel_container{
-		width:296px;
-	}
 	/*== Estructura ==*/
 
 }
@@ -581,9 +588,6 @@ th:last-child,th#ultimo{
 	/*==== Estructura ====*/
 	#cuerpo.calcularpc_pokemon{
 		width:440px;
-	}
-	#nivel_container{
-		width:296px;
 	}
 	/*== Estructura ==*/
 }
@@ -623,38 +627,15 @@ th:last-child,th#ultimo{
 	/*== Texto ==*/
 }
 
-@media (max-width: 460px){
-	#nivel_container{
-		width:240px;
-	}
-}
-
-@media (max-width: 410px){
-	#nivel_container{
-		width:200px;
-	}
-}
-
 @media (max-width: 400px){
 	/*==== Estructura ====*/
 	#cuerpo{
 		box-shadow: none;
 		border-radius: 0;
 		margin: 10px 0;
-		padding: 10px 5px;
-	}
-
-	#nivel_container{
-		width:190px;
+		padding: 10px;
 	}
 	/*== Estructura ==*/
-
-	/*==== Output ====*/
-	#showlevel{
-		font-size: 14px;
-		width: 25px;
-	}
-	/*== Output ==*/
 
 }
 
