@@ -203,7 +203,7 @@ h2.informacion{
 }
 #showlevel{
 	margin-bottom: 0;
-	width:40px;
+	width:30px;
 }
 
 #Output_IV_3{
@@ -635,7 +635,7 @@ th:last-child,th#ultimo{
 
 @media (max-width: 400px){
 	#nivel_container{
-		width:120px;
+		width:140px;
 	}
 }
 
