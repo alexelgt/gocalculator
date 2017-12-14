@@ -635,8 +635,7 @@ th:last-child,th#ultimo{
 
 @media (max-width: 400px){
 	#nivel_container{
-		width:50px;
-		background: red
+		width:120px;
 	}
 }
 
