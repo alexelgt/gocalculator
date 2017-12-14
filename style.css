@@ -1,10 +1,4 @@
 /*==== Basico ====*/
-html {
-background: url("background.jpeg") no-repeat center center fixed;
-background-size: cover;
-height: 100%;
-overflow: hidden;
-}
 body{
 	width: 100%;
 	min-height: 100%;
@@ -12,14 +6,23 @@ body{
 	margin: 0;
 	font-family: "Helvetica";
 	font-size: 16px;
-
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
-
+	backgro2und: url("background.jpeg") no-repeat fixed;
 	-webkit-touch-callout: none;
 	-webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+.bg {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 a{
