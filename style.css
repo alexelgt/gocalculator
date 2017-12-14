@@ -11,9 +11,6 @@ body{
 	-webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-	background-size: cover;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
 }
 
 a{
