@@ -578,12 +578,14 @@ th:last-child,th#ultimo{
 }
 
 @media (max-width: 920px){
+	/*==== Estructura ====*/
 	#cuerpo.calcularpc_pokemon{
 		width:440px;
 	}
 	#nivel_container{
 		width:296px;
 	}
+	/*== Estructura ==*/
 }
 
 @media (max-width: 610px){
@@ -634,17 +636,17 @@ th:last-child,th#ultimo{
 }
 
 @media (max-width: 400px){
-	#nivel_container{
-		width:160px;
-	}
-
-
+	/*==== Estructura ====*/
 	#cuerpo{
-		background-color: red;
 		box-shadow: none;
 		margin: 10px 0;
 		padding: 10px 10px;
 	}
+
+	#nivel_container{
+		width:160px;
+	}
+	/*== Estructura ==*/
 
 }
 
