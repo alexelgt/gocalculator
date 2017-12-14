@@ -627,18 +627,6 @@ th:last-child,th#ultimo{
 	/*== Texto ==*/
 }
 
-@media (max-width: 400px){
-	/*==== Estructura ====*/
-	#cuerpo{
-		box-shadow: none;
-		border-radius: 0;
-		margin: 10px 0;
-		padding: 10px;
-	}
-	/*== Estructura ==*/
-
-}
-
 @media (max-width: 940px){
 	h2.informacion{
 		width: auto
