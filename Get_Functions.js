@@ -10,7 +10,7 @@ function Get_CP() {
 	var Pokemon_Name_CP = (document.getElementById("Pokemon_Name_CP").value); Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
 	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
 	var Pokemon_CP = window[Pokemon_Name_CP];
-	var Level = parseFloat(document.getElementById("Level").value);
+	var Level = parseFloat(document.getElementById("Level").valueHigh);
 	/*===Set variables 1/2 ==*/
 
 	notaneasteregg(Pokemon_Name_CP);

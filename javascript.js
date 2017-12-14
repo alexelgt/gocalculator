@@ -2,6 +2,7 @@ function start(){
   language();
   fullscreen();
   team_phrase();
+  sliders();
 }
 
 function ventanaemergente(id,id2) {

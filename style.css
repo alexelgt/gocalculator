@@ -88,6 +88,13 @@ input::-webkit-inner-spin-button {
 #estructura.calcularpc{
 	max-width: 920px;}
 
+#estructura_nivel{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 100%;
+}
+
 #cuerpo{
 	overflow: hidden;
 	box-sizing: border-box;
@@ -182,17 +189,21 @@ h2.informacion{
 	margin: 20px 0;
 }
 
-.output{
+.output, #showlevel{
 	color: #44696c;
 	font-size: 18px;
 }
 
-#output_text{
+#output_text, #showlevel{
 	font-weight: normal;
 	margin-bottom: 20px;
 	padding: 6px;
 	line-height: 24px;
 	text-align: left;
+}
+#showlevel{
+	margin-bottom: 0;
+	width:40px;
 }
 
 #Output_IV_3{
@@ -202,7 +213,6 @@ h2.informacion{
 	margin: 10px auto;
 }
 /*== Output ==*/
-
 
 
 /*==== Formulario ====*/
@@ -447,6 +457,71 @@ input[type=checkbox]{
 	line-height: 40px;
 	margin: 0 auto;
 }
+
+@supports (--css: variables) {
+	input[type="range"].multirange {
+		padding: 0;
+		top:-24px;
+		margin: 14px 0;
+		display: block;
+		vertical-align: top;
+		height: 10px;
+		border: none;
+		border-radius: none;
+		background-image: linear-gradient(90deg, #a2db95, #24ccaa);
+	}
+	input[type="range"].single.multirange {
+		top:0px;
+	}
+
+	input[type="range"].multirange.original {
+		position: relative;
+		border: none;
+		background: none;
+		top:0
+	}
+
+	input[type="range"].single.multirange.original {
+		display: none;
+	}
+
+		input[type="range"].multirange.original::-webkit-slider-thumb,input[type="range"]::-webkit-slider-thumb {
+			position: relative;
+			z-index: 2;
+			-webkit-appearance: none;
+    	border: none;
+    	height: 22px;
+    	width: 22px;
+    	border-radius: 50%;
+			background-color: #166a76;
+			border: #82c582 solid 2px;
+			box-shadow: 0 0 0 2px #166a76,0 0 0 4px rgba(180,180,180,0.6);
+		}
+
+		input[type="range"].single.multirange.original::-webkit-slider-thumb {
+			display: none;
+		}
+
+		input[type="range"].multirange.original::-moz-range-thumb {
+			transform: scale(1); /* FF doesn't apply position it seems */
+			z-index: 1;
+		}
+
+		input[type="range"].single.multirange.original::-moz-range-thumb {
+			display: none;
+		}
+
+		input[type="range"].multirange::-moz-range-track {
+			border-color: transparent; /* needed to switch FF to "styleable" control */
+		}
+
+	input[type="range"].multirange.ghost {
+		position: relative;
+	}
+
+}
+
+
 /*== Formulario ==*/
 
 /*==== Tabla ====*/
@@ -495,12 +570,19 @@ th:last-child,th#ultimo{
 		flex-flow: row wrap;
 		justify-content: space-around;
 	}
+	#nivel_container{
+		width:756px;
+	}
 	/*== Estructura ==*/
+
 }
 
 @media (max-width: 920px){
 	#cuerpo.calcularpc_pokemon{
 		width:440px;
+	}
+	#nivel_container{
+		width:296px;
 	}
 }
 
@@ -539,9 +621,16 @@ th:last-child,th#ultimo{
 	/*== Texto ==*/
 }
 
+@media (max-width: 460px){
+	#nivel_container{
+		width:190px;
+	}
+}
+
 @media (max-width: 940px){
 	h2.informacion{
 		width: auto
 	}
+
 }
 /*== Media ==*/
