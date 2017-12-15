@@ -1383,6 +1383,11 @@ var absol = {
     Evolutions : null
 };
 
+var groudon = {
+    Stats  : [270, 251, 182],
+    Evolutions : null
+};
+
 var easteregg = {
     Stats      : [-Math.pow(10,4), -Math.pow(10,4), -Math.pow(10,4)],
     Evolutions : null
