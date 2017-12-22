@@ -1341,6 +1341,24 @@ var swalot = {
     Evolutions : null
 };
 
+var carvanha = {
+    Stats      : [171, 39, 90],
+    Evolutions : ["sharpedo"]
+};
+var sharpedo = {
+    Stats      : [243, 83, 140],
+    Evolutions : null
+};
+
+var wailmer = {
+    Stats      : [136, 68, 260],
+    Evolutions : ["wailord"]
+};
+var wailord = {
+    Stats      : [175, 87, 340],
+    Evolutions : null
+};
+
 var spoink = {
     Stats      : [125, 145, 120],
     Evolutions : ["grumpig"]
@@ -1357,6 +1375,33 @@ var zangoose = {
 
 var seviper = {
     Stats      : [196, 118, 146],
+    Evolutions : null
+};
+
+var barboach = {
+    Stats      : [93, 83, 100],
+    Evolutions : ["whiscash"]
+};
+var whiscash = {
+    Stats  : [151, 142, 220],
+    Evolutions : null
+};
+
+var corphish = {
+    Stats      : [141, 113, 86],
+    Evolutions : ["crawdaunt"]
+};
+var crawdaunt = {
+    Stats  : [224, 156, 126],
+    Evolutions : null
+};
+
+var feebas = {
+    Stats      : [29, 102, 40],
+    Evolutions : ["milotic"]
+};
+var milotic = {
+    Stats  : [192, 242, 190],
     Evolutions : null
 };
 
@@ -1380,6 +1425,38 @@ var dusclops = {
 
 var absol = {
     Stats  : [246, 120, 130],
+    Evolutions : null
+};
+
+var snorunt = {
+    Stats      : [95, 95, 100],
+    Evolutions : ["glalie"]
+};
+var glalie = {
+    Stats  : [162, 162, 160],
+    Evolutions : null
+};
+
+var spheal = {
+    Stats      : [95, 90, 140],
+    Evolutions : ["sealeo", "walrein"]
+};
+var sealeo = {
+    Stats      : [137, 132, 180],
+    Evolutions : ["walrein"]
+};
+var walrein = {
+    Stats      : [182, 176, 220],
+    Evolutions : null
+};
+
+var relicanth = {
+    Stats  : [162, 234, 200],
+    Evolutions : null
+};
+
+var luvdisc = {
+    Stats  : [81, 134, 86],
     Evolutions : null
 };
 
