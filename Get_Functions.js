@@ -253,6 +253,54 @@ function Get_CP_Wild() {
 
 }
 
+function Get_CP_Search() {
+	/*==== Clear the output ====*/
+	$("#Output_CP_Search").html("<hr class='hrseparador'>");
+	$("#Output_CP_Search_2").html("");
+
+	/*==== Set variables 1/2 ====*/
+	var Pokemon_Name_CP_Search = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_CP_Search_String = Pokemon_Name_CP_Search;
+	Pokemon_Name_CP_Search = Pokemon_Name_CP_Search.toLowerCase();
+	Pokemon_Name_CP_Search = Input_Problematic_Pokemon(Pokemon_Name_CP_Search);
+	var Pokemon_CP_Search = window[Pokemon_Name_CP_Search];
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		var CP_String = "PC";
+	}
+	else {
+		var CP_String = "CP";
+	}
+	/*===Set variables 1/2 ==*/
+
+	notaneasteregg(Pokemon_Name_CP);
+
+	/*==== Check if inputs are correct ====*/
+	if (typeof Pokemon_CP_Search == 'undefined'){
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
+		}
+		else {
+			$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+		}
+		return;
+	}
+	/*== Check if inputs are correct ==*/
+
+	/*=== Set output ===*/
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
+	}
+	else {
+		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
+	}
+
+	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String + "&" );
+	for(var Level=40; Level>=1; Level -= 0.5) {
+		$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
+	}
+
+}
+
 function Get_IV() {
 	$("#Output_IV_1").html("<hr class='hrseparador'>");
 	$("#Output_IV_2").html("");

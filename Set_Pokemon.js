@@ -1236,6 +1236,24 @@ var shiftry = {
     Evolutions : null
 };
 
+var taillow = {
+    Stats      : [106, 61, 80],
+    Evolutions : ["swellow"]
+};
+var swellow = {
+    Stats      : [185, 130, 120],
+    Evolutions : null
+};
+
+var wingull = {
+    Stats      : [106, 61, 80],
+    Evolutions : ["pelipper"]
+};
+var pelipper = {
+    Stats      : [175, 189, 120],
+    Evolutions : null
+};
+
 var ralts = {
     Stats      : [79, 63, 56],
     Evolutions : ["kirlia", "gardevoir"]
@@ -1246,6 +1264,15 @@ var kirlia = {
 };
 var gardevoir = {
     Stats      : [237, 220, 136],
+    Evolutions : null
+};
+
+var surskit = {
+    Stats      : [93, 97, 80],
+    Evolutions : ["masquerain"]
+};
+var masquerain = {
+    Stats      : [192, 161, 140],
     Evolutions : null
 };
 
@@ -1271,12 +1298,30 @@ var slaking = {
     Evolutions : null
 };
 
+var whismur = {
+    Stats      : [92, 42, 128],
+    Evolutions : ["loudred", "exploud"]
+};
+var loudred = {
+    Stats      : [134, 81, 168],
+    Evolutions : ["exploud"]
+};
+var exploud = {
+    Stats      : [179, 142, 208],
+    Evolutions : null
+};
+
 var makuhita = {
     Stats      : [99, 54, 144],
     Evolutions : ["hariyama"]
 };
 var hariyama = {
     Stats      : [209, 114, 288],
+    Evolutions : null
+};
+
+var nosepass = {
+    Stats      : [82, 236, 60],
     Evolutions : null
 };
 
@@ -1296,6 +1341,19 @@ var sableye = {
 
 var mawile = {
     Stats  : [155, 155, 100],
+    Evolutions : null
+};
+
+var aron = {
+    Stats      : [121, 168, 100],
+    Evolutions : ["lairon", "aggron"]
+};
+var lairon = {
+    Stats      : [158, 240, 120],
+    Evolutions : ["aggron"]
+};
+var aggron = {
+    Stats      : [198, 314, 140],
     Evolutions : null
 };
 
@@ -1324,6 +1382,16 @@ var plusle = {
 
 var minun = {
     Stats      : [147, 167, 120],
+    Evolutions : null
+};
+
+var volbeat = {
+    Stats      : [143, 171, 130],
+    Evolutions : null
+};
+
+var illumise = {
+    Stats      : [143, 171, 130],
     Evolutions : null
 };
 
@@ -1359,12 +1427,57 @@ var wailord = {
     Evolutions : null
 };
 
+var numel = {
+    Stats      : [119, 82, 120],
+    Evolutions : ["camerupt"]
+};
+var camerupt = {
+    Stats      : [194, 139, 140],
+    Evolutions : null
+};
+
+var torkoal = {
+    Stats      : [151, 234, 140],
+    Evolutions : null
+};
+
 var spoink = {
     Stats      : [125, 145, 120],
     Evolutions : ["grumpig"]
 };
 var grumpig = {
     Stats      : [171, 211, 160],
+    Evolutions : null
+};
+
+var trapinch = {
+    Stats      : [162, 78, 90],
+    Evolutions : ["vibrava", "flygon"]
+};
+var vibrava = {
+    Stats      : [134, 99, 100],
+    Evolutions : ["flygon"]
+};
+var flygon = {
+    Stats      : [205, 168, 160],
+    Evolutions : null
+};
+
+var cacnea = {
+    Stats      : [156, 74, 100],
+    Evolutions : ["cacturne"]
+};
+var cacturne = {
+    Stats      : [221, 115, 140],
+    Evolutions : null
+};
+
+var swablu = {
+    Stats      : [76, 139, 90],
+    Evolutions : ["altaria"]
+};
+var altaria = {
+    Stats      : [141, 208, 150],
     Evolutions : null
 };
 
@@ -1375,6 +1488,16 @@ var zangoose = {
 
 var seviper = {
     Stats      : [196, 118, 146],
+    Evolutions : null
+};
+
+var lunatone = {
+    Stats      : [178, 163, 180],
+    Evolutions : null
+};
+
+var solrock = {
+    Stats      : [178, 163, 180],
     Evolutions : null
 };
 
@@ -1396,12 +1519,44 @@ var crawdaunt = {
     Evolutions : null
 };
 
+var baltoy = {
+    Stats      : [77, 131, 80],
+    Evolutions : ["claydol"]
+};
+var claydol = {
+    Stats  : [140, 236, 120],
+    Evolutions : null
+};
+
+var lileep = {
+    Stats      : [105, 154, 132],
+    Evolutions : ["cradily"]
+};
+var cradily = {
+    Stats  : [152, 198, 172],
+    Evolutions : null
+};
+
+var anorith = {
+    Stats      : [141, 113, 86],
+    Evolutions : ["armaldo"]
+};
+var armaldo = {
+    Stats  : [222, 183, 150],
+    Evolutions : null
+};
+
 var feebas = {
     Stats      : [29, 102, 40],
     Evolutions : ["milotic"]
 };
 var milotic = {
     Stats  : [192, 242, 190],
+    Evolutions : null
+};
+
+var Castform = {
+    Stats  : [139, 139, 140],
     Evolutions : null
 };
 
@@ -1420,6 +1575,16 @@ var duskull = {
 };
 var dusclops = {
     Stats  : [124, 234, 80],
+    Evolutions : null
+};
+
+var tropius = {
+    Stats  : [136, 165, 198],
+    Evolutions : null
+};
+
+var chimecho = {
+    Stats  : [175, 174, 150],
     Evolutions : null
 };
 
@@ -1460,8 +1625,44 @@ var luvdisc = {
     Evolutions : null
 };
 
+var bagon = {
+    Stats      : [134, 107, 90],
+    Evolutions : ["shelgon", "salamence"]
+};
+var shelgon = {
+    Stats      : [172, 179, 130],
+    Evolutions : ["salamence"]
+};
+var salamence = {
+    Stats      : [277, 168, 190],
+    Evolutions : null
+};
+
+var beldum = {
+    Stats      : [96, 141, 80],
+    Evolutions : ["metang", "metagross"]
+};
+var metang = {
+    Stats      : [138, 185, 120],
+    Evolutions : ["metagross"]
+};
+var metagross = {
+    Stats      : [257, 247, 160],
+    Evolutions : null
+};
+
+var kyogre = {
+    Stats  : [270, 251, 182],
+    Evolutions : null
+};
+
 var groudon = {
     Stats  : [270, 251, 182],
+    Evolutions : null
+};
+
+var rayquaza = {
+    Stats  : [284, 170, 191],
     Evolutions : null
 };
 

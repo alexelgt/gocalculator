@@ -28,6 +28,7 @@ function language(){
     $(".STRING_SHOW_ALL_RESULTS").html("Mostrar todos los resultados");
 
     $(".STRING_PERFECT_CP").html("PC perfecto salvaje");
+    $(".STRING_PERFECT_CP_SEARCH").html("PC perfecto buscar");
 
     $(".STRING_INFORMATION").html("Información");
 
