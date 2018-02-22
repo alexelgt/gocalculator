@@ -3,6 +3,11 @@ function start(){
   fullscreen();
   team_phrase();
   sliders();
+
+  $('#clickme').click(function() {
+      document.getElementById("Output_CP_Search_2").selectionStart = 0
+      document.getElementById("Output_CP_Search_2").selectionEnd = 999
+  });
 }
 
 function ventanaemergente(id,id2) {
