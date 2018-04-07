@@ -1651,6 +1651,16 @@ var metagross = {
     Evolutions : null
 };
 
+var latias = {
+    Stats  : [228, 268, 160],
+    Evolutions : null
+};
+
+var latios = {
+    Stats  : [268, 228, 160],
+    Evolutions : null
+};
+
 var kyogre = {
     Stats  : [270, 251, 182],
     Evolutions : null

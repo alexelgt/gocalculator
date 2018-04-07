@@ -26,6 +26,7 @@ function language(){
 
     $(".STRING_CP_RAIDS").html("PC raids y huevos");
     $(".STRING_SHOW_ALL_RESULTS").html("Mostrar todos los resultados");
+    $(".STRING_LEVEL_15").html("Nivel 15 (investigación)");
 
     $(".STRING_PERFECT_CP").html("PC perfecto salvaje");
     $(".STRING_PERFECT_CP_SEARCH").html("PC perfecto buscar");
