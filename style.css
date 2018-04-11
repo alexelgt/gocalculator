@@ -85,10 +85,10 @@ input::-webkit-inner-spin-button {
 	margin: 10px auto;
 }
 
-#estructura.calcularpc{
+#estructura{
 	max-width: 920px;}
 
-#estructura_nivel{
+#estructura_slider{
 	position: relative;
 	display: flex;
 	flex-flow: row wrap;
@@ -109,17 +109,18 @@ input::-webkit-inner-spin-button {
 	width: 440px;
 }
 
-#cuerpo.calcularpc_pokemon{
+#cuerpo.cuerpo_fullwidthonecol{
 	width:100%;
 }
 
-#nivel_container{
+#slider_container{
 	position: relative;
 	margin-top: 14px;
+	margin-bottom: 4px;
 	width:100%;
 }
 
-#nivel_container.multiple{
+#slider_container.multiple{
 	margin-top: 4px;
 }
 /*== Estructura ==*/
@@ -200,19 +201,19 @@ h2.informacion{
 	margin: 20px 0;
 }
 
-.output, #showlevel{
+.output, #showslidervalue{
 	color: #44696c;
 	font-size: 18px;
 }
 
-#output_text, #showlevel{
+#output_text, #showslidervalue{
 	font-weight: normal;
 	margin-bottom: 20px;
 	padding: 6px;
 	line-height: 24px;
 	text-align: left;
 }
-#showlevel{
+#showslidervalue{
 	margin-bottom: 0;
 	width:30px;
 }
@@ -491,10 +492,6 @@ input[type=checkbox]{
 		bottom:-10px;
 	}
 
-	input[type="range"].single_high.multirange.original {
-		display: none;
-	}
-
 		input[type="range"].multirange.original::-webkit-slider-thumb,input[type="range"]::-webkit-slider-thumb {
 			position: relative;
 			z-index: 2;
@@ -574,7 +571,7 @@ th:last-child,th#ultimo{
 /*==== Media ====*/
 @media (min-width: 920px){
 	/*==== Estructura ====*/
-	#cuerpo.calculariv{
+	#cuerpo.cuerpo_fullwidthtwocol{
 		width: 900px;
 		display: flex;
 		flex-flow: row wrap;
@@ -586,7 +583,7 @@ th:last-child,th#ultimo{
 
 @media (max-width: 920px){
 	/*==== Estructura ====*/
-	#cuerpo.calcularpc_pokemon{
+	#cuerpo.cuerpo_fullwidthonecol{
 		width:440px;
 	}
 	/*== Estructura ==*/

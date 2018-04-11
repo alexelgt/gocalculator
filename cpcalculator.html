@@ -49,9 +49,9 @@
 			<!--== menu ==-->
 
 			<!--==== estructura ====-->
-			<div id="estructura" class="calcularpc">
+			<div id="estructura">
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calcularpc_pokemon">
+				<div id="cuerpo" class="cuerpo_fullwidthonecol">
 
 					<h4>Pokémon</h4>
 
@@ -137,10 +137,10 @@
 
 						<h4 class="STRING_LEVEL">Level</h4>
 
-						<div id="nivel_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single_high" id="Level_CP"></div>
-						<div id="estructura_nivel">
-							<div id="showlevel"></div>
-							<div id="showlevel" class="Level_max_CP">40</div>
+						<div id="slider_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single_high" id="Level_CP"></div>
+						<div id="estructura_slider">
+							<div id="showslidervalue"></div>
+							<div id="showslidervalue" class="Level_max_CP">40</div>
 						</div>
 
 						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
@@ -168,10 +168,10 @@
 
 						<h4 class="STRING_LEVEL_RANGE">Level range</h4>
 
-						<div id="nivel_container" class="multiple"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
-						<div id="estructura_nivel">
-							<div id="showlevel" class="Level_min">1</div>
-							<div id="showlevel" class="Level_max">40</div>
+						<div id="slider_container" class="multiple"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
+						<div id="estructura_slider">
+							<div id="showslidervalue" class="Level_min">1</div>
+							<div id="showslidervalue" class="Level_max">40</div>
 						</div>
 
 						<button onclick="Get_Candy_Dust()" class="STRING_OBTAIN">Obtain</button>
@@ -244,7 +244,7 @@
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calcularpc_pokemon">
+				<div id="cuerpo" class="cuerpo_fullwidthonecol">
 
 					<div style="width:100%">
 						<h3 class="STRING_PERFECT_CP_SEARCH">Search perfect CP</h3>
