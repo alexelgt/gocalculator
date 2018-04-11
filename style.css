@@ -480,7 +480,7 @@ input[type=checkbox]{
 		border-radius: none;
 		background-image: linear-gradient(90deg, #a2db95, #24ccaa);
 	}
-	input[type="range"].single.multirange {
+	input[type="range"].single_high.multirange {
 		top:0px;
 	}
 
@@ -491,7 +491,7 @@ input[type=checkbox]{
 		bottom:-10px;
 	}
 
-	input[type="range"].single.multirange.original {
+	input[type="range"].single_high.multirange.original {
 		display: none;
 	}
 
@@ -508,7 +508,7 @@ input[type=checkbox]{
 			box-shadow: 0 0 0 2px #166a76,0 0 0 4px rgba(180,180,180,0.6);
 		}
 
-		input[type="range"].single.multirange.original::-webkit-slider-thumb {
+		input[type="range"].single_high.multirange.original::-webkit-slider-thumb,input[type="range"].single_low.multirange.ghost::-webkit-slider-thumb {
 			display: none;
 		}
 
@@ -517,7 +517,7 @@ input[type=checkbox]{
 			z-index: 1;
 		}
 
-		input[type="range"].single.multirange.original::-moz-range-thumb {
+		input[type="range"].single_high.multirange.original::-moz-range-thumb,input[type="range"].single_low.multirange.ghost::-moz-range-thumb {
 			display: none;
 		}
 
