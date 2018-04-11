@@ -1,3 +1,6 @@
+/*========================================================
+ * function that sets the strings for different languages
+ *========================================================*/
 function language(){
 
   if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {

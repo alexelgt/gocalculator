@@ -409,7 +409,9 @@ button#button_info.close{
 button#button_info.close label{
 	width: 36px;
 	height: 36px;
-	background: url("close.png");
+	-webkit-mask: url(close.png) top left / cover;
+	mask: url(close.png) top left / cover;
+	background-color: #00F9D0;
 	background-size: 36px 36px;
 }
 
@@ -444,7 +446,9 @@ input[type=checkbox]{
 }
 
 .checkbox input[type=checkbox]:checked + label{
-	background: url("check.png");
+	-webkit-mask: url(check.png) top left / cover;
+	mask: url(check.png) top left / cover;
+	background-color: #19D1D1;
 	background-size: 26px 26px;
 	top: 0px;
 	left: 0px;

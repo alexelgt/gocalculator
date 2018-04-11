@@ -1,3 +1,6 @@
+/*================================================
+ * function that updates the value of the sliders
+ *================================================*/
 function sliders(){
 
   oninput = function() {
