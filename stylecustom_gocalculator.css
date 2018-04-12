@@ -1,0 +1,50 @@
+:root{
+
+	--background: url("background.jpeg") no-repeat fixed;
+	--backgroundsize: none;
+
+	--cuerpocolor: #fafafa;
+	--cuerposhadow: 0 0 4px 0px rgba(0,0,0,0.5);
+
+	--textcolor1: #44696c;
+	--textcolor2: #68f0ce;
+	--textcolor3: #44696c;
+
+	--separadorcolor: #e1e1e1;
+
+	--selectvalue: #e8f0e1;
+	--selectvalue_informacion: #aff1e0;
+	--selectvalue_focus: #d5e9f0;
+
+	--gradient1_color1: #a2db95;
+	--gradient1_color2: #24ccaa;
+	--gradient1_color1_hover: #5fa89a;
+	--gradient1_color2_hover: #209dad;
+	--gradient1_textcolor: #e4ffde;
+
+	--inputtextarea_backgroundcolor: #fff;
+	--inputtextarea_textcolor: #48c597;
+	--inputtextarea_border: #19d1d1 solid 2px;
+	--inputtextarea_bordercolor_focus: #18c9c9;
+	--inputtextarea_backgroundcolor_focus: #f5f5f5;
+
+	--button_textcolor_hover: #fff;
+
+	--button_info_backgroundcolor: #1c8796;
+	--button_info_shadow: 0 0 0 5px #1c8796,0 0 0 8px rgba(180,180,180,0.6);
+	--button_info_border: #68f0ce solid 2px;
+	--button_info_backgroundcolor_hover: #166a76;
+	--button_info_shadow_hover: 0 0 0 5px #166a76,0 0 0 8px rgba(180,180,180,0.6);
+	--button_info_border_hover: #82c582 solid 2px;
+	--button_info_letter_color: #00f9d0;
+
+	--checkbox_border: #19d1d1 solid 2px;
+	--checkbox_label_color: #19d1d1;
+
+	--input_range_thumb_backgroundcolor: #166a76;
+	--input_range_thumb_border: #82c582 solid 2px;
+	--input_range_thumb_shadow: 0 0 0 2px #166a76,0 0 0 4px rgba(180,180,180,0.6);
+
+	--table_td_textcolor: #95aaab;
+	--table_td_informacion_textcolor: #b5f3e4;
+}
