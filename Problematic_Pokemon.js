@@ -18,5 +18,9 @@ function Input_Problematic_Pokemon(Pokemon_Name){
     Pokemon_Name = "hooh";
   }
 
+  else if (Pokemon_Name == "deoxys normal") {
+    Pokemon_Name = "deoxysn";
+  }
+
   return Pokemon_Name;
 }

@@ -1639,7 +1639,7 @@ var salamence = {
 };
 
 var beldum = {
-    Stats      : [96, 141, 80],
+    Stats      : [96, 132, 120],
     Evolutions : ["metang", "metagross"]
 };
 var metang = {
@@ -1648,16 +1648,6 @@ var metang = {
 };
 var metagross = {
     Stats      : [257, 247, 160],
-    Evolutions : null
-};
-
-var latias = {
-    Stats  : [228, 268, 160],
-    Evolutions : null
-};
-
-var latios = {
-    Stats  : [268, 228, 160],
     Evolutions : null
 };
 
@@ -1673,6 +1663,11 @@ var groudon = {
 
 var rayquaza = {
     Stats  : [284, 170, 191],
+    Evolutions : null
+};
+
+var deoxysn = {
+    Stats  : [345, 115, 137],
     Evolutions : null
 };
 
