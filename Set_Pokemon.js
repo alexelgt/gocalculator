@@ -1671,6 +1671,122 @@ var deoxysn = {
     Evolutions : null
 };
 
+var turtwig = {
+    Stats      : [119, 110, 146],
+    Evolutions : ["grotle", "torterra"]
+};
+var grotle = {
+    Stats      : [157, 143, 181],
+    Evolutions : ["torterra"]
+};
+var torterra = {
+    Stats      : [202, 188, 216],
+    Evolutions : null
+};
+
+var chimchar = {
+    Stats      : [113, 86, 127],
+    Evolutions : ["monferno", "infernape"]
+};
+var monferno = {
+    Stats      : [158, 105, 162],
+    Evolutions : ["infernape"]
+};
+var infernape = {
+    Stats      : [222, 151, 183],
+    Evolutions : null
+};
+
+var piplup = {
+    Stats      : [112, 102, 142],
+    Evolutions : ["prinplup", "empoleon"]
+};
+var prinplup = {
+    Stats      : [150, 139, 162],
+    Evolutions : ["empoleon"]
+};
+var empoleon = {
+    Stats      : [210, 186, 197],
+    Evolutions : null
+};
+
+var starly = {
+    Stats      : [101, 58, 120],
+    Evolutions : ["staravia", "staraptor"]
+};
+var staravia = {
+    Stats      : [142, 94, 146],
+    Evolutions : ["staraptor"]
+};
+var staraptor = {
+    Stats      : [234, 140, 198],
+    Evolutions : null
+};
+
+var bidoof = {
+    Stats      : [80, 73, 153],
+    Evolutions : ["bibarel"]
+};
+var bibarel = {
+    Stats      : [162, 119, 188],
+    Evolutions : null
+};
+
+var kricketot = {
+    Stats      : [45, 74, 114],
+    Evolutions : ["kricketune"]
+};
+var kricketune = {
+    Stats      : [160, 100, 184],
+    Evolutions : null
+};
+
+var shinx = {
+    Stats      : [117, 64, 128],
+    Evolutions : ["luxio", "luxray"]
+};
+var luxio = {
+    Stats      : [159, 95, 155],
+    Evolutions : ["luxray"]
+};
+var luxray = {
+    Stats      : [232, 156, 190],
+    Evolutions : null
+};
+
+var pachirisu = {
+    Stats      : [94, 172, 155],
+    Evolutions : null
+};
+
+var buneary = {
+    Stats      : [130, 105, 146],
+    Evolutions : ["lopunny"]
+};
+var lopunny = {
+    Stats      : [156, 194, 163],
+    Evolutions : null
+};
+
+var chatot = {
+    Stats      : [183, 91, 183],
+    Evolutions : null
+};
+
+var riolu = {
+    Stats      : [127, 78, 120],
+    Evolutions : ["lucario"]
+};
+var lucario = {
+    Stats      : [236, 144, 172],
+    Evolutions : null
+};
+
+var carnivine = {
+    Stats      : [187, 136, 179],
+    Evolutions : null
+};
+
 var easteregg = {
     Stats      : [-Math.pow(10,4), -Math.pow(10,4), -Math.pow(10,4)],
     Evolutions : null
