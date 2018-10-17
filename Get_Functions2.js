@@ -17,13 +17,21 @@ $.get( "List_Pokemon2.json", function( data ) {
     x = data;
 });
 
-var y = $.get( "List_Pokemon2.json" );
-
-$.get("List_Pokemon2.json", function(response) {
-     var logfile = response;
-});
+var y;
 
 
+var jsonIssues = {};
+    $.ajax({
+        url: "List_Pokemon2.json",
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+            jsonIssues = data;
+        }
+    });
+
+
+//console.log(y[0]);
 
 
 	var data = '[{"name":"Bulbasaur2","Stats": [118, 118, 90],"Evolutions": ["ivysaur", "venusaur"]},{"name":"Otro","Stats": [118, 118, 90],"Evolutions": ["ivysaur", "venusaur"]}]';
@@ -67,7 +75,7 @@ $.get("List_Pokemon2.json", function(response) {
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>PC</td><td>HP</td><td>%IV</td></tr></table>");
 
-		$("#Output_CP").html($('#Output_CP').html() + "Hello" + jqxhr[0].name + logfile);
+		$("#Output_CP").html($('#Output_CP').html() + "Hello" + jqxhr[0].name + jsonIssues[0].name);
 	}
 	else {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Raid_String + "</h4></div>");
