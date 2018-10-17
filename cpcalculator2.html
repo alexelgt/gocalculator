@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang='x-default' xml:lang='x-default'>
+	<head>
+		<title>GO Calculator</title>
+		<meta name="title" content="GO Calculator">
+		<meta name="keywords" content="Pokemon, GO, IV, CP, PC, calculator, calculadora">
+		<meta name="description" content="IV and CP calculator for Pokemon GO">
+		<link rel="icon" sizes="192x192" href="icon_circle.png">
+		<link rel="apple-touch-icon-precomposed" href="icon.png">
+		<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="jquery.flexdatalist.css" rel="stylesheet" type="text/css">
+		<script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+		<script src="fullscreen.js" type="text/javascript"></script>
+		<script src="language.js" type="text/javascript"></script>
+		<script src="multirange.js" type="text/javascript"></script>
+		<script src="sliders.js" type="text/javascript"></script>
+		<script src="javascript.js" type="text/javascript"></script>
+		<script src="jquery.flexdatalist.js" type="text/javascript"></script>
+		<script src="Problematic_Pokemon.js" type="text/javascript"></script>
+		<script src="Set_Pokemon.js" type="text/javascript"></script>
+		<script src="Get_Functions.js" type="text/javascript"></script>
+		<script src="CP_Multiplier.js" type="text/javascript"></script>
+		<script src="Pokemon_Stats.js" type="text/javascript"></script>
+		<script src="CP_Formula.js" type="text/javascript"></script>
+		<script src="Stardusttolevel.js" type="text/javascript"></script>
+		<script src="Leveltostardust.js" type="text/javascript"></script>
+		<script src="Leveltocandy.js" type="text/javascript"></script>
+	</head>
+
+	<body onload="start()">
+		<!--==== ocultar ====-->
+		<div id="ocultar">
+
+			<!--==== titulo ====-->
+			<div id="titulo" class="imagen">
+				<img src="logo.png">
+			</div>
+			<!--== titulo ==-->
+
+			<!--==== menu ====-->
+			<div id="menu">
+				<a href="index.html"><h2 class="STRING_IV_CALCULATOR">IV Calculator</h2></a>
+				<a class="seleccionado"><h2 class="STRING_CP_CALCULATOR">CP Calculator</h2></a>
+			</div>
+			<!--== menu ==-->
+
+			<!--==== estructura ====-->
+			<div id="estructura" class="calcularpc">
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc_pokemon">
+
+					<h4>Pokémon</h4>
+
+					<input onfocus="this.value = '';" type="text" spellcheck="false" id="Pokemon_Name_CP" class="flexdatalist" data-min-length="2" data-selection-required="true" data-data="List_Pokemon.json" data-search-in="name">
+
+					<h4>IV</h4>
+
+					<div id="select_block">
+						<div>
+							<span id="select_text">A</span>
+							<select id="IV_A">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+
+						<div>
+							<span id="select_text">D</span>
+							<select id="IV_D">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+
+						<div>
+							<span id="select_text">HP</span>
+							<select id="IV_HP">
+								<option>0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>
+								<option>13</option>
+								<option>14</option>
+								<option selected="selected">15</option>
+							</select>
+						</div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+					<div style="width:100%">
+						<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
+
+						<h4 class="STRING_LEVEL">Level</h4>
+
+						<div id="nivel_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single" id="Level_CP"></div>
+						<div id="estructura_nivel">
+							<div id="showlevel"></div>
+							<div id="showlevel" class="Level_max_CP">40</div>
+						</div>
+
+						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_CP" class="output"></div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+					<div style="width:100%">
+						<h3 class="STRING_CANDY_STARDUST_COST">Candies and stardusts cost</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS_POKEMON">Use Pokémon's data</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_candy_dust">
+									<label for="showall_candy_dust"></label>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="STRING_LEVEL_RANGE">Level range</h4>
+
+						<div id="nivel_container" class="multiple"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
+						<div id="estructura_nivel">
+							<div id="showlevel" class="Level_min">1</div>
+							<div id="showlevel" class="Level_max">40</div>
+						</div>
+
+						<button onclick="Get_Candy_Dust()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_Candy_Dust" class="output"></div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+
+					<div style="width:100%">
+						<h3 class="STRING_CP_RAIDS">CP raids and eggs</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS">Show all results</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_raids">
+									<label for="showall_raids"></label>
+								</div>
+							</div>
+						</div>
+
+						<button onclick="Get_CP_Raids()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_CP_Raids" class="output"></div>
+						<table id="Output_CP_Raids_2" class="output"></table>
+						<div id="Output_CP_Raids_3" class="output"></div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+
+					<div style="width:100%">
+						<h3 class="STRING_PERFECT_CP">Wild perfect CP</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS">Show all results</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_wild">
+									<label for="showall_wild"></label>
+								</div>
+							</div>
+						</div>
+
+						<button onclick="Get_CP_Wild()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_CP_Wild" class="output"></div>
+						<table id="Output_CP_Wild_2" class="output"></table>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc_pokemon">
+
+					<div style="width:100%">
+						<h3 class="STRING_PERFECT_CP_SEARCH">Search perfect CP</h3>
+
+						<button onclick="Get_CP_Search()" class="STRING_OBTAIN" id="clickme">Obtain</button>
+
+						<div id="Output_CP_Search" class="output"></div>
+						<textarea id="Output_CP_Search_2" class="output"></textarea>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+			</div>
+			<!--== estructura ==-->
+
+			<button id="button_info" class="info pc" onclick="ventanaemergente('informacion','ocultar')"><label></label></button>
+
+		</div>
+		<!--== ocultar ==-->
+
+		<!--==== informacion ====-->
+		<div id="informacion">
+
+			<!--==== titulo ====-->
+			<div id="titulo">
+				<h1 class="informacion STRING_INFORMATION">Information</h1>
+			</div>
+			<!--== titulo ==-->
+
+			<h2 class="informacion STRING_INFORMATION_TEXT"></h2>
+
+			<div id="select_block">
+				<div>
+					<span id="select_text" class="frase STRING_TEAM">Team</span>
+					<select id="Team" class="frase informacion" onchange="team_phrase()"></select>
+				</div>
+			</div>
+
+			<div id="team_phrase" style="margin-bottom:100px"></div>
+
+			<button id="button_info" class="close" onclick="ventanaemergente('ocultar','informacion')"><label></label></button>
+
+		</div>
+		<!--== informacion ==-->
+
+	</body>
+</html>
