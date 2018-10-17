@@ -19,11 +19,9 @@ $.get( "List_Pokemon2.json", function( data ) {
 
 var y = $.get( "List_Pokemon2.json" );
 
-var fr = new FileReader();
-fr.onload = function(e) {
-    // e.target.result should contain the text
-};
-fr.readAsText("List_Pokemon2.json");
+$.get("List_Pokemon2.json", function(response) {
+     var logfile = response;
+});
 
 
 
@@ -69,7 +67,7 @@ fr.readAsText("List_Pokemon2.json");
 
 		$("#Output_CP").html($('#Output_CP').html() + "<table><tr><th>" + CP + "</th><th>"+ HP_CP + "</th><th>"+ Math.round((IV[0]+IV[1]+IV[2])/45*100) + "</th></tr><tr><td>PC</td><td>HP</td><td>%IV</td></tr></table>");
 
-		$("#Output_CP").html($('#Output_CP').html() + "Hello" + jqxhr[0].name + fr);
+		$("#Output_CP").html($('#Output_CP').html() + "Hello" + jqxhr[0].name + logfile);
 	}
 	else {
 		$("#Output_CP").html($('#Output_CP').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Raid_String + "</h4></div>");
