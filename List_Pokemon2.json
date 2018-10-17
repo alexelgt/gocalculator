@@ -7,5 +7,9 @@
  {"name":"Bulbasaur2",
     "Stats": [1182, 118, 90],
     "Evolutions": ["ivysaur", "venusaur"]
-  }
+  },
+  {"name":"Bulbo",
+     "Stats": [1182, 118, 90],
+     "Evolutions": ["ivysaur", "venusaur"]
+   }
 ]
