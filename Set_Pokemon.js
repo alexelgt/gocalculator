@@ -1787,6 +1787,11 @@ var carnivine = {
     Evolutions : null
 };
 
+var giratinaa = {
+    Stats      : [187, 225, 284],
+    Evolutions : null
+};
+
 var giratinao = {
     Stats      : [225, 187, 284],
     Evolutions : null
