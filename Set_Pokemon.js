@@ -663,27 +663,36 @@ var ditto = {
 };
 
 var eevee = {
-    Stats      : [104, 121, 110],
-    Evolutions : ["vaporeon", "jolteon", "flareon", "espeon", "umbreon"]
+    Stats      : [104, 114, 146],
+    Evolutions : ["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon"]
 };
 var vaporeon = {
-    Stats      : [205, 177, 260],
+    Stats      : [205, 161, 277],
     Evolutions : null
 };
 var jolteon = {
-    Stats      : [232, 201, 130],
+    Stats      : [232, 182, 163],
     Evolutions : null
 };
 var flareon = {
-    Stats      : [246, 204, 130],
+    Stats      : [246, 179, 163],
     Evolutions : null
 };
 var espeon = {
-    Stats      : [261, 194, 130],
+    Stats      : [261, 175, 163],
     Evolutions : null
 };
 var umbreon = {
-    Stats      : [126, 250, 190],
+    Stats      : [126, 240, 216],
+    Evolutions : null
+};
+
+var leafeon = {
+    Stats      : [216, 219, 163],
+    Evolutions : null
+};
+var glaceon = {
+    Stats      : [238, 205, 163],
     Evolutions : null
 };
 
