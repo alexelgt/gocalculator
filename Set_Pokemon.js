@@ -110,15 +110,15 @@ var arbok = {
 };
 
 var pichu = {
-    Stats      : [77, 63, 40],
+    Stats      : [77, 53, 85],
     Evolutions : ["pikachu", "raichu"]
 };
 var pikachu = {
-    Stats      : [112, 101, 70],
+    Stats      : [112, 96, 111],
     Evolutions : ["raichu"]
 };
 var raichu = {
-    Stats      : [193, 165, 120],
+    Stats      : [193, 151, 155],
     Evolutions : null
 };
 
@@ -697,20 +697,20 @@ var porygon2 = {
 };
 
 var omanyte = {
-    Stats      : [155, 174, 70],
+    Stats      : [155, 153, 111],
     Evolutions : ["omastar"]
 };
 var omastar = {
-    Stats      : [207, 227, 140],
+    Stats      : [207, 201, 172],
     Evolutions : null
 };
 
 var kabuto = {
-    Stats      : [148, 162, 60],
+    Stats      : [148, 140, 102],
     Evolutions : ["kabutops"]
 };
 var kabutops = {
-    Stats      : [220, 203, 120],
+    Stats      : [220, 186, 155],
     Evolutions : null
 };
 
@@ -1277,11 +1277,11 @@ var masquerain = {
 };
 
 var shroomish = {
-    Stats      : [74, 110, 120],
+    Stats      : [74, 110, 155],
     Evolutions : ["breloom"]
 };
 var breloom = {
-    Stats      : [241, 153, 120],
+    Stats      : [241, 144, 155],
     Evolutions : null
 };
 
@@ -1538,11 +1538,11 @@ var cradily = {
 };
 
 var anorith = {
-    Stats      : [141, 113, 86],
+    Stats      : [141, 100, 128],
     Evolutions : ["armaldo"]
 };
 var armaldo = {
-    Stats  : [222, 183, 150],
+    Stats  : [222, 174, 181],
     Evolutions : null
 };
 
@@ -1784,6 +1784,11 @@ var lucario = {
 
 var carnivine = {
     Stats      : [187, 136, 179],
+    Evolutions : null
+};
+
+var giratinao = {
+    Stats      : [225, 187, 284],
     Evolutions : null
 };
 

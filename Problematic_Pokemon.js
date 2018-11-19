@@ -22,5 +22,9 @@ function Input_Problematic_Pokemon(Pokemon_Name){
     Pokemon_Name = "deoxysn";
   }
 
+  else if (Pokemon_Name == "giratina origin") {
+    Pokemon_Name = "giratinao";
+  }
+
   return Pokemon_Name;
 }
