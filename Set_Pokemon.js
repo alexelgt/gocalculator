@@ -485,11 +485,11 @@ var electrode = {
 };
 
 var exeggcute = {
-    Stats      : [107, 140, 120],
+    Stats      : [107, 125, 155],
     Evolutions : ["exeggutor"]
 };
 var exeggutor = {
-    Stats      : [233, 158, 190],
+    Stats      : [233, 149, 216],
     Evolutions : null
 };
 
