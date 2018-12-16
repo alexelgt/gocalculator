@@ -31,15 +31,15 @@ var charizard = {
 };
 
 var squirtle = {
-    Stats      : [94, 122, 88],
+    Stats      : [94, 121, 127],
     Evolutions : ["wartortle", "blastoise"]
 };
 var wartortle = {
-    Stats      : [126, 155, 118],
+    Stats      : [126, 155, 153],
     Evolutions : ["blastoise"]
 };
 var blastoise = {
-    Stats      : [171, 210, 158],
+    Stats      : [171, 207, 188],
     Evolutions : null
 };
 
