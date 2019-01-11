@@ -729,7 +729,7 @@ var aerodactyl = {
 };
 
 var snorlax = {
-    Stats      : [190, 190, 320],
+    Stats      : [190, 169, 330],
     Evolutions : null
 };
 

@@ -314,8 +314,19 @@ function Get_CP_Search() {
 	}
 
 	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String + "&" );
-	for(var Level=40; Level>=1; Level -= 0.5) {
-		$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
+	for(var Level=35; Level>=1; Level -= 1) {
+		if (Level != 1) {
+			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
+		}
+		else {
+			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) );
+		}
+	}
+
+	$( "#Output_CP_Search_2" ).append( "&" );
+
+	for(var Level=35; Level>=1; Level -= 1) {
+		$( "#Output_CP_Search_2" ).append( "puntos de salud" + Get_HP(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
 	}
 
 }
