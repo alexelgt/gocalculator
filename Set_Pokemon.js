@@ -798,15 +798,15 @@ var typhlosion = {
 };
 
 var totodile = {
-    Stats      : [117, 116, 100],
+    Stats      : [117, 109, 137],
     Evolutions : ["croconaw", "feraligatr"]
 };
 var croconaw = {
-    Stats      : [150, 151, 130],
+    Stats      : [150, 142, 163],
     Evolutions : ["feraligatr"]
 };
 var feraligatr = {
-    Stats  : [205, 197, 170],
+    Stats  : [205, 188, 198],
     Evolutions : null
 };
 
