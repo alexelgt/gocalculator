@@ -285,9 +285,11 @@ function Get_CP_Search() {
 	var Pokemon_CP_Search = window[Pokemon_Name_CP_Search];
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
+		var HP_String = "puntos de salud";
 	}
 	else {
 		var CP_String = "CP";
+		var HP_String = "hp";
 	}
 	/*===Set variables 1/2 ==*/
 
@@ -326,7 +328,7 @@ function Get_CP_Search() {
 	$( "#Output_CP_Search_2" ).append( "&" );
 
 	for(var Level=35; Level>=1; Level -= 1) {
-		$( "#Output_CP_Search_2" ).append( "puntos de salud" + Get_HP(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
+		$( "#Output_CP_Search_2" ).append( HP_String + Get_HP(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
 	}
 
 }
