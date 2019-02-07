@@ -1482,11 +1482,11 @@ var cacturne = {
 };
 
 var swablu = {
-    Stats      : [76, 139, 90],
+    Stats      : [76, 132, 128],
     Evolutions : ["altaria"]
 };
 var altaria = {
-    Stats      : [141, 208, 150],
+    Stats      : [141, 201, 181],
     Evolutions : null
 };
 
