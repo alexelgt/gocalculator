@@ -1041,7 +1041,7 @@ var magcargo = {
 };
 
 var swinub = {
-    Stats      : [90, 74, 100],
+    Stats      : [90, 69, 137],
     Evolutions : ["piloswine"]
 };
 var piloswine = {
