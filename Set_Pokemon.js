@@ -5,28 +5,28 @@ var example = {
 };
 */
 var bulbasaur = {
-    Stats      : [118, 118, 90],
+    Stats      : [118, 111, 128],
     Evolutions : ["ivysaur", "venusaur"]
 };
 var ivysaur = {
-    Stats      : [151, 151, 120],
+    Stats      : [151, 143, 155],
     Evolutions : ["venusaur"]
 };
 var venusaur = {
-    Stats      : [198, 198, 160],
+    Stats      : [198, 189, 190],
     Evolutions : null
 };
 
 var charmander = {
-    Stats      : [116, 96, 78],
+    Stats      : [116, 93, 118],
     Evolutions : ["charmeleon", "charizard"]
 };
 var charmeleon = {
-    Stats      : [158, 129, 116],
+    Stats      : [158, 126, 151],
     Evolutions : ["charizard"]
 };
 var charizard = {
-    Stats      : [223, 176, 156],
+    Stats      : [223, 173, 186],
     Evolutions : null
 };
 
@@ -44,68 +44,68 @@ var blastoise = {
 };
 
 var caterpie = {
-    Stats      : [55, 62, 90],
+    Stats      : [55, 55, 128],
     Evolutions : ["metapod", "butterfree"]
 };
 var metapod = {
-    Stats      : [45, 94, 100],
+    Stats      : [45, 80, 137],
     Evolutions : ["butterfree"]
 };
 var butterfree = {
-    Stats      : [167, 151, 120],
+    Stats      : [167, 137, 155],
     Evolutions : null
 };
 
 var weedle = {
-    Stats      : [62, 55, 80],
+    Stats      : [62, 50, 120],
     Evolutions : ["kakuna", "beedrill"]
 };
 var kakuna = {
-    Stats      : [46, 86, 90],
+    Stats      : [46, 75, 128],
     Evolutions : ["beedrill"]
 };
 var beedrill = {
-    Stats      : [169, 150, 130],
+    Stats      : [169, 130, 163],
     Evolutions : null
 };
 
 var pidgey = {
-    Stats      : [85, 76, 80],
+    Stats      : [85, 73, 120],
     Evolutions : ["pidgeotto", "pidgeot"]
 };
 var pidgeotto = {
-    Stats      : [117, 108, 126],
+    Stats      : [117, 106, 160],
     Evolutions : ["pidgeot"]
 };
 var pidgeot = {
-    Stats      : [166, 157, 166],
+    Stats      : [166, 154, 195],
     Evolutions : null
 };
 
 var rattata = {
-    Stats      : [103, 70, 60],
+    Stats      : [103, 70, 102],
     Evolutions : ["raticate"]
 };
 var raticate = {
-    Stats      : [161, 144, 110],
+    Stats      : [161, 139, 146],
     Evolutions : null
 };
 
 var spearow = {
-    Stats      : [112, 61, 80],
+    Stats      : [112, 60, 120],
     Evolutions : ["fearow"]
 };
 var fearow = {
-    Stats      : [182, 135, 130],
+    Stats      : [182, 133, 163],
     Evolutions : null
 };
 
 var ekans = {
-    Stats      : [110, 102, 70],
+    Stats      : [110, 97, 111],
     Evolutions : ["arbok"]
 };
 var arbok = {
-    Stats      : [167, 158, 120],
+    Stats      : [167, 153, 155],
     Evolutions : null
 };
 
@@ -123,364 +123,364 @@ var raichu = {
 };
 
 var sandshrew = {
-    Stats      : [126, 145, 100],
+    Stats      : [126, 120, 137],
     Evolutions : ["sandslash"]
 };
 var sandslash = {
-    Stats      : [182, 202, 150],
+    Stats      : [182, 175, 181],
     Evolutions : null
 };
 
 var nidoranf = {
-    Stats      : [86, 94, 110],
+    Stats      : [86, 89, 146],
     Evolutions : ["nidorina", "nidoqueen"]
 };
 var nidorina = {
-    Stats      : [117, 126, 140],
+    Stats      : [117, 120, 172],
     Evolutions : ["nidoqueen"]
 };
 var nidoqueen = {
-    Stats      : [180, 174, 180],
+    Stats      : [180, 173, 207],
     Evolutions : null
 };
 
 var nidoranm = {
-    Stats      : [105, 76, 92],
+    Stats      : [105, 76, 130],
     Evolutions : ["nidorino", "nidoking"]
 };
 var nidorino = {
-    Stats      : [137, 112, 122],
+    Stats      : [137, 111, 156],
     Evolutions : ["nidoking"]
 };
 var nidoking = {
-    Stats      : [204, 157, 162],
+    Stats      : [204, 156, 191],
     Evolutions : null
 };
 
 var cleffa = {
-    Stats      : [75, 91, 100],
+    Stats      : [75, 79, 137],
     Evolutions : ["clefairy", "clefable"]
 };
 var clefairy = {
-    Stats      : [107, 116, 140],
+    Stats      : [107, 108, 172],
     Evolutions : ["clefable"]
 };
 var clefable = {
-    Stats      : [178, 171, 190],
+    Stats      : [178, 162, 216],
     Evolutions : null
 };
 
 var vulpix = {
-    Stats      : [96, 122, 76],
+    Stats      : [96, 109, 116],
     Evolutions : ["ninetales"]
 };
 var ninetales = {
-    Stats      : [169, 204, 146],
+    Stats      : [169, 190, 177],
     Evolutions : null
 };
 
 var igglybuff = {
-    Stats      : [69, 34, 180],
+    Stats      : [69, 32, 207],
     Evolutions : ["jigglypuff", "wigglytuff"]
 };
 var jigglypuff = {
-    Stats      : [80, 44, 230],
+    Stats      : [80, 41, 251],
     Evolutions : ["wigglytuff"]
 };
 var wigglytuff = {
-    Stats      : [156, 93, 280],
+    Stats      : [156, 90, 295],
     Evolutions : null
 };
 
 var zubat = {
-    Stats      : [83, 76, 80],
+    Stats      : [83, 73, 120],
     Evolutions : ["golbat", "crobat"]
 };
 var golbat = {
-    Stats      : [161, 153, 150],
+    Stats      : [161, 150, 181],
     Evolutions : ["crobat"]
 };
 var crobat = {
-    Stats      : [194, 178, 170],
+    Stats      : [194, 178, 198],
     Evolutions : null
 };
 
 var oddish = {
-    Stats      : [131, 116, 90],
+    Stats      : [131, 112, 128],
     Evolutions : ["gloom", "vileplume", "bellossom"]
 };
 var gloom = {
-    Stats      : [153, 139, 120],
+    Stats      : [153, 136, 155],
     Evolutions : ["vileplume", "bellossom"]
 };
 var vileplume = {
-    Stats      : [202, 170, 150],
+    Stats      : [202, 167, 181],
     Evolutions : null
 };
 var bellossom = {
-    Stats      : [169, 189, 150],
+    Stats      : [169, 186, 181],
     Evolutions : null
 };
 
 var paras = {
-    Stats      : [121, 99, 70],
+    Stats      : [121, 99, 111],
     Evolutions : ["parasect"]
 };
 var parasect = {
-    Stats      : [165, 146, 120],
+    Stats      : [165, 146, 155],
     Evolutions : null
 };
 
 var venonat = {
-    Stats      : [100, 102, 120],
+    Stats      : [100, 100, 155],
     Evolutions : ["venomoth"]
 };
 var venomoth = {
-    Stats      : [179, 150, 140],
+    Stats      : [179, 143, 172],
     Evolutions : null
 };
 
 var diglett = {
-    Stats      : [109, 88, 20],
+    Stats      : [109, 78, 67],
     Evolutions : ["dugtrio"]
 };
 var dugtrio = {
-    Stats      : [167, 147, 70],
+    Stats      : [167, 136, 111],
     Evolutions : null
 };
 
 var meowth = {
-    Stats      : [92, 81, 80],
+    Stats      : [92, 78, 120],
     Evolutions : ["persian"]
 };
 var persian = {
-    Stats      : [150, 139, 130],
+    Stats      : [150, 136, 163],
     Evolutions : null
 };
 
 var psyduck = {
-    Stats      : [122, 96, 100],
+    Stats      : [122, 95, 137],
     Evolutions : ["golduck"]
 };
 var golduck = {
-    Stats      : [191, 163, 160],
+    Stats      : [191, 162, 190],
     Evolutions : null
 };
 
 var mankey = {
-    Stats      : [148, 87, 80],
+    Stats      : [148, 82, 120],
     Evolutions : ["primeape"]
 };
 var primeape = {
-    Stats      : [207, 144, 130],
+    Stats      : [207, 138, 163],
     Evolutions : null
 };
 
 var growlithe = {
-    Stats      : [136, 96, 110],
+    Stats      : [136, 93, 146],
     Evolutions : ["arcanine"]
 };
 var arcanine = {
-    Stats      : [227, 166, 180],
+    Stats      : [227, 166, 207],
     Evolutions : null
 };
 
 var poliwag = {
-    Stats      : [101, 82, 80],
+    Stats      : [101, 82, 120],
     Evolutions : ["poliwhirl", "poliwrath", "politoed"]
 };
 var poliwhirl = {
-    Stats      : [130, 130, 130],
+    Stats      : [130, 123, 163],
     Evolutions : ["poliwrath", "politoed"]
 };
 var poliwrath = {
-    Stats      : [182, 187, 180],
+    Stats      : [182, 184, 207],
     Evolutions : null
 };
 var politoed = {
-    Stats      : [174, 192, 180],
+    Stats      : [174, 179, 207],
     Evolutions : null
 };
 
 var abra = {
-    Stats      : [195, 103, 50],
+    Stats      : [195, 82, 93],
     Evolutions : ["kadabra", "alakazam"]
 };
 var kadabra = {
-    Stats      : [232, 138, 80],
+    Stats      : [232, 117, 120],
     Evolutions : ["alakazam"]
 };
 var alakazam = {
-    Stats      : [271, 194, 110],
+    Stats      : [271, 167, 146],
     Evolutions : null
 };
 
 var machop = {
-    Stats      : [137, 88, 140],
+    Stats      : [137, 82, 172],
     Evolutions : ["machoke", "machamp"]
 };
 var machoke = {
-    Stats      : [177, 130, 160],
+    Stats      : [177, 125, 190],
     Evolutions : ["machamp"]
 };
 var machamp = {
-    Stats      : [234, 162, 180],
+    Stats      : [234, 159, 207],
     Evolutions : null
 };
 
 var bellsprout = {
-    Stats      : [139, 64, 100],
+    Stats      : [139, 61, 137],
     Evolutions : ["weepinbell", "victreebel"]
 };
 var weepinbell = {
-    Stats      : [172, 95, 130],
+    Stats      : [172, 92, 163],
     Evolutions : ["victreebel"]
 };
 var victreebel = {
-    Stats      : [207, 138, 160],
+    Stats      : [207, 135, 190],
     Evolutions : null
 };
 
 var tentacool = {
-    Stats      : [97, 182, 80],
+    Stats      : [97, 149, 120],
     Evolutions : ["tentacruel"]
 };
 var tentacruel = {
-    Stats      : [166, 237, 160],
+    Stats      : [166, 209, 190],
     Evolutions : null
 };
 
 var geodude = {
-    Stats      : [132, 163, 80],
+    Stats      : [132, 132, 120],
     Evolutions : ["graveler", "golem"]
 };
 var graveler = {
-    Stats      : [164, 196, 110],
+    Stats      : [164, 164, 146],
     Evolutions : ["golem"]
 };
 var golem = {
-    Stats      : [211, 229, 160],
+    Stats      : [211, 198, 190],
     Evolutions : null
 };
 
 var ponyta = {
-    Stats      : [170, 132, 100],
+    Stats      : [170, 127, 137],
     Evolutions : ["rapidash"]
 };
 var rapidash = {
-    Stats      : [207, 167, 130],
+    Stats      : [207, 162, 163],
     Evolutions : null
 };
 
 var slowpoke = {
-    Stats      : [109, 109, 180],
+    Stats      : [109, 98, 207],
     Evolutions : ["slowbro", "slowking"]
 };
 var slowbro = {
-    Stats      : [177, 194, 190],
+    Stats      : [177, 180, 216],
     Evolutions : null
 };
 var slowking = {
-    Stats      : [177, 194, 190],
+    Stats      : [177, 180, 216],
     Evolutions : null
 };
 
 var magnemite = {
-    Stats      : [165, 128, 50],
+    Stats      : [165, 121, 93],
     Evolutions : ["magneton"]
 };
 var magneton = {
-    Stats      : [223, 182, 100],
+    Stats      : [223, 169, 137],
     Evolutions : null
 };
 
 var farfetchd = {
-    Stats      : [124, 118, 104],
+    Stats      : [124, 115, 141],
     Evolutions : null
 };
 
 var doduo = {
-    Stats      : [158, 88, 70],
+    Stats      : [158, 83, 111],
     Evolutions : ["dodrio"]
 };
 var dodrio = {
-    Stats      : [218, 145, 120],
+    Stats      : [218, 140, 155],
     Evolutions : null
 };
 
 var seel = {
-    Stats      : [85, 128, 130],
+    Stats      : [85, 121, 163],
     Evolutions : ["dewgong"]
 };
 var dewgong = {
-    Stats      : [139, 184, 180],
+    Stats      : [139, 177, 207],
     Evolutions : null
 };
 
 var grimer = {
-    Stats      : [135, 90, 160],
+    Stats      : [135, 90, 190],
     Evolutions : ["muk"]
 };
 var muk = {
-    Stats      : [190, 184, 210],
+    Stats      : [190, 172, 233],
     Evolutions : null
 };
 
 var shellder = {
-    Stats      : [116, 168, 60],
+    Stats      : [116, 134, 102],
     Evolutions : ["cloyster"]
 };
 var cloyster = {
-    Stats      : [186, 323, 100],
+    Stats      : [186, 256, 137],
     Evolutions : null
 };
 
 var gastly = {
-    Stats      : [186, 70, 60],
+    Stats      : [186, 67, 102],
     Evolutions : ["haunter", "gengar"]
 };
 var haunter = {
-    Stats      : [223, 112, 90],
+    Stats      : [223, 107, 128],
     Evolutions : ["gengar"]
 };
 var gengar = {
-    Stats      : [261, 156, 120],
+    Stats      : [261, 149, 155],
     Evolutions : null
 };
 
 var onix = {
-    Stats      : [85, 288, 70],
+    Stats      : [85, 232, 111],
     Evolutions : ["steelix"]
 };
 var steelix = {
-    Stats      : [148, 333, 150],
+    Stats      : [148, 272, 181],
     Evolutions : null
 };
 
 var drowzee = {
-    Stats      : [89, 158, 120],
+    Stats      : [89, 136, 155],
     Evolutions : ["hypno"]
 };
 var hypno = {
-    Stats      : [144, 215, 170],
+    Stats      : [144, 193, 198],
     Evolutions : null
 };
 
 var krabby = {
-    Stats      : [181, 156, 60],
+    Stats      : [181, 124, 102],
     Evolutions : ["kingler"]
 };
 var kingler = {
-    Stats      : [240, 214, 110],
+    Stats      : [240, 181, 146],
     Evolutions : null
 };
 
 var voltorb = {
-    Stats      : [109, 114, 80],
+    Stats      : [109, 111, 120],
     Evolutions : ["electrode"]
 };
 var electrode = {
-    Stats      : [173, 179, 120],
+    Stats      : [173, 173, 155],
     Evolutions : null
 };
 
@@ -494,28 +494,28 @@ var exeggutor = {
 };
 
 var cubone = {
-    Stats      : [90, 165, 100],
+    Stats      : [90, 144, 137],
     Evolutions : ["marowak"]
 };
 var marowak = {
-    Stats      : [144, 200, 120],
+    Stats      : [144, 186, 155],
     Evolutions : null
 };
 
 var tyrogue = {
-    Stats      : [64, 64, 70],
+    Stats      : [64, 64, 111],
     Evolutions : ["hitmonlee", "hitmonchan", "hitmontop"]
 };
 var hitmonlee = {
-    Stats      : [224, 211, 100],
+    Stats      : [224, 181, 137],
     Evolutions : null
 };
 var hitmonchan = {
-    Stats      : [193, 212, 100],
+    Stats      : [193, 197, 137],
     Evolutions : null
 };
 var hitmontop = {
-    Stats      : [173, 214, 100],
+    Stats      : [173, 207, 137],
     Evolutions : null
 };
 
