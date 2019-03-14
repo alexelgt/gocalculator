@@ -327,7 +327,7 @@ function Get_CP_Search() {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
 
-	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('/ /gAlola','') + "&" );
+	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('Alola','').replace('/ /g','') + "&" );
 	for(var Level=35; Level>=1; Level -= 1) {
 		if (Level != 1) {
 			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
@@ -493,7 +493,7 @@ function Get_PVP_Stats() {
 		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_PVP_Stats.Basic_evolution.replace('_alola','') + "&" );
 	}
 	else {
-		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_Name_PVP_Stats_String.replace('/ /gAlola','') + "&" );
+		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_Name_PVP_Stats_String.replace('Alola','').replace('/ /g','') + "&" );
 	}
 
 
