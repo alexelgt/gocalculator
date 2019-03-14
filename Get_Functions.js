@@ -349,7 +349,6 @@ function Get_PVP_Stats() {
 	/*==== Clear the output ====*/
 	$("#Output_PVP_Stats").html("<hr class='hrseparador'>");
 	$("#Output_PVP_Stats_2").html("");
-	$("#Output_PVP_Stats_3").html("");
 	$("#Output_PVP_Stats_textarea").html("");
 
 	/*==== Set variables 1/2 ====*/

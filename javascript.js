@@ -4,9 +4,14 @@ function start(){
   team_phrase();
   sliders();
 
-  $('#clickme').click(function() {
+  $('#clickme_CP_Search').click(function() {
       document.getElementById("Output_CP_Search_2").selectionStart = 0
-      document.getElementById("Output_CP_Search_2").selectionEnd = 999
+      document.getElementById("Output_CP_Search_2").selectionEnd = 9999
+  });
+
+  $('#clickme_PVP_Stats').click(function() {
+      document.getElementById("Output_PVP_Stats_textarea").selectionStart = 0
+      document.getElementById("Output_PVP_Stats_textarea").selectionEnd = 9999
   });
 }
 

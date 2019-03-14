@@ -37,6 +37,7 @@ function language(){
     $(".STRING_PVP_STATS").html("Estadísticas PVP");
     $(".STRING_LEAGUE").html("Liga");
     $(".STRING_SHOW_3_CALIDAD").html("Mostrar los 3 con mejor calidad");
+    $(".STRING_SELECT_TEXT").html("Seleccionar texto");
 
     $(".STRING_INFORMATION").html("Información");
 

@@ -339,6 +339,13 @@ button{
 	text-align: center;
 }
 
+button.mini{
+	width: 150px;
+	margin: 5px auto;
+	padding: 9px 10px;
+	font-size: 13px;
+}
+
 button:focus{
 	outline: 0;
 }
