@@ -683,7 +683,7 @@ var gyarados = {
 };
 
 var lapras = {
-    Stats      : [165, 180, 260],
+    Stats      : [165, 174, 277],
     Evolutions : null,
     Basic_evolution : "lapras"
 };
