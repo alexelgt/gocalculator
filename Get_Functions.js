@@ -352,7 +352,7 @@ function Get_PVP_Stats() {
 	$("#Output_PVP_Stats_textarea").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_PVP_Stats = "lapras";//(document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_PVP_Stats = (document.getElementById("Pokemon_Name_CP").value);
 	var Pokemon_Name_PVP_Stats_String = Pokemon_Name_PVP_Stats;
 	Pokemon_Name_PVP_Stats = Pokemon_Name_PVP_Stats.toLowerCase();
 	Pokemon_Name_PVP_Stats = Input_Problematic_Pokemon(Pokemon_Name_PVP_Stats);
