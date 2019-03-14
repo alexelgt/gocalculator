@@ -1,83 +1,81 @@
 function CP_Multiplier(Level){
-	if(Level == 1) Multiplier=0.094
-	else if (Level == 1.5) Multiplier=0.135137432
-	else if (Level == 2) Multiplier=0.16639787
-	else if (Level == 2.5) Multiplier=0.192650919
-	else if (Level == 3) Multiplier=0.21573247
-	else if (Level == 3.5) Multiplier=0.236572661
-	else if (Level == 4) Multiplier=0.25572005
-	else if (Level == 4.5) Multiplier=0.273530381
-	else if (Level == 5) Multiplier=0.29024988
-	else if (Level == 5.5) Multiplier=0.306057377
-	else if (Level == 6) Multiplier=0.3210876
-	else if (Level == 6.5) Multiplier=0.335445036
-	else if (Level == 7) Multiplier=0.34921268
-	else if (Level == 7.5) Multiplier=0.362457751
-	else if (Level == 8) Multiplier=0.37523559
-	else if (Level == 8.5) Multiplier=0.387592406
-	else if (Level == 9) Multiplier=0.39956728
-	else if (Level == 9.5) Multiplier=0.411193551
-	else if (Level == 10) Multiplier=0.42250001
-	else if (Level == 10.5) Multiplier=0.432926419
-	else if (Level == 11) Multiplier=0.44310755
-	else if (Level == 11.5) Multiplier=0.4530599578
-	else if (Level == 12) Multiplier=0.46279839
-	else if (Level == 12.5) Multiplier=0.472336083
-	else if (Level == 13) Multiplier=0.48168495
-	else if (Level == 13.5) Multiplier=0.4908558
-	else if (Level == 14) Multiplier=0.49985844
-	else if (Level == 14.5) Multiplier=0.508701765
-	else if (Level == 15) Multiplier=0.51739395
-	else if (Level == 15.5) Multiplier=0.525942511
-	else if (Level == 16) Multiplier=0.53435433
-	else if (Level == 16.5) Multiplier=0.542635767
-	else if (Level == 17) Multiplier=0.55079269
-	else if (Level == 17.5) Multiplier=0.558830576
-	else if (Level == 18) Multiplier=0.56675452
-	else if (Level == 18.5) Multiplier=0.574569153
-	else if (Level == 19) Multiplier=0.58227891
-	else if (Level == 19.5) Multiplier=0.589887917
-	else if (Level == 20) Multiplier=0.59740001
-	else if (Level == 20.5) Multiplier=0.604818814
-	else if (Level == 21) Multiplier=0.61215729
-	else if (Level == 21.5) Multiplier=0.619399365
-	else if (Level == 22) Multiplier=0.62656713
-	else if (Level == 22.5) Multiplier=0.633644533
-	else if (Level == 23) Multiplier=0.64065295
-	else if (Level == 23.5) Multiplier=0.647576426
-	else if (Level == 24) Multiplier=0.65443563
-	else if (Level == 24.5) Multiplier=0.661214806
-	else if (Level == 25) Multiplier=0.667934
-	else if (Level == 25.5) Multiplier=0.674577537
-	else if (Level == 26) Multiplier=0.68116492
-	else if (Level == 26.5) Multiplier=0.687680648
-	else if (Level == 27) Multiplier=0.69414365
-	else if (Level == 27.5) Multiplier=0.700538673
-	else if (Level == 28) Multiplier=0.70688421
-	else if (Level == 28.5) Multiplier=0.713164996
-	else if (Level == 29) Multiplier=0.71939909
-	else if (Level == 29.5) Multiplier=0.725571552
-	else if (Level == 30) Multiplier=0.7317
-	else if (Level == 30.5) Multiplier=0.734741009
-	else if (Level == 31) Multiplier=0.73776948
-	else if (Level == 31.5) Multiplier=0.740785574
-	else if (Level == 32) Multiplier=0.74378943
-	else if (Level == 32.5) Multiplier=0.746781211
-	else if (Level == 33) Multiplier=0.74976104
-	else if (Level == 33.5) Multiplier=0.752729087
-	else if (Level == 34) Multiplier=0.75568551
-	else if (Level == 34.5) Multiplier=0.758630378
-	else if (Level == 35) Multiplier=0.76156384
-	else if (Level == 35.5) Multiplier=0.764486065
-	else if (Level == 36) Multiplier=0.76739717
-	else if (Level == 36.5) Multiplier=0.770297266
-	else if (Level == 37) Multiplier=0.7731865
-	else if (Level == 37.5) Multiplier=0.776064962
-	else if (Level == 38) Multiplier=0.77893275
-	else if (Level == 38.5) Multiplier=0.781790055
-	else if (Level == 39) Multiplier=0.78463697
-	else if (Level == 39.5) Multiplier=0.787473578
-	else if (Level == 40) Multiplier=0.79030001
-
-	return Multiplier;
+	if(Level == 1) return 0.094
+	else if (Level == 1.5) return 0.135137432
+	else if (Level == 2) return 0.16639787
+	else if (Level == 2.5) return 0.192650919
+	else if (Level == 3) return 0.21573247
+	else if (Level == 3.5) return 0.236572661
+	else if (Level == 4) return 0.25572005
+	else if (Level == 4.5) return 0.273530381
+	else if (Level == 5) return 0.29024988
+	else if (Level == 5.5) return 0.306057377
+	else if (Level == 6) return 0.3210876
+	else if (Level == 6.5) return 0.335445036
+	else if (Level == 7) return 0.34921268
+	else if (Level == 7.5) return 0.362457751
+	else if (Level == 8) return 0.37523559
+	else if (Level == 8.5) return 0.387592406
+	else if (Level == 9) return 0.39956728
+	else if (Level == 9.5) return 0.411193551
+	else if (Level == 10) return 0.42250001
+	else if (Level == 10.5) return 0.432926419
+	else if (Level == 11) return 0.44310755
+	else if (Level == 11.5) return 0.4530599578
+	else if (Level == 12) return 0.46279839
+	else if (Level == 12.5) return 0.472336083
+	else if (Level == 13) return 0.48168495
+	else if (Level == 13.5) return 0.4908558
+	else if (Level == 14) return 0.49985844
+	else if (Level == 14.5) return 0.508701765
+	else if (Level == 15) return 0.51739395
+	else if (Level == 15.5) return 0.525942511
+	else if (Level == 16) return 0.53435433
+	else if (Level == 16.5) return 0.542635767
+	else if (Level == 17) return 0.55079269
+	else if (Level == 17.5) return 0.558830576
+	else if (Level == 18) return 0.56675452
+	else if (Level == 18.5) return 0.574569153
+	else if (Level == 19) return 0.58227891
+	else if (Level == 19.5) return 0.589887917
+	else if (Level == 20) return 0.59740001
+	else if (Level == 20.5) return 0.604818814
+	else if (Level == 21) return 0.61215729
+	else if (Level == 21.5) return 0.619399365
+	else if (Level == 22) return 0.62656713
+	else if (Level == 22.5) return 0.633644533
+	else if (Level == 23) return 0.64065295
+	else if (Level == 23.5) return 0.647576426
+	else if (Level == 24) return 0.65443563
+	else if (Level == 24.5) return 0.661214806
+	else if (Level == 25) return 0.667934
+	else if (Level == 25.5) return 0.674577537
+	else if (Level == 26) return 0.68116492
+	else if (Level == 26.5) return 0.687680648
+	else if (Level == 27) return 0.69414365
+	else if (Level == 27.5) return 0.700538673
+	else if (Level == 28) return 0.70688421
+	else if (Level == 28.5) return 0.713164996
+	else if (Level == 29) return 0.71939909
+	else if (Level == 29.5) return 0.725571552
+	else if (Level == 30) return 0.7317
+	else if (Level == 30.5) return 0.734741009
+	else if (Level == 31) return 0.73776948
+	else if (Level == 31.5) return 0.740785574
+	else if (Level == 32) return 0.74378943
+	else if (Level == 32.5) return 0.746781211
+	else if (Level == 33) return 0.74976104
+	else if (Level == 33.5) return 0.752729087
+	else if (Level == 34) return 0.75568551
+	else if (Level == 34.5) return 0.758630378
+	else if (Level == 35) return 0.76156384
+	else if (Level == 35.5) return 0.764486065
+	else if (Level == 36) return 0.76739717
+	else if (Level == 36.5) return 0.770297266
+	else if (Level == 37) return 0.7731865
+	else if (Level == 37.5) return 0.776064962
+	else if (Level == 38) return 0.77893275
+	else if (Level == 38.5) return 0.781790055
+	else if (Level == 39) return 0.78463697
+	else if (Level == 39.5) return 0.787473578
+	else if (Level == 40) return 0.79030001
 }

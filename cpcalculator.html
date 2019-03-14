@@ -259,6 +259,45 @@
 				</div>
 				<!--== cuerpo ==-->
 
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="cuerpo_fullwidthonecol">
+					<div style="width:100%">
+						<h3 class="STRING_PVP_STATS">PVP Stats</h3>
+
+						<div id="select_block">
+							<div>
+								<span id="select_text" class="STRING_LEAGUE">League</span>
+								<select id="PVP_Stats_Liga">
+									<option selected="selected">Super</option>
+									<option>Ultra</option>
+									<option>Master</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_3_CALIDAD">Show the 3 with best quality</span>
+								<div class="checkbox">
+									<input type="checkbox" id="show_3_calidad">
+									<label for="show_3_calidad"></label>
+								</div>
+							</div>
+						</div>
+
+						<button onclick="Get_PVP_Stats()" class="STRING_OBTAIN">Obtain</button>
+
+						<textarea id="Output_PVP_Stats_textarea" class="output"></textarea>
+						<div id="Output_PVP_Stats" class="output"></div>
+
+						<table id="Output_PVP_Stats_2" class="output"></table>
+						<table id="Output_PVP_Stats_3" class="output"></table>
+
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
 			</div>
 			<!--== estructura ==-->
 

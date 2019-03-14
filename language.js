@@ -34,6 +34,10 @@ function language(){
     $(".STRING_PERFECT_CP").html("PC perfecto salvaje");
     $(".STRING_PERFECT_CP_SEARCH").html("PC perfecto buscar");
 
+    $(".STRING_PVP_STATS").html("Estadísticas PVP");
+    $(".STRING_LEAGUE").html("Liga");
+    $(".STRING_SHOW_3_CALIDAD").html("Mostrar los 3 con mejor calidad");
+
     $(".STRING_INFORMATION").html("Información");
 
     $(".STRING_TEAM").html("Equipo");
