@@ -39,7 +39,6 @@ function language(){
     $(".STRING_SHOW_3_CALIDAD").html("Mostrar los 3 con mejor calidad");
     $(".STRING_SELECT_TEXT").html("Seleccionar texto");
     $(".STRING_GENERATE_CODE_BASIC").html("Generar código con evolución básica");
-    STRING_GENERATE_CODE_BASIC
 
     $(".STRING_INFORMATION").html("Información");
 
