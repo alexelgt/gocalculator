@@ -327,7 +327,7 @@ function Get_CP_Search() {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
 
-	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String + "&" );
+	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('_alola','') + "&" );
 	for(var Level=35; Level>=1; Level -= 1) {
 		if (Level != 1) {
 			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
@@ -352,7 +352,7 @@ function Get_PVP_Stats() {
 	$("#Output_PVP_Stats_textarea").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_PVP_Stats = (document.getElementById("Pokemon_Name_CP").value);
+	var Pokemon_Name_PVP_Stats = "golem_alola"; //(document.getElementById("Pokemon_Name_CP").value);
 	var Pokemon_Name_PVP_Stats_String = Pokemon_Name_PVP_Stats;
 	Pokemon_Name_PVP_Stats = Pokemon_Name_PVP_Stats.toLowerCase();
 	Pokemon_Name_PVP_Stats = Input_Problematic_Pokemon(Pokemon_Name_PVP_Stats);
@@ -461,7 +461,6 @@ function Get_PVP_Stats() {
 				break;
 			}
 		}
-
 	}
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -471,11 +470,17 @@ function Get_PVP_Stats() {
 	  $( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP</td><td>Quality</td></tr>" );
 	}
 
+	Pokemon_PVP_Stats_Basic_evolution = window[Pokemon_PVP_Stats.Basic_evolution];
+
 	var max_Level = Pokemon_Stats_PVP[0][3];
 	var max_CP;
 	var min_CP;
+	var max_CP_Basic;
+	var min_CP_Basic;
 	var max_HP;
 	var min_HP;
+	var max_HP_Basic;
+	var min_HP_Basic;
 	if (max_row_checked != 0) {
 		for (var i = 0; i <= max_row_checked; i++) {
 			if (Pokemon_Stats_PVP[i][3] > max_Level) {
@@ -484,42 +489,75 @@ function Get_PVP_Stats() {
 		}
 	}
 
-	$( "#Output_PVP_Stats_textarea" ).append( Pokemon_Name_PVP_Stats_String + "&" );
+	if($("#generate_code_basic").is(':checked')) {
+		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_PVP_Stats.Basic_evolution.replace('_alola','') + "&" );
+	}
+	else {
+		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_Name_PVP_Stats_String.replace('_alola','') + "&" );
+	}
+
+
 	for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
 
 		max_CP = 0;
-		max_HP = 0;
+		max_CP_Basic = 0;
 		for (var i = 0; i <= max_row_checked; i++) {
 			if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_CP && CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit) {
+				if($("#generate_code_basic").is(':checked')) {
+					max_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+				}
 				max_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
 			}
-
 		}
 
 		min_CP = max_CP;
-
+		min_CP_Basic = max_CP_Basic;
 		for (var i = 0; i <= max_row_checked; i++) {
 			if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_CP) {
+				if($("#generate_code_basic").is(':checked')) {
+					min_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+				}
 				min_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
 			}
-
 		}
 
 		if (Level != 1) {
-			if (min_CP == max_CP) {
-				$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP + "," );
+			if($("#generate_code_basic").is(':checked')) {
+				if (min_CP_Basic == max_CP_Basic) {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP_Basic + "," );
+				}
+				else {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP_Basic + "-" + min_CP_Basic + "," );
+				}
 			}
 			else {
-				$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP + "," );
+				if (min_CP == max_CP) {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP + "," );
+				}
+				else {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP + "," );
+				}
 			}
+
 		}
 		else {
-			if (min_CP == max_CP) {
-				$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP );
+			if($("#generate_code_basic").is(':checked')) {
+				if (min_CP_Basic == max_CP_Basic) {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP_Basic );
+				}
+				else {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP_Basic + "-" + min_CP_Basic );
+				}
 			}
 			else {
-				$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP );
+				if (min_CP == max_CP) {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP );
+				}
+				else {
+					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP );
+				}
 			}
+
 		}
 	}
 
@@ -527,29 +565,46 @@ function Get_PVP_Stats() {
 
 	for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
 
-
 		max_HP = 0;
+		max_HP_Basic = 0;
 		for (var i = 0; i <= max_row_checked; i++) {
 			if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_HP && CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit) {
+				if($("#generate_code_basic").is(':checked')) {
+					max_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+				}
 				max_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+
 			}
 		}
 		min_HP = max_HP;
+		min_HP_Basic = max_HP_Basic;
 		for (var i = 0; i <= max_row_checked; i++) {
 			if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_HP) {
+				if($("#generate_code_basic").is(':checked')) {
+					min_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+				}
 				min_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
 			}
 		}
 
-		if (min_HP == max_HP) {
-			$( "#Output_PVP_Stats_textarea" ).append( HP_String + min_HP );
+		if($("#generate_code_basic").is(':checked')) {
+			if (min_HP_Basic == max_HP_Basic) {
+				$( "#Output_PVP_Stats_textarea" ).append( HP_String + min_HP_Basic + ",");
+			}
+			else {
+				$( "#Output_PVP_Stats_textarea" ).append( HP_String + max_HP_Basic + "-" + min_HP_Basic + ",");
+			}
 		}
 		else {
-			$( "#Output_PVP_Stats_textarea" ).append( HP_String + max_HP + "-" + min_HP );
+			if (min_HP == max_HP) {
+				$( "#Output_PVP_Stats_textarea" ).append( HP_String + min_HP + "," );
+			}
+			else {
+				$( "#Output_PVP_Stats_textarea" ).append( HP_String + max_HP + "-" + min_HP + "," );
+			}
 		}
+
 	}
-
-
 }
 
 function Get_IV() {

@@ -29,6 +29,15 @@ function Input_Problematic_Pokemon(Pokemon_Name){
   else if (Pokemon_Name == "giratina origin") {
     Pokemon_Name = "giratinao";
   }
+  else if (Pokemon_Name == "geodude alola") {
+    Pokemon_Name = "geodude_alola";
+  }
+  else if (Pokemon_Name == "graveler alola") {
+    Pokemon_Name = "graveler_alola";
+  }
+  else if (Pokemon_Name == "golem alola") {
+    Pokemon_Name = "golem_alola";
+  }
 
   return Pokemon_Name;
 }

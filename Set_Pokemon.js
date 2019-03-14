@@ -1,33 +1,40 @@
 /*
 var example = {
     Stats      : [Attack, Defense, HP],
-    Evolutions : ["Evolution1", "Evolution2"]
+    Evolutions : ["Evolution1", "Evolution2"],
+    Basic_evolution : "example"
 };
 */
 var bulbasaur = {
     Stats      : [118, 111, 128],
-    Evolutions : ["ivysaur", "venusaur"]
+    Evolutions : ["ivysaur", "venusaur"],
+    Basic_evolution : "bulbasaur"
 };
 var ivysaur = {
     Stats      : [151, 143, 155],
-    Evolutions : ["venusaur"]
+    Evolutions : ["venusaur"],
+    Basic_evolution : "bulbasaur"
 };
 var venusaur = {
     Stats      : [198, 189, 190],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "bulbasaur"
 };
 
 var charmander = {
     Stats      : [116, 93, 118],
-    Evolutions : ["charmeleon", "charizard"]
+    Evolutions : ["charmeleon", "charizard"],
+    Basic_evolution : "charmander"
 };
 var charmeleon = {
     Stats      : [158, 126, 151],
-    Evolutions : ["charizard"]
+    Evolutions : ["charizard"],
+    Basic_evolution : "charmander"
 };
 var charizard = {
     Stats      : [223, 173, 186],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "charmander"
 };
 
 var squirtle = {
@@ -352,15 +359,34 @@ var tentacruel = {
 
 var geodude = {
     Stats      : [132, 132, 120],
-    Evolutions : ["graveler", "golem"]
+    Evolutions : ["graveler", "golem"],
+    Basic_evolution : "geodude"
 };
 var graveler = {
     Stats      : [164, 164, 146],
-    Evolutions : ["golem"]
+    Evolutions : ["golem"],
+    Basic_evolution : "geodude"
 };
 var golem = {
     Stats      : [211, 198, 190],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "geodude"
+};
+
+var geodude_alola = {
+    Stats      : [132, 132, 120],
+    Evolutions : ["graveler_alola", "golem_alola"],
+    Basic_evolution : "geodude_alola"
+};
+var graveler_alola = {
+    Stats      : [164, 164, 146],
+    Evolutions : ["golem_alola"],
+    Basic_evolution : "geodude_alola"
+};
+var golem_alola = {
+    Stats      : [211, 198, 190],
+    Evolutions : null,
+    Basic_evolution : "geodude_alola"
 };
 
 var ponyta = {
@@ -387,11 +413,13 @@ var slowking = {
 
 var magnemite = {
     Stats      : [165, 121, 93],
-    Evolutions : ["magneton"]
+    Evolutions : ["magneton"],
+    Basic_evolution : "magnemite"
 };
 var magneton = {
     Stats      : [223, 169, 137],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "magnemite"
 };
 
 var farfetchd = {
@@ -450,11 +478,13 @@ var gengar = {
 
 var onix = {
     Stats      : [85, 232, 111],
-    Evolutions : ["steelix"]
+    Evolutions : ["steelix"],
+    Basic_evolution : "onix"
 };
 var steelix = {
     Stats      : [148, 272, 181],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "onix"
 };
 
 var drowzee = {
@@ -593,7 +623,7 @@ var starmie = {
 };
 
 var mrmime = {
-    Stats      : [192, 233, 80],
+    Stats      : [192, 205, 120],
     Evolutions : null
 };
 
@@ -654,7 +684,8 @@ var gyarados = {
 
 var lapras = {
     Stats      : [165, 180, 260],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "lapras"
 };
 
 var ditto = {
@@ -848,11 +879,13 @@ var ariados = {
 
 var chinchou = {
     Stats      : [106, 106, 150],
-    Evolutions : ["lanturn"]
+    Evolutions : ["lanturn"],
+    Basic_evolution : "chinchou"
 };
 var lanturn = {
     Stats  : [146, 146, 250],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "chinchou"
 };
 
 var togepi = {
@@ -938,11 +971,13 @@ var yanma = {
 
 var wooper = {
     Stats      : [75, 75, 110],
-    Evolutions : ["quagsire"]
+    Evolutions : ["quagsire"],
+    Basic_evolution : "wooper"
 };
 var quagsire = {
     Stats  : [152, 152, 190],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "wooper"
 };
 
 var murkrow = {
@@ -1068,14 +1103,21 @@ var delibird = {
     Evolutions : null
 };
 
+var mantyke = {
+    Stats  : [105, 179, 128],
+    Evolutions : ["mantine"],
+    Basic_evolution : "mantyke"
+};
 var mantine = {
-    Stats  : [148, 260, 130],
-    Evolutions : null
+    Stats  : [148, 226, 163],
+    Evolutions : null,
+    Basic_evolution : "mantyke"
 };
 
 var skarmory = {
     Stats  : [148, 260, 130],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "skarmory"
 };
 
 var houndour = {
@@ -1483,11 +1525,13 @@ var cacturne = {
 
 var swablu = {
     Stats      : [76, 132, 128],
-    Evolutions : ["altaria"]
+    Evolutions : ["altaria"],
+    Basic_evolution : "swablu"
 };
 var altaria = {
     Stats      : [141, 201, 181],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "swablu"
 };
 
 var zangoose = {
@@ -1589,7 +1633,8 @@ var dusclops = {
 
 var tropius = {
     Stats  : [136, 165, 198],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "tropius"
 };
 
 var chimecho = {
@@ -1604,24 +1649,34 @@ var absol = {
 
 var snorunt = {
     Stats      : [95, 95, 100],
-    Evolutions : ["glalie"]
+    Evolutions : ["glalie", "froslass"],
+    Basic_evolution : "snorunt"
 };
 var glalie = {
     Stats  : [162, 162, 160],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "snorunt"
+};
+var froslass = {
+    Stats  : [171, 150, 172],
+    Evolutions : null,
+    Basic_evolution : "snorunt"
 };
 
 var spheal = {
     Stats      : [95, 90, 140],
-    Evolutions : ["sealeo", "walrein"]
+    Evolutions : ["sealeo", "walrein"],
+    Basic_evolution : "spheal"
 };
 var sealeo = {
     Stats      : [137, 132, 180],
-    Evolutions : ["walrein"]
+    Evolutions : ["walrein"],
+    Basic_evolution : "spheal"
 };
 var walrein = {
     Stats      : [182, 176, 220],
-    Evolutions : null
+    Evolutions : null,
+    Basic_evolution : "spheal"
 };
 
 var relicanth = {
@@ -1794,6 +1849,17 @@ var lucario = {
 var carnivine = {
     Stats      : [187, 136, 179],
     Evolutions : null
+};
+
+var snover = {
+    Stats      : [115, 105, 155],
+    Evolutions : ["abomasnow"],
+    Basic_evolution : "snover"
+};
+var abomasnow = {
+    Stats      : [178, 158, 207],
+    Evolutions : null,
+    Basic_evolution : "snover"
 };
 
 var giratinaa = {
