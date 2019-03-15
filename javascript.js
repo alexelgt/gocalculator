@@ -6,12 +6,12 @@ function start(){
 
   $('#clickme_CP_Search').click(function() {
       document.getElementById("Output_CP_Search_2").selectionStart = 0
-      document.getElementById("Output_CP_Search_2").selectionEnd = 9999
+      document.getElementById("Output_CP_Search_2").selectionEnd = 999
   });
 
   $('#clickme_PVP_Stats').click(function() {
       document.getElementById("Output_PVP_Stats_textarea").selectionStart = 0
-      document.getElementById("Output_PVP_Stats_textarea").selectionEnd = 9999
+      document.getElementById("Output_PVP_Stats_textarea").selectionEnd = 999
   });
 }
 

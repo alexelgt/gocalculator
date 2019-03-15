@@ -878,12 +878,12 @@ var ariados = {
 };
 
 var chinchou = {
-    Stats      : [106, 106, 150],
+    Stats      : [106, 97, 181],
     Evolutions : ["lanturn"],
     Basic_evolution : "chinchou"
 };
 var lanturn = {
-    Stats  : [146, 146, 250],
+    Stats  : [146, 137, 268],
     Evolutions : null,
     Basic_evolution : "chinchou"
 };
@@ -1223,16 +1223,19 @@ var blaziken = {
 };
 
 var mudkip = {
-    Stats      : [126, 93, 100],
-    Evolutions : ["marshtomp", "swampert"]
+    Stats      : [126, 93, 137],
+    Evolutions : ["marshtomp", "swampert"],
+    Basic_evolution : "mudkip"
 };
 var marshtomp = {
-    Stats      : [156, 133, 140],
-    Evolutions : ["swampert"]
+    Stats      : [156, 133, 172],
+    Evolutions : ["swampert"],
+    Basic_evolution : "mudkip"
 };
 var swampert = {
-    Stats      : [208, 175, 200],
-    Evolutions : null
+    Stats      : [208, 175, 225],
+    Evolutions : null,
+    Basic_evolution : "mudkip"
 };
 
 var poochyena = {
@@ -1555,12 +1558,14 @@ var solrock = {
 };
 
 var barboach = {
-    Stats      : [93, 83, 100],
-    Evolutions : ["whiscash"]
+    Stats      : [93, 82, 137],
+    Evolutions : ["whiscash"],
+    Basic_evolution : "barboach"
 };
 var whiscash = {
-    Stats  : [151, 142, 220],
-    Evolutions : null
+    Stats  : [151, 141, 242],
+    Evolutions : null,
+    Basic_evolution : "barboach"
 };
 
 var corphish = {
@@ -1632,7 +1637,7 @@ var dusclops = {
 };
 
 var tropius = {
-    Stats  : [136, 165, 198],
+    Stats  : [136, 163, 223],
     Evolutions : null,
     Basic_evolution : "tropius"
 };

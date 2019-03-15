@@ -38,6 +38,8 @@ function language(){
     $(".STRING_LEAGUE").html("Liga");
     $(".STRING_SELECT_TEXT").html("Seleccionar texto");
     $(".STRING_GENERATE_CODE_BASIC").html("Generar código con evolución básica");
+    $(".STRING_PVP_STATS_CSV").html("Estadísticas PVP CSV");
+    $(".STRING_INCLUDED_POKEMON").html("Pokémon incluidos");
 
     $(".STRING_INFORMATION").html("Información");
 

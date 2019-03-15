@@ -1,5 +1,3 @@
-var Pokemon_Stats_PVP = [];
-
 function Get_ATK(Pokemon,IV,Level){
 	ATK = Math.trunc( (Pokemon.Stats[0]+IV[0]) * CP_Multiplier(Level) );
   return ATK
@@ -345,20 +343,24 @@ function Get_CP_Search() {
 
 }
 
-function Get_PVP_Stats() {
+function PVP_Stats_Quality_percentage(Max,Min,Value){
+	return (Value - Min) / (Max - Min)
+}
+
+function Get_PVP_Stats(csv_mode) {
 	/*==== Clear the output ====*/
-	$("#Output_PVP_Stats").html("<hr class='hrseparador'>");
-	$("#Output_PVP_Stats_2").html("");
-	$("#Output_PVP_Stats_3").html("");
-	$("#Output_PVP_Stats_4").html("");
-	$("#Output_PVP_Stats_textarea").html("");
+	if (csv_mode == 0) {
+		$("#Output_PVP_Stats").html("<hr class='hrseparador'>");
+		$("#Output_PVP_Stats_2").html("");
+		$("#Output_PVP_Stats_3").html("");
+		$("#Output_PVP_Stats_4").html("");
+		$("#Output_PVP_Stats_textarea").html("");
+	}
+	else if (csv_mode == 1) {
+		$("#Output_PVP_CSV").html("");
+	}
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_PVP_Stats = (document.getElementById("Pokemon_Name_CP").value);
-	var Pokemon_Name_PVP_Stats_String = Pokemon_Name_PVP_Stats;
-	Pokemon_Name_PVP_Stats = Pokemon_Name_PVP_Stats.toLowerCase();
-	Pokemon_Name_PVP_Stats = Input_Problematic_Pokemon(Pokemon_Name_PVP_Stats);
-	var Pokemon_PVP_Stats = window[Pokemon_Name_PVP_Stats];
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
 		var HP_String = "puntos de salud";
@@ -367,334 +369,498 @@ function Get_PVP_Stats() {
 		var CP_String = "CP";
 		var HP_String = "hp";
 	}
-	var code_filter = 0.01; //99% o mejor
-	var display_filter = 0.95; //95% o mejor
+	var code_filter = 0.95; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
+	var display_filter = 0.75; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
+
+	if (csv_mode == 0) {
+		if (document.getElementById("PVP_Stats_Liga").value == "Super") {League_CP_Limit = 1500;}
+		else if (document.getElementById("PVP_Stats_Liga").value == "Ultra") {League_CP_Limit = 2500;}
+		else if (document.getElementById("PVP_Stats_Liga").value == "Master") {League_CP_Limit = null;}
+	}
+	else if (csv_mode == 1) {
+		if (document.getElementById("PVP_CSV_Liga").value == "Super") {League_CP_Limit = 1500;}
+		else if (document.getElementById("PVP_CSV_Liga").value == "Ultra") {League_CP_Limit = 2500;}
+		else if (document.getElementById("PVP_CSV_Liga").value == "Master") {League_CP_Limit = null;}
+	}
+
 	/*===Set variables 1/2 ==*/
+	var total_number_pokemon;
+	if (csv_mode == 0) {
+		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_CP").value);
+		total_number_pokemon = 1;
+	}
+	else if (csv_mode == 1) {
+		var Pokemon_Set_PVP_CSV;
+		if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Manual") {
+			if (document.getElementById("Output_PVP_CSV_textarea").value == "") {
+				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>Ningún Pokémon introducido.</div>");
+				}
+				else {
+					$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>No Pokémon introduced.</div>");
+				}
+				return;
+			}
+			Pokemon_Set_PVP_CSV = document.getElementById("Output_PVP_CSV_textarea").value.split(',');
+		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest Cup") {
+			Pokemon_Set_PVP_CSV = ["Lapras","Sealeo","Altaria","Skarmory","Charizard","Tropius","Abomasnow","Whiscash","Lanturn","Quagsire","Marshtomp","Glalie","Froslass","Mantine","Magneton"];
 
-	notaneasteregg(Pokemon_Name_PVP_Stats);
+			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
+				$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[i] + "," );
+			}
+			$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[Pokemon_Set_PVP_CSV.length - 1]);
+		}
 
-	/*==== Check if inputs are correct ====*/
-	if (typeof Pokemon_PVP_Stats == 'undefined'){
-		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-			$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
+		total_number_pokemon = Pokemon_Set_PVP_CSV.length;
+
+		if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>Se van a analizar " + total_number_pokemon + " Pokémon:");
 		}
 		else {
-			$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+			$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>" + total_number_pokemon + " Pokémon are going to be analyzed:");
 		}
-		return;
-	}
-	/*== Check if inputs are correct ==*/
-
-	if (document.getElementById("PVP_Stats_Liga").value == "Super") {
-		League_CP_Limit = 1500;
-	}
-	else if (document.getElementById("PVP_Stats_Liga").value == "Ultra") {
-		League_CP_Limit = 2500;
-	}
-	else if (document.getElementById("PVP_Stats_Liga").value == "Master") {
-		League_CP_Limit = null;
 	}
 
-	var row_Stats_PVP = 0;
-	for (var i = 0; i <= 15; i++) {
-	  for (var j = 0; j <= 15; j++) {
-	    for (var k = 0; k <= 15; k++) {
-	      for (var l = 1; l <= 40; l = l + 0.5) {
-	        if (League_CP_Limit == null) {
-	          Pokemon_Stats_PVP[row_Stats_PVP] = [i, j, k, l, Math.trunc(Get_ATK(Pokemon_PVP_Stats,[i,j,k],l)*Get_DEF(Pokemon_PVP_Stats,[i,j,k],l)*Get_HP(Pokemon_PVP_Stats,[i,j,k],l)/1000.0)]
-	          row_Stats_PVP++;
-	        }
-	        else {
-	          if (CP_Formula(Pokemon_PVP_Stats,[i, j, k],l) <= League_CP_Limit) {
-	            Pokemon_Stats_PVP[row_Stats_PVP] = [i, j, k, l, Math.trunc(Get_ATK(Pokemon_PVP_Stats,[i,j,k],l)*Get_DEF(Pokemon_PVP_Stats,[i,j,k],l)*Get_HP(Pokemon_PVP_Stats,[i,j,k],l)/1000.0)]
-	            row_Stats_PVP++;
-	          }
-	        }
-	      }
-	    }
-	  }
+	if (csv_mode == 1) {
+		var csv_data = [["Pokemon", "Atk IV 1", "Def IV 1", "HP IV 1", "CP 1", "Atk IV 2", "Def IV 2", "HP IV 2", "CP 2", "Atk IV 3", "Def IV 3", "HP IV 3", "CP 3", "Search code for " + code_filter*100.0 + "% quality or higher"]];
 	}
 
-	Pokemon_Stats_PVP.sort(function(a, b) {
-	    return parseFloat(Get_HP(Pokemon_PVP_Stats,[b[0],b[1],b[2]],b[3])) - parseFloat(Get_HP(Pokemon_PVP_Stats,[a[0],a[1],a[2]],a[3]));
-	});
+	var contador_pokemon_validos = 0;
+	for (var number_pokemon = 0; number_pokemon < total_number_pokemon; number_pokemon++) {
 
-	Pokemon_Stats_PVP.sort(function(a, b) {
-	    return parseFloat(b[4]) - parseFloat(a[4]);
-	});
+		if (csv_mode == 0) {
+			var Pokemon_Name_PVP_Stats = Pokemon_Set_PVP_CSV;
+		}
+		else if (csv_mode == 1) {
+			var Pokemon_Name_PVP_Stats = Pokemon_Set_PVP_CSV[number_pokemon];
+		}
 
-	/*=== Set output ===*/
-	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-	  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4></div>");
-	}
-	else {
-	  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4></div>");
-	}
+		var Pokemon_Name_PVP_Stats_String = Pokemon_Name_PVP_Stats;
+		Pokemon_Name_PVP_Stats = Pokemon_Name_PVP_Stats.toLowerCase();
+		Pokemon_Name_PVP_Stats = Input_Problematic_Pokemon(Pokemon_Name_PVP_Stats);
+		var Pokemon_PVP_Stats = window[Pokemon_Name_PVP_Stats];
 
-	var max_row_checked = 0;
-
-	var contador = 0;
-	$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[0][4])/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
-	for(var i=1; i < Pokemon_Stats_PVP.length; i++) {
-		if ( ((Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[max_row_checked][4])/Pokemon_Stats_PVP[0][4]) < code_filter ) {
-			if (Pokemon_Stats_PVP[i][4] == Pokemon_Stats_PVP[i-1][4]) {
-				if (contador < 3) {
-					$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[i][4])/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
+		/*==== Check if inputs are correct ====*/
+		if (typeof Pokemon_PVP_Stats == 'undefined'){
+			if (csv_mode == 0) {
+				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
 				}
-
-				max_row_checked++;
+				else {
+					$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+				}
 			}
-			else if (Pokemon_Stats_PVP[i][4] != Pokemon_Stats_PVP[i-1][4]){
-				contador++;
-				if ( ((Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[max_row_checked][4])/Pokemon_Stats_PVP[0][4]) < code_filter ) {
-					if (contador < 3) {
-						$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[i][4])/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
+
+			//return;
+		}
+		else {
+			contador_pokemon_validos++;
+			var Pokemon_Stats_PVP = [];
+			var row_Stats_PVP = 0;
+			for (var i = 0; i <= 15; i++) {
+			  for (var j = 0; j <= 15; j++) {
+			    for (var k = 0; k <= 15; k++) {
+			      for (var l = 40; l >= 1; l = l - 0.5) {
+			        if (League_CP_Limit == null) {
+			          Pokemon_Stats_PVP[row_Stats_PVP] = [i, j, k, l, Math.trunc(Get_ATK(Pokemon_PVP_Stats,[i,j,k],l)*Get_DEF(Pokemon_PVP_Stats,[i,j,k],l)*Get_HP(Pokemon_PVP_Stats,[i,j,k],l)/1000.0)]
+			          row_Stats_PVP++;
+								break; //basically level 40 for master league
+			        }
+			        else {
+			          if (CP_Formula(Pokemon_PVP_Stats,[i, j, k],l) <= League_CP_Limit) {
+			            Pokemon_Stats_PVP[row_Stats_PVP] = [i, j, k, l, Math.trunc(Get_ATK(Pokemon_PVP_Stats,[i,j,k],l)*Get_DEF(Pokemon_PVP_Stats,[i,j,k],l)*Get_HP(Pokemon_PVP_Stats,[i,j,k],l)/1000.0)]
+			            row_Stats_PVP++;
+									break;
+			          }
+			        }
+			      }
+			    }
+			  }
+			}
+
+			Pokemon_Stats_PVP.sort(function(a, b) {
+			    return parseFloat(Get_HP(Pokemon_PVP_Stats,[b[0],b[1],b[2]],b[3])) - parseFloat(Get_HP(Pokemon_PVP_Stats,[a[0],a[1],a[2]],a[3]));
+			});
+
+			Pokemon_Stats_PVP.sort(function(a, b) {
+			    return parseFloat(b[4]) - parseFloat(a[4]);
+			});
+
+
+
+			/*=== Set output ===*/
+			if (csv_mode == 0) {
+				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+				  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4></div>");
+				}
+				else {
+				  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4></div>");
+				}
+			}
+
+			var max_row_checked = 0;
+
+			var contador = 0;
+			if (csv_mode == 0) {
+				$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*10)/10 + "%)</th></tr>" );
+			}
+			for(var i=1; i < Pokemon_Stats_PVP.length; i++) {
+				if ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4], Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4], Pokemon_Stats_PVP[max_row_checked][4]) > code_filter ) {
+					if (Pokemon_Stats_PVP[i][4] == Pokemon_Stats_PVP[i-1][4]) {
+						if (contador < 3) {
+							if (csv_mode == 0) {
+								$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*10)/10 + "%)</th></tr>" );
+							}
+						}
+
+						max_row_checked++;
 					}
-					max_row_checked++;
+					else if (Pokemon_Stats_PVP[i][4] != Pokemon_Stats_PVP[i-1][4]){
+						contador++;
+						if ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4], Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4], Pokemon_Stats_PVP[max_row_checked][4]) > code_filter ) {
+							if (contador < 3) {
+								if (csv_mode == 0) {
+									$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*10)/10 + "%)</th></tr>" );
+								}
+							}
+							max_row_checked++;
+						}
+					}
 				}
-			}
-		}
-		else {
-			break;
-		}
-	}
-
-	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-	  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
-	}
-	else {
-	  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
-	}
-
-	var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
-
-	var in_pvp_stats_table = false;
-	contador_valores_en_tabla = 0;
-	valores_en_tabla = [];
-
-	contador_calidad=0;
-	for (var i = 0; i < Pokemon_Stats_PVP.length; i++) {
-		if ((1-(Pokemon_Stats_PVP[0][4]-Pokemon_Stats_PVP[i][4])/Pokemon_Stats_PVP[0][4]) > display_filter) {
-			contador_calidad++;
-		}
-		else {
-			break;
-		}
-
-	}
-
-	for (var i = 0; i <= contador_calidad; i++) {
-		if (Pokemon_Stats_PVP[i][0] == IV[0] && Pokemon_Stats_PVP[i][1] == IV[1] && Pokemon_Stats_PVP[i][2] == IV[2]) {
-			in_pvp_stats_table = true;
-			valores_en_tabla[contador_valores_en_tabla] = [Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2], Pokemon_Stats_PVP[i][3], Pokemon_Stats_PVP[i][4]];
-			contador_valores_en_tabla++;
-		}
-	}
-
-	if (in_pvp_stats_table == true) {
-		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada está entre las mejores con calidades de:</div>");
-		}
-		else {
-		  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is among the best with qualities of:</div>");
-		}
-
-
-
-
-		for (var i = 0; i < contador_valores_en_tabla; i++) {
-			$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + valores_en_tabla[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + valores_en_tabla[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + valores_en_tabla[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[valores_en_tabla[i][0], valores_en_tabla[i][1], valores_en_tabla[i][2]],valores_en_tabla[i][3]) + "<br>(" + valores_en_tabla[i][3] + ")</th><th>" + valores_en_tabla[i][4] + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-valores_en_tabla[i][4])/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
-
-			//$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + CP_Formula(Pokemon_PVP_Stats,[valores_en_tabla[i][0], valores_en_tabla[i][1], valores_en_tabla[i][2]],valores_en_tabla[i][3]) + " (" + valores_en_tabla[i][3] + ")</th><th>" + valores_en_tabla[i][4] + "</th></tr>" );
-		}
-
-
-	}
-	else {
-		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada NO está entre las mejores. Su mejor calidad es de:</div>");
-		}
-		else {
-		  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is NOTamong the best. Its best quality is:</div>");
-		}
-
-
-
-		if (League_CP_Limit == null) {
-				$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + IV[0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + IV[1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + IV[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],40) + "<br>(" + 40 + ")</th><th>" + Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)/1000.0) + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)/1000.0))/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
-		}
-		else {
-			for (var l = 40; l >= 1; l = l - 0.5) {
-				if (CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],l) <= League_CP_Limit) {
-					$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + IV[0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + IV[1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + IV[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],l) + "<br>(" + l + ")</th><th>" + Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)/1000.0) + "<br>(" + Math.round((1-(Pokemon_Stats_PVP[0][4]-Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)/1000.0))/Pokemon_Stats_PVP[0][4])*100*10)/10 + "%)</th></tr>" );
+				else {
 					break;
 				}
 			}
-		}
-	}
-	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
-	}
-	else {
-		$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
-	}
-
-	percentage_code = Math.round(max_row_checked / Pokemon_Stats_PVP.length*100 * 1000) / 1000;
-	percentage_display = Math.round(contador_calidad / Pokemon_Stats_PVP.length*100 * 1000) / 1000;
-	quality_percentage_low = Math.round((1-(Pokemon_Stats_PVP[0][4]-Math.trunc(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])*Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])*Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])/1000.0))/Pokemon_Stats_PVP[0][4])*100 * 100)/100;
-
-
-	if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones con una calidad superior al 95% se consideran que están entre las mejores. Esto representa el " + percentage_display + "% de las combinaciones. Rango de calidades: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[max_row_checked][4] + " (" + quality_percentage_low + "%).</div>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Para generar el código se han tenido en cuenta las combinaciones con calidades de 99% o superior lo cual representa el " + percentage_code + "% de las combinaciones.</div>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones que tienen las 3 mejores calidades son:</div>");
-	}
-	else {
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with a quality higher than 95% are considered to be among the best. This represents " + percentage_display + "% of the combinations. Range of qualities: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[max_row_checked][4] + " (" + quality_percentage_low + "%).</div>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>To generate the code, combinations with qualities of 99% or higher have been taken into account which represents the " + percentage_code + "% of the combinations.</div>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
-		$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with 3 highest qualities are:</div>");
-	}
 
 
 
-	Pokemon_PVP_Stats_Basic_evolution = window[Pokemon_PVP_Stats.Basic_evolution];
-
-	var max_Level = Pokemon_Stats_PVP[0][3];
-	var max_CP;
-	var min_CP;
-	var max_CP_Basic;
-	var min_CP_Basic;
-	var max_HP;
-	var min_HP;
-	var max_HP_Basic;
-	var min_HP_Basic;
-	if (max_row_checked != 0) {
-		for (var i = 0; i <= max_row_checked; i++) {
-			if (Pokemon_Stats_PVP[i][3] > max_Level) {
-				max_Level = Pokemon_Stats_PVP[i][3];
-			}
-		}
-	}
-
-	if($("#generate_code_basic").is(':checked')) {
-		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_PVP_Stats.Basic_evolution.replace('_alola','') + "&" );
-	}
-	else {
-		$( "#Output_PVP_Stats_textarea" ).append( Pokemon_Name_PVP_Stats_String.replace('Alola','').replace('alola','').split(' ').join('') + "&" );
-	}
-
-
-	for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
-
-		max_CP = 0;
-		max_CP_Basic = 0;
-		for (var i = 0; i <= max_row_checked; i++) {
-			if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_CP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
-				if($("#generate_code_basic").is(':checked')) {
-					max_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-				}
-				max_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-			}
-		}
-
-		min_CP = max_CP;
-		min_CP_Basic = max_CP_Basic;
-		for (var i = 0; i <= max_row_checked; i++) {
-			if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_CP) {
-				if($("#generate_code_basic").is(':checked')) {
-					min_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-				}
-				min_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-			}
-		}
-
-		if (Level != 1) {
-			if($("#generate_code_basic").is(':checked')) {
-				if (min_CP_Basic == max_CP_Basic) {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP_Basic + "," );
+			if (csv_mode == 0) {
+				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
 				}
 				else {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP_Basic + "-" + min_CP_Basic + "," );
+				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
 				}
+			}
+
+
+			var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
+
+			var in_pvp_stats_table = false;
+			contador_valores_en_tabla = 0;
+			valores_en_tabla = [];
+
+			contador_calidad=0;
+			for (var i = 0; i < Pokemon_Stats_PVP.length; i++) {
+				if ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length - 1][4],Pokemon_Stats_PVP[i][4]) > display_filter) {
+					contador_calidad++;
+				}
+				else {
+					break;
+				}
+
+			}
+
+			for (var i = 0; i <= contador_calidad; i++) {
+				if (Pokemon_Stats_PVP[i][0] == IV[0] && Pokemon_Stats_PVP[i][1] == IV[1] && Pokemon_Stats_PVP[i][2] == IV[2]) {
+					in_pvp_stats_table = true;
+					valores_en_tabla[contador_valores_en_tabla] = [Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2], Pokemon_Stats_PVP[i][3], Pokemon_Stats_PVP[i][4]];
+					contador_valores_en_tabla++;
+				}
+			}
+
+
+
+			if (csv_mode == 0) {
+				if (in_pvp_stats_table == true) {
+
+					if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada está entre las mejores con calidades de:</div>");
+					}
+					else {
+					  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is among the best with qualities of:</div>");
+					}
+
+					for (var i = 0; i < contador_valores_en_tabla; i++) {
+						$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + valores_en_tabla[i][0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + valores_en_tabla[i][1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + valores_en_tabla[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[valores_en_tabla[i][0],valores_en_tabla[i][1],valores_en_tabla[i][2]],valores_en_tabla[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[valores_en_tabla[i][0], valores_en_tabla[i][1], valores_en_tabla[i][2]],valores_en_tabla[i][3]) + "<br>(" + valores_en_tabla[i][3] + ")</th><th>" + valores_en_tabla[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],valores_en_tabla[i][4]) )*100*10)/10 + "%)</th></tr>" );
+					}
+				}
+				else {
+					if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada NO está entre las mejores. Su mejor calidad es de:</div>");
+					}
+					else {
+					  $("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is NOT among the best. Its best quality is:</div>");
+					}
+
+					if (League_CP_Limit == null) {
+							$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + IV[0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + IV[1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + IV[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],40) + "<br>(" + 40 + ")</th><th>" + Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)/1000.0) + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40)/1000.0)) )*100*10)/10 + "%)</th></tr>" );
+					}
+					else {
+						for (var l = 40; l >= 1; l = l - 0.5) {
+							if (CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],l) <= League_CP_Limit) {
+								$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + IV[0] + "<br>(" + Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + IV[1] + "<br>(" + Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + IV[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[IV[0], IV[1], IV[2]],l) + "<br>(" + l + ")</th><th>" + Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)/1000.0) + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Math.trunc(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)*Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l)/1000.0)) )*100*10)/10 + "%)</th></tr>" );
+								break;
+							}
+						}
+					}
+				}
+				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
+				}
+				else {
+					$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
+				}
+
+				percentage_code = Math.round(max_row_checked / Pokemon_Stats_PVP.length*100 * 1000) / 1000;
+				percentage_display = Math.round(contador_calidad / Pokemon_Stats_PVP.length*100 * 1000) / 1000;
+				quality_percentage_low = Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Math.trunc(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])*Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])*Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[contador_calidad][0],Pokemon_Stats_PVP[contador_calidad][1],Pokemon_Stats_PVP[contador_calidad][2]],Pokemon_Stats_PVP[contador_calidad][3])/1000.0)) )*100*10)/10;
+
+
+				if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones con una calidad superior al " + display_filter*100.0 + "% se consideran que están entre las mejores. Esto representa el " + percentage_display + "% de las combinaciones. Rango de calidades: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[max_row_checked][4] + " (" + quality_percentage_low + "%).</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Para generar el código se han tenido en cuenta las combinaciones con calidades de " + code_filter*100.0 + "% o superior lo cual representa el " + percentage_code + "% de las combinaciones.</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones que tienen las 3 mejores calidades son:</div>");
+				}
+				else {
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with a quality higher than " + display_filter*100.0 + "% are considered to be among the best. This represents " + percentage_display + "% of the combinations. Range of qualities: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[max_row_checked][4] + " (" + quality_percentage_low + "%).</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>To generate the code, combinations with qualities of " + code_filter*100.0 + "% or higher have been taken into account which represents the " + percentage_code + "% of the combinations.</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with 3 highest qualities are:</div>");
+				}
+			}
+
+			Pokemon_PVP_Stats_Basic_evolution = window[Pokemon_PVP_Stats.Basic_evolution];
+
+			var max_Level = Pokemon_Stats_PVP[0][3];
+			var max_CP;
+			var min_CP;
+			var max_CP_Basic;
+			var min_CP_Basic;
+			var max_HP;
+			var min_HP;
+			var max_HP_Basic;
+			var min_HP_Basic;
+			if (max_row_checked != 0) {
+				for (var i = 0; i <= max_row_checked; i++) {
+					if (Pokemon_Stats_PVP[i][3] > max_Level) {
+						max_Level = Pokemon_Stats_PVP[i][3];
+					}
+				}
+			}
+
+			var PVP_Code ="";
+			if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+				PVP_Code += Pokemon_PVP_Stats.Basic_evolution.replace('_alola','') + "&" ;
 			}
 			else {
-				if (min_CP == max_CP) {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP + "," );
+				PVP_Code += Pokemon_Name_PVP_Stats_String.replace('Alola','').replace('alola','').split(' ').join('') + "&";
+			}
+
+			for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
+
+				max_CP = 0;
+				max_CP_Basic = 0;
+				for (var i = 0; i <= max_row_checked; i++) {
+					if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_CP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
+						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+							max_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+						}
+						max_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+					}
+				}
+
+				min_CP = max_CP;
+				min_CP_Basic = max_CP_Basic;
+				for (var i = 0; i <= max_row_checked; i++) {
+					if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_CP) {
+						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+							min_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+						}
+						min_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+					}
+				}
+
+				if (Level != 1) {
+					if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+						if (min_CP_Basic == max_CP_Basic) {
+							PVP_Code += CP_String + min_CP_Basic + ",";
+						}
+						else {
+							PVP_Code += CP_String + max_CP_Basic + "-" + min_CP_Basic + ",";
+						}
+					}
+					else {
+						if (min_CP == max_CP) {
+							PVP_Code += CP_String + min_CP + ",";
+						}
+						else {
+							PVP_Code += CP_String + max_CP + "-" + min_CP + ",";
+						}
+					}
+
 				}
 				else {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP + "," );
+					if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+						if (min_CP_Basic == max_CP_Basic) {
+							PVP_Code += CP_String + min_CP_Basic;
+						}
+						else {
+							PVP_Code += CP_String + max_CP_Basic + "-" + min_CP_Basic;
+						}
+					}
+					else {
+						if (min_CP == max_CP) {
+							PVP_Code += CP_String + min_CP;
+						}
+						else {
+							PVP_Code += CP_String + max_CP + "-" + min_CP;
+						}
+					}
+
 				}
 			}
 
+			PVP_Code += "&";
+
+			for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
+
+				max_HP = 0;
+				max_HP_Basic = 0;
+				for (var i = 0; i <= max_row_checked; i++) {
+					if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_HP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
+						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+							max_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+						}
+						max_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+
+					}
+				}
+				min_HP = max_HP;
+				min_HP_Basic = max_HP_Basic;
+				for (var i = 0; i <= max_row_checked; i++) {
+					if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_HP) {
+						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+							min_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+						}
+						min_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+					}
+				}
+
+				if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
+					if (min_HP_Basic == max_HP_Basic) {
+						PVP_Code += HP_String + min_HP_Basic + ",";
+					}
+					else {
+						PVP_Code += HP_String + max_HP_Basic + "-" + min_HP_Basic + ",";
+					}
+				}
+				else {
+					if (min_HP == max_HP) {
+						PVP_Code += HP_String + min_HP + "," ;
+					}
+					else {
+						PVP_Code += HP_String + max_HP + "-" + min_HP + ",";
+					}
+				}
+
+			}
+
+			if (csv_mode == 0) {
+				$( "#Output_PVP_Stats_textarea" ).append( PVP_Code );
+			}
+
+
+			if (csv_mode == 1) {
+				csv_data.push([Pokemon_Name_PVP_Stats_String, Pokemon_Stats_PVP[0][0] + " (" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")", Pokemon_Stats_PVP[0][1] + " (" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")", Pokemon_Stats_PVP[0][2] + " (" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")",CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]), Pokemon_Stats_PVP[1][0] + " (" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) + ")", Pokemon_Stats_PVP[1][1] + " (" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) + ")", Pokemon_Stats_PVP[1][2] + " (" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) + ")",CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0], Pokemon_Stats_PVP[1][1], Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]), Pokemon_Stats_PVP[2][0] + " (" + Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) + ")", Pokemon_Stats_PVP[2][1] + " (" + Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) + ")", Pokemon_Stats_PVP[2][2] + " (" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) + ")",CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0], Pokemon_Stats_PVP[2][1], Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]), PVP_Code]);
+
+				$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4>");
+			}
+		}
+		/*== Check if inputs are correct ==*/
+
+
+
+	}
+
+
+
+
+
+	if (csv_mode == 1) {
+		if (contador_pokemon_validos == 0) {
+			if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+				$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>Ninguno de los Pokémon analizados son correctos.</div>");
+			}
+			else {
+				$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<div id='output_text'>None of the Pokémon analyzed are correct.</div>");
+			}
+			return;
+		}
+
+
+		let csvContent = "data:text/csv;charset=utf-8,";
+		csv_data.forEach(function(rowArray){
+		   let csv_data = rowArray.join(";");
+		   csvContent += csv_data + "\r\n";
+		});
+
+		var file_name_league;
+		if (League_CP_Limit == 1500) {
+			file_name_league= "super";
+		}
+		else if (League_CP_Limit == 2500) {
+			file_name_league= "ultra";
+		}
+		else if (League_CP_Limit == null) {
+			file_name_league= "master";
+		}
+
+		var file_name_includedpokemon;
+		if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Manual") {
+			file_name_includedpokemon= "custom";
+		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest Cup") {
+			file_name_includedpokemon= "tempest";
+		}
+
+		var file_name_basicevols = "";
+		if(($("#generate_code_basic_csv").is(':checked'))) {
+			file_name_basicevols = "_basicevols";
+		}
+
+		var file_name_csv = "pvp_" + file_name_league + "_" + file_name_includedpokemon + file_name_basicevols + "_stats.csv";
+		var encodedUri = encodeURI(csvContent);
+		var link = document.createElement("a");
+		link.setAttribute("href", encodedUri);
+		link.setAttribute("download", file_name_csv);
+		document.body.appendChild(link); // Required for FF
+
+		link.click();
+
+		if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<br>Se han guardado los resultados en el archivo " + file_name_csv + "</div>");
 		}
 		else {
-			if($("#generate_code_basic").is(':checked')) {
-				if (min_CP_Basic == max_CP_Basic) {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP_Basic );
-				}
-				else {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP_Basic + "-" + min_CP_Basic );
-				}
-			}
-			else {
-				if (min_CP == max_CP) {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + min_CP );
-				}
-				else {
-					$( "#Output_PVP_Stats_textarea" ).append( CP_String + max_CP + "-" + min_CP );
-				}
-			}
-
+			$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<br>The results have been saved in the file " + file_name_csv + "</div>");
 		}
-	}
-
-	$( "#Output_PVP_Stats_textarea" ).append( "&" );
-
-	for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
-
-		max_HP = 0;
-		max_HP_Basic = 0;
-		for (var i = 0; i <= max_row_checked; i++) {
-			if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_HP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
-				if($("#generate_code_basic").is(':checked')) {
-					max_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-				}
-				max_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-
-			}
-		}
-		min_HP = max_HP;
-		min_HP_Basic = max_HP_Basic;
-		for (var i = 0; i <= max_row_checked; i++) {
-			if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_HP) {
-				if($("#generate_code_basic").is(':checked')) {
-					min_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-				}
-				min_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-			}
-		}
-
-		if($("#generate_code_basic").is(':checked')) {
-			if (min_HP_Basic == max_HP_Basic) {
-				$( "#Output_PVP_Stats_textarea" ).append( HP_String + min_HP_Basic + ",");
-			}
-			else {
-				$( "#Output_PVP_Stats_textarea" ).append( HP_String + max_HP_Basic + "-" + min_HP_Basic + ",");
-			}
-		}
-		else {
-			if (min_HP == max_HP) {
-				$( "#Output_PVP_Stats_textarea" ).append( HP_String + min_HP + "," );
-			}
-			else {
-				$( "#Output_PVP_Stats_textarea" ).append( HP_String + max_HP + "-" + min_HP + "," );
-			}
-		}
-
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function Get_IV() {
 	$("#Output_IV_1").html("<hr class='hrseparador'>");
