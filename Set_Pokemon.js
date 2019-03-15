@@ -1115,7 +1115,7 @@ var mantine = {
 };
 
 var skarmory = {
-    Stats  : [148, 260, 130],
+    Stats  : [148, 226, 163],
     Evolutions : null,
     Basic_evolution : "skarmory"
 };
