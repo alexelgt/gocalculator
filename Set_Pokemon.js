@@ -1669,17 +1669,17 @@ var froslass = {
 };
 
 var spheal = {
-    Stats      : [95, 90, 140],
+    Stats      : [95, 90, 172],
     Evolutions : ["sealeo", "walrein"],
     Basic_evolution : "spheal"
 };
 var sealeo = {
-    Stats      : [137, 132, 180],
+    Stats      : [137, 132, 207],
     Evolutions : ["walrein"],
     Basic_evolution : "spheal"
 };
 var walrein = {
-    Stats      : [182, 176, 220],
+    Stats      : [182, 176, 242],
     Evolutions : null,
     Basic_evolution : "spheal"
 };
