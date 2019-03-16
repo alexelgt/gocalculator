@@ -5,8 +5,8 @@ function Input_Problematic_Pokemon(Pokemon_Name){
   else if (Pokemon_Name == "nidoran♂") {
     Pokemon_Name = "nidoranm";
   }
-  else if (Pokemon_Name == "mr. mime") {
-    Pokemon_Name = "mrmime";
+  else if (Pokemon_Name == "mime jr.") {
+    Pokemon_Name = "mimejr";
   }
   else if (Pokemon_Name == "mr. mime") {
     Pokemon_Name = "mrmime";
