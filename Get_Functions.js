@@ -326,6 +326,7 @@ function Get_CP_Search() {
 
 	/*=== Get the Pokemon's name ===*/
 	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('Alola','').replace('alola','').split(' ').join('').replace('Nidoran♀','Nidoran').replace('Nidoran♂','Nidoran') + "&" );
+
 	for(var Level=35; Level>=1; Level -= 1) {
 		/*==== Get CP for each level ====*/
 		if (Level != 1) {
@@ -335,7 +336,8 @@ function Get_CP_Search() {
 			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "&");
 		}
 		/*== Get CP for each level ==*/
-
+	}
+	for(var Level=35; Level>=1; Level -= 1) {
 		/*=== Get HP for each level ===*/
 		$( "#Output_CP_Search_2" ).append( HP_String + Get_HP(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
 	}
@@ -714,7 +716,9 @@ function Get_PVP_Stats(csv_mode) {
 
 				}
 				/*== Get maximun and minimum CP for each level ==*/
+			}
 
+			for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
 				/*==== Get maximun and minimum HP for each level ====*/
 				max_HP = 0;
 				max_HP_Basic = 0;
