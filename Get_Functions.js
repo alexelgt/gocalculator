@@ -401,7 +401,7 @@ function Get_PVP_Stats(csv_mode) {
 		/*== Set PVP League ==*/
 
 		/*==== Set PVP Pokemon ====*/
-		Pokemon_Set_PVP_CSV = "lapras";//(document.getElementById("Pokemon_Name_CP").value);
+		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_CP").value);
 		total_number_pokemon = 1;
 		/*== Set PVP Pokemon ==*/
 		/*== Set variables 2/2 ==*/
