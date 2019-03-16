@@ -293,6 +293,11 @@ select.informacion{
 	width: 150px;
 }
 
+#select_text.mini{
+	padding: 12px 18px 0 18px;
+	font-size: 13px;
+}
+
 input, textarea{
 	-webkit-appearance: none;
 	text-transform: capitalize;
@@ -635,6 +640,12 @@ th:last-child,th#ultimo{
 	}
 
 	/*== Texto ==*/
+
+	/*==== Tabla ====*/
+	th,td{
+		font-size: 15px;
+	}
+	/*== Tabla ==*/
 }
 
 @media (max-width: 940px){

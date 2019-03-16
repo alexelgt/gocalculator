@@ -403,7 +403,7 @@ function Get_PVP_Stats(csv_mode) {
 		/*== Set PVP League ==*/
 
 		/*==== Set PVP Pokemon ====*/
-		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_CP").value);
+		Pokemon_Set_PVP_CSV = "lapras";//(document.getElementById("Pokemon_Name_CP").value);
 		total_number_pokemon = 1;
 		/*== Set PVP Pokemon ==*/
 		/*== Set variables 2/2 ==*/
@@ -432,7 +432,7 @@ function Get_PVP_Stats(csv_mode) {
 			}
 			Pokemon_Set_PVP_CSV = document.getElementById("Output_PVP_CSV_textarea").value.split(',');
 		}
-		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest Cup") {
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") {
 			Pokemon_Set_PVP_CSV = ["Lapras","Sealeo","Altaria","Skarmory","Charizard","Tropius","Abomasnow","Whiscash","Lanturn","Quagsire","Marshtomp","Glalie","Froslass","Mantine","Magneton"];
 
 			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
@@ -582,10 +582,10 @@ function Get_PVP_Stats(csv_mode) {
 				}
 				else {
 					if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-						$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada NO está entre las mejores. Su mejor calidad es de:</div>");
+						$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>La combinación de IVs indicada NO está entre las mejores. Su calidad es de:</div>");
 					}
 					else {
-						$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is NOT among the best. Its best quality is:</div>");
+						$("#Output_PVP_Stats").html($('#Output_PVP_Stats').html() + "<div id='output_text'>The combination of IVs indicated is NOT among the best. Its quality is:</div>");
 					}
 				}
 
@@ -814,7 +814,7 @@ function Get_PVP_Stats(csv_mode) {
 		if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Manual") {
 			file_name_includedpokemon= "custom";
 		}
-		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest Cup") {
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") {
 			file_name_includedpokemon= "tempest";
 		}
 
