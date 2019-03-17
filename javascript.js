@@ -13,6 +13,17 @@ function start(){
       document.getElementById("Output_PVP_Stats_textarea").selectionStart = 0
       document.getElementById("Output_PVP_Stats_textarea").selectionEnd = 999
   });
+
+  if ('serviceWorker' in navigator) {
+    console.log('CLIENT: service worker registration in progress.');
+    navigator.serviceWorker.register('sw.js').then(function() {
+      console.log('CLIENT: service worker registration complete.');
+    }, function() {
+      console.log('CLIENT: service worker registration failure.');
+    });
+  } else {
+    console.log('CLIENT: service worker is not supported.');
+  }
 }
 
 function ventanaemergente(id,id2) {
