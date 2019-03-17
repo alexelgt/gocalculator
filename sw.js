@@ -3,7 +3,8 @@ var urlsToCache = [
   '/',
   '/styles/main.css',
   '/script/main.js',
-  'logo.png'
+  'logo.png',
+  'index.html'
 ];
 self.addEventListener('install', function(event) {
   // Perform install steps
