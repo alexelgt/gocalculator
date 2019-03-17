@@ -24,6 +24,7 @@ function start(){
   } else {
     console.log('CLIENT: service worker is not supported.');
   }
+  
 }
 
 function ventanaemergente(id,id2) {
