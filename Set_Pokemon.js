@@ -112,6 +112,17 @@ var raticate = {
     Basic_evolution : "rattata"
 };
 
+var rattata_alola = {
+    Stats      : [103, 70, 102],
+    Evolutions : ["raticate_alola"],
+    Basic_evolution : "rattata_alola"
+};
+var raticate_alola = {
+    Stats      : [135, 154, 181],
+    Evolutions : null,
+    Basic_evolution : "rattata_alola"
+};
+
 var spearow = {
     Stats      : [112, 60, 120],
     Evolutions : ["fearow"],
@@ -150,6 +161,12 @@ var raichu = {
     Basic_evolution : "pichu"
 };
 
+var raichu_alola = {
+    Stats      : [201, 154, 155],
+    Evolutions : null,
+    Basic_evolution : "raichu_alola"
+};
+
 var sandshrew = {
     Stats      : [126, 120, 137],
     Evolutions : ["sandslash"],
@@ -159,6 +176,17 @@ var sandslash = {
     Stats      : [182, 175, 181],
     Evolutions : null,
     Basic_evolution : "sandshrew"
+};
+
+var sandshrew_alola = {
+    Stats      : [125, 129, 137],
+    Evolutions : ["sandslash_alola"],
+    Basic_evolution : "sandshrew_alola"
+};
+var sandslash_alola = {
+    Stats      : [177, 195, 181],
+    Evolutions : null,
+    Basic_evolution : "sandshrew_alola"
 };
 
 var nidoranf = {
@@ -218,6 +246,17 @@ var ninetales = {
     Stats      : [169, 190, 177],
     Evolutions : null,
     Basic_evolution : "vulpix"
+};
+
+var vulpix_alola = {
+    Stats      : [96, 109, 116],
+    Evolutions : ["ninetales_alola"],
+    Basic_evolution : "vulpix_alola"
+};
+var ninetales_alola = {
+    Stats      : [170, 193, 177],
+    Evolutions : null,
+    Basic_evolution : "vulpix_alola"
 };
 
 var igglybuff = {
@@ -306,6 +345,17 @@ var dugtrio = {
     Basic_evolution : "diglett"
 };
 
+var diglett_alola = {
+    Stats      : [108, 81, 67],
+    Evolutions : ["dugtrio_alola"],
+    Basic_evolution : "diglett_alola"
+};
+var dugtrio_alola = {
+    Stats      : [201, 142, 111],
+    Evolutions : null,
+    Basic_evolution : "diglett_alola"
+};
+
 var meowth = {
     Stats      : [92, 78, 120],
     Evolutions : ["persian"],
@@ -315,6 +365,17 @@ var persian = {
     Stats      : [150, 136, 163],
     Evolutions : null,
     Basic_evolution : "meowth"
+};
+
+var meowth_alola = {
+    Stats      : [99, 78, 120],
+    Evolutions : ["persian_alola"],
+    Basic_evolution : "meowth_alola"
+};
+var persian_alola = {
+    Stats      : [158, 136, 163],
+    Evolutions : null,
+    Basic_evolution : "meowth_alola"
 };
 
 var psyduck = {
@@ -544,6 +605,17 @@ var muk = {
     Basic_evolution : "grimer"
 };
 
+var grimer_alola = {
+    Stats      : [135, 90, 190],
+    Evolutions : ["muk_alola"],
+    Basic_evolution : "grimer_alola"
+};
+var muk_alola = {
+    Stats      : [190, 172, 233],
+    Evolutions : null,
+    Basic_evolution : "grimer_alola"
+};
+
 var shellder = {
     Stats      : [116, 134, 102],
     Evolutions : ["cloyster"],
@@ -626,6 +698,12 @@ var exeggutor = {
     Basic_evolution : "exeggcute"
 };
 
+var exeggutor_alola = {
+    Stats      : [230, 153, 216],
+    Evolutions : null,
+    Basic_evolution : "exeggutor_alola"
+};
+
 var cubone = {
     Stats      : [90, 144, 137],
     Evolutions : ["marowak"],
@@ -635,6 +713,12 @@ var marowak = {
     Stats      : [144, 186, 155],
     Evolutions : null,
     Basic_evolution : "cubone"
+};
+
+var marowak_alola = {
+    Stats      : [144, 186, 155],
+    Evolutions : null,
+    Basic_evolution : "marowak_alola"
 };
 
 var tyrogue = {
