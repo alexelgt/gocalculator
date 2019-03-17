@@ -5,7 +5,7 @@ console.log('WORKER: executing.');
 /* A version number is useful when updating the worker logic,
    allowing you to remove outdated cache entries during the update.
 */
-var version = 'v1::';
+var version = 'v2::';
 
 /* These resources will be downloaded and cached by the service worker
    during the installation process. If any resource fails to be downloaded,
@@ -107,6 +107,7 @@ self.addEventListener("fetch", function(event) {
            This pattern is known for producing "eventually fresh" responses,
            where we return cached responses immediately, and meanwhile pull
            a network response and store that in the cache.
+
            Read more:
            https://ponyfoo.com/articles/progressive-networking-serviceworker
         */
@@ -138,7 +139,7 @@ self.addEventListener("fetch", function(event) {
                  available to caches.match(event.request) calls, when looking
                  for cached responses.
               */
-              return cache.put(event.request, cacheCopy);
+              cache.put(event.request, cacheCopy);
             })
             .then(function() {
               console.log('WORKER: fetch response stored in cache.', event.request.url);
