@@ -9,8 +9,8 @@ self.addEventListener('install', function(event) {
           '/js/bootstrap.min.js',
           '/js/jquery.min.js',
           '/offline.html',
-          'logo.png',
-          'index.html'
+          '/logo.png',
+          '/index.html'
         ]
       );
     })
