@@ -22,6 +22,18 @@ function Input_Problematic_Pokemon(Pokemon_Name){
     Pokemon_Name = "deoxysn";
   }
 
+  else if (Pokemon_Name == "Deoxys attack") {
+    Pokemon_Name = "deoxysa";
+  }
+
+  else if (Pokemon_Name == "Deoxys defense") {
+    Pokemon_Name = "deoxysd";
+  }
+
+  else if (Pokemon_Name == "Deoxys speed") {
+    Pokemon_Name = "deoxyss";
+  }
+
   else if (Pokemon_Name == "giratina altered") {
     Pokemon_Name = "giratinaa";
   }

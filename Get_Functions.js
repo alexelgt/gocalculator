@@ -375,10 +375,14 @@ function Get_PVP_Stats(csv_mode) {
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
 		var HP_String = "puntos de salud";
+		var Stats_string = "Estadísticas";
+		var CSV_search_string = "Códigos de busqueda para calidades superiores a " + code_filter*100.0 + "%";
 	}
 	else {
 		var CP_String = "CP";
 		var HP_String = "hp";
+		var Stats_string = "Stats";
+		var CSV_search_string = "Search code for qualities higher than " + code_filter*100.0 + "%";
 	}
 
 	var total_number_pokemon;
@@ -433,7 +437,7 @@ function Get_PVP_Stats(csv_mode) {
 			Pokemon_Set_PVP_CSV = document.getElementById("Output_PVP_CSV_textarea").value.split(',');
 		}
 		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") {
-			Pokemon_Set_PVP_CSV = ["Lapras","Sealeo","Altaria","Skarmory","Charizard","Tropius","Abomasnow","Whiscash","Lanturn","Quagsire","Marshtomp","Glalie","Froslass","Mantine","Magneton"];
+			Pokemon_Set_PVP_CSV = ["Lapras","Sealeo","Altaria","Skarmory","Charizard","Tropius","Abomasnow","Whiscash","Lanturn","Quagsire","Marshtomp","Glalie","Froslass","Mantine","Magneton","Drifblim"];
 
 			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
 				$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[i] + "," );
@@ -453,8 +457,7 @@ function Get_PVP_Stats(csv_mode) {
 		}
 
 		/*=== Head of the variable that contains the data of the csv file ===*/
-		//var csv_data = [["Pokemon", "Atk IV 1", "Def IV 1", "HP IV 1", "CP 1", "Atk IV 2", "Def IV 2", "HP IV 2", "CP 2", "Atk IV 3", "Def IV 3", "HP IV 3", "CP 3", "Search code for " + code_filter*100.0 + "% quality or higher"]];
-		var csv_data = [["Pokemon", "IVs 1", "Stats 1", "CP 1",  "IVs 2", "Stats 2", "CP 2",  "IVs  3", "Stats  3", "CP 3",  "Search code for " + code_filter*100.0 + "% quality or higher"]];
+		var csv_data = [["Pokemon", "IVs 1", Stats_string + " 1", CP_String + " 1",  "IVs 2", Stats_string + " 2", CP_String + " 2",  "IVs  3", Stats_string + " 3", CP_String + " 3", CSV_search_string]];
 	}
 
 	/*==== Core of the function ====*/
