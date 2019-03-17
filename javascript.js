@@ -13,9 +13,6 @@ function start(){
       document.getElementById("Output_PVP_Stats_textarea").selectionStart = 0
       document.getElementById("Output_PVP_Stats_textarea").selectionEnd = 999
   });
-
-  navigator.serviceWorker.register('sw.js').then(function() {
-    console.log('CLIENT: service worker registration complete.');
 }
 
 function ventanaemergente(id,id2) {
