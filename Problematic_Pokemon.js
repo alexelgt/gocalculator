@@ -26,11 +26,11 @@ function Input_Problematic_Pokemon(Pokemon_Name){
     Pokemon_Name = "deoxysa";
   }
 
-  else if (Pokemon_Name == "Deoxys defense") {
+  else if (Pokemon_Name == "deoxys defense") {
     Pokemon_Name = "deoxysd";
   }
 
-  else if (Pokemon_Name == "Deoxys speed") {
+  else if (Pokemon_Name == "deoxys speed") {
     Pokemon_Name = "deoxyss";
   }
 
