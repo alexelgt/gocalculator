@@ -331,21 +331,25 @@ function Get_CP_Search() {
 
 	var total_IVs;
 	var min_IV;
+	var max_IV;
 	var max_IV_Atk;
 	var max_IV_Def;
 	var max_IV_HP;
 	if ( (document.getElementById("CP_Search_IVs_Filter").value) == "100%") {
 		total_IVs = 45;
+		max_IV = 15;
 		min_IV = 15;
 	}
 	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "98% 15 Atk") {
 		total_IVs = 44;
 		max_IV_Atk = 15;
+		max_IV = 15;
 		min_IV = 14;
 	}
 	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96% 15 Atk") {
 		total_IVs = 43;
 		max_IV_Atk = 15;
+		max_IV = 15;
 		min_IV = 13;
 	}
 
@@ -364,9 +368,9 @@ function Get_CP_Search() {
 		contador_CP_values = 0;
 		var CP_values = [];
 
-		for (var i = 15; i >= min_IV; i--) {
-			for (var j = 15; j >= min_IV; j--) {
-				for (var k = 15; k >= min_IV; k--) {
+		for (var i = max_IV; i >= min_IV; i--) {
+			for (var j = max_IV; j >= min_IV; j--) {
+				for (var k = max_IV; k >= min_IV; k--) {
 
 					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
 
@@ -416,9 +420,9 @@ function Get_CP_Search() {
 		contador_HP_values = 0;
 		var HP_values = [];
 
-		for (var i = 15; i >= min_IV; i--) {
-			for (var j = 15; j >= min_IV; j--) {
-				for (var k = 15; k >= min_IV; k--) {
+		for (var i = max_IV; i >= min_IV; i--) {
+			for (var j = max_IV; j >= min_IV; j--) {
+				for (var k = max_IV; k >= min_IV; k--) {
 
 					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
 
