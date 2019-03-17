@@ -22,7 +22,7 @@ function Input_Problematic_Pokemon(Pokemon_Name){
     Pokemon_Name = "deoxysn";
   }
 
-  else if (Pokemon_Name == "Deoxys attack") {
+  else if (Pokemon_Name == "deoxys attack") {
     Pokemon_Name = "deoxysa";
   }
 
