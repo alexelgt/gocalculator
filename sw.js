@@ -12,8 +12,33 @@ var version = 'v1::';
    then the service worker won't be installed either.
 */
 var offlineFundamentals = [
-  '/logo.png',
-  '/index.html'
+  'background.jpeg',
+  'check.png',
+  'close.png',
+  'egg.png',
+  'info.png',
+  'logo.png',
+  'CP_Formula.js',
+  'CP_Multiplier.js',
+  'fullscreen.js',
+  'Get_Functions.js',
+  'javascript.js',
+  'jquery-3.1.1.min.js',
+  'jquery.flexdatalist.js',
+  'language.js',
+  'Problematic_Pokemon.js',
+  'Set_Pokemon.js',
+  'Stardusttolevel.js',
+  'Leveltostardust.js',
+  'Leveltocandy.js',
+  'multirange.js',
+  'sliders.js',
+  'stylecustom_gocalculator.css',
+  'style.css',
+  'jquery.flexdatalist.css',
+  'index.html',
+  'cpcalculator.html',
+  'List_Pokemon.json'
 ];
 
 /* The install event fires when the service worker is first installed.
