@@ -32,7 +32,8 @@ function language(){
     $(".STRING_LEVEL_15").html("Nivel 15 (investigación)");
 
     $(".STRING_PERFECT_CP").html("PC perfecto salvaje");
-    $(".STRING_PERFECT_CP_SEARCH").html("PC perfecto buscar");
+    $(".STRING_PERFECT_CP_SEARCH").html("Códigos de busqueda");
+    $(".STRING_IVS_FILTER").html("Filtro IVs");
 
     $(".STRING_PVP_STATS").html("Estadísticas PVP");
     $(".STRING_LEAGUE").html("Liga");

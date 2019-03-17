@@ -281,6 +281,19 @@ function Get_CP_Wild() {
 
 }
 
+function Get_CP_Check_Filter(Filter,IV_A,IV_D,IV_HP, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs) {
+	if ( Filter == "100%") {
+		if ( (IV_A+IV_D+IV_HP) >= total_IVs) {
+			return 1;
+		}
+	}
+	else if ( Filter == "98% 15 Atk" || Filter == "96% 15 Atk") {
+		if ( (IV_A+IV_D+IV_HP) >= total_IVs && IV_A == max_IV_Atk) {
+			return 1;
+		}
+	}
+}
+
 function Get_CP_Search() {
 	/*==== Clear the output ====*/
 	$("#Output_CP_Search").html("<hr class='hrseparador'>");
@@ -316,7 +329,27 @@ function Get_CP_Search() {
 	}
 	/*== Check if inputs are correct ==*/
 
-	/*=== Set output ===*/
+	var total_IVs;
+	var min_IV;
+	var max_IV_Atk;
+	var max_IV_Def;
+	var max_IV_HP;
+	if ( (document.getElementById("CP_Search_IVs_Filter").value) == "100%") {
+		total_IVs = 45;
+		min_IV = 15;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "98% 15 Atk") {
+		total_IVs = 44;
+		max_IV_Atk = 15;
+		min_IV = 14;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96% 15 Atk") {
+		total_IVs = 43;
+		max_IV_Atk = 15;
+		min_IV = 13;
+	}
+
+	/*==== Set output ====*/
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
@@ -324,24 +357,102 @@ function Get_CP_Search() {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
 
-	/*=== Get the Pokemon's name ===*/
 	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('Alola','').replace('alola','').split(' ').join('').replace('Nidoran♀','Nidoran').replace('Nidoran♂','Nidoran') + "&" );
 
 	for(var Level=35; Level>=1; Level -= 1) {
-		/*==== Get CP for each level ====*/
+
+		contador_CP_values = 0;
+		var CP_values = [];
+
+		for (var i = 15; i >= min_IV; i--) {
+			for (var j = 15; j >= min_IV; j--) {
+				for (var k = 15; k >= min_IV; k--) {
+
+					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
+
+					if ( condicion_CP_Search_filter == 1) {
+						CP_values[contador_CP_values] = CP_Formula(Pokemon_CP_Search,[i, j, k],Level);
+						contador_CP_values++;
+					}
+
+				}
+			}
+		}
+
+		for (var i = 0; i < CP_values.length; i++) {
+			for (var j = i+1; j < CP_values.length; j++) {
+				var temp;
+				if ( CP_values[i] < CP_values[j] ) {
+					CP_values[i] = CP_values[i];
+				}
+				else {
+					temp = CP_values[i];
+					CP_values[i] = CP_values[j];
+					CP_values[j] = temp;
+				}
+			}
+		}
+
 		if (Level != 1) {
-			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
+			if (CP_values[0] == CP_values[CP_values.length - 1]) {
+				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[0] + "," );
+			}
+			else {
+				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[CP_values.length - 1] + "-" + CP_values[0] + "," );
+			}
 		}
 		else {
-			$( "#Output_CP_Search_2" ).append( CP_String + CP_Formula(Pokemon_CP_Search,[15, 15, 15],Level) + "&");
+			if (CP_values[0] == CP_values[CP_values.length - 1]) {
+				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[0] + "&" );
+			}
+			else {
+				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[CP_values.length - 1] + "-" + CP_values[0] + "&" );
+			}
 		}
-		/*== Get CP for each level ==*/
-	}
-	for(var Level=35; Level>=1; Level -= 1) {
-		/*=== Get HP for each level ===*/
-		$( "#Output_CP_Search_2" ).append( HP_String + Get_HP(Pokemon_CP_Search,[15, 15, 15],Level) + "," );
 	}
 
+	for(var Level=35; Level>=1; Level -= 1) {
+
+		contador_HP_values = 0;
+		var HP_values = [];
+
+		for (var i = 15; i >= min_IV; i--) {
+			for (var j = 15; j >= min_IV; j--) {
+				for (var k = 15; k >= min_IV; k--) {
+
+					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
+
+					if ( condicion_CP_Search_filter == 1) {
+						HP_values[contador_HP_values] = Get_HP(Pokemon_CP_Search,[i, j, k],Level);
+						contador_HP_values++;
+					}
+
+				}
+			}
+		}
+
+		for (var i = 0; i < HP_values.length; i++) {
+			for (var j = i+1; j < HP_values.length; j++) {
+				var temp;
+				if ( HP_values[i] < HP_values[j] ) {
+					HP_values[i] = HP_values[i];
+				}
+				else {
+					temp = HP_values[i];
+					HP_values[i] = HP_values[j];
+					HP_values[j] = temp;
+				}
+			}
+		}
+
+		if (HP_values[0] == HP_values[HP_values.length - 1]) {
+			$( "#Output_CP_Search_2" ).append( HP_String + HP_values[0] + "," );
+		}
+		else {
+			$( "#Output_CP_Search_2" ).append( HP_String + HP_values[HP_values.length - 1] + "-" + HP_values[0] + "," );
+		}
+	}
+	/*== Set output ==*/
 }
 
 function PVP_Stats_Quality(Atk,Def,HP){
