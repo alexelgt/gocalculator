@@ -264,6 +264,10 @@ select.informacion{
 	background-color: var(--selectvalue_informacion);
 }
 
+select.mini{
+	font-size: 13px;
+}
+
 #select_block{
 	display: flex;
 	flex-flow: row wrap;
