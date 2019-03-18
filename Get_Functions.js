@@ -282,17 +282,46 @@ function Get_CP_Wild() {
 }
 
 function Get_CP_Check_Filter(Filter,IV_A,IV_D,IV_HP, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs) {
-	if ( Filter == "100%") {
+	if ( Filter == "100%" || Filter == "0%") {
 		if ( (IV_A+IV_D+IV_HP) >= total_IVs) {
 			return 1;
 		}
 	}
-	else if ( Filter == "98% 15 Atk" || Filter == "96% 15 Atk") {
+	else if ( Filter == "98% 15A" || Filter == "96% 15A" || Filter == "93% 15A" || Filter == "91% 15A" || Filter == "91% 15A 14HP" || Filter == "93% 15A ≥14HP" || Filter == "96% 15A ≥14HP") {
 		if ( (IV_A+IV_D+IV_HP) >= total_IVs && IV_A == max_IV_Atk) {
 			return 1;
 		}
 	}
+	else if ( Filter == "98%" || Filter == "96%") {
+		if ( (IV_A+IV_D+IV_HP) >= total_IVs) {
+			return 1;
+		}
+	}
 }
+
+
+
+
+
+function Stat_values_filter_norepeated(Stat_values_array) {
+	var contador_Stat_values_norepeated = 1;
+	Stat_values_array_norepeated = [];
+	Stat_values_array_norepeated[0] = Stat_values_array[0];
+
+	for (var i = 1; i < Stat_values_array.length; i++) {
+		if (Stat_values_array[i] != Stat_values_array[i-1]) {
+			Stat_values_array_norepeated[contador_Stat_values_norepeated] = Stat_values_array[i];
+			contador_Stat_values_norepeated++;
+		}
+	}
+	return Stat_values_array_norepeated
+}
+
+
+
+
+
+
 
 function Get_CP_Search() {
 	/*==== Clear the output ====*/
@@ -338,19 +367,97 @@ function Get_CP_Search() {
 	if ( (document.getElementById("CP_Search_IVs_Filter").value) == "100%") {
 		total_IVs = 45;
 		max_IV = 15;
-		min_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 15;
+		min_IV_HP = 15;
 	}
-	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "98% 15 Atk") {
+	if ( (document.getElementById("CP_Search_IVs_Filter").value) == "0%") {
+		total_IVs = 0;
+		max_IV = 0;
+
+		min_IV_Atk = 0;
+		min_IV_Def = 0;
+		min_IV_HP = 0;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "98% 15A") {
 		total_IVs = 44;
 		max_IV_Atk = 15;
 		max_IV = 15;
-		min_IV = 14;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 14;
+		min_IV_HP = 14;
 	}
-	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96% 15 Atk") {
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "98%") {
+		total_IVs = 44;
+		max_IV = 15;
+
+		min_IV_Atk = 14;
+		min_IV_Def = 14;
+		min_IV_HP = 14;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96% 15A") {
 		total_IVs = 43;
 		max_IV_Atk = 15;
 		max_IV = 15;
-		min_IV = 13;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 13;
+		min_IV_HP = 13;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96%") {
+		total_IVs = 43;
+		max_IV = 15;
+
+		min_IV_Atk = 13;
+		min_IV_Def = 13;
+		min_IV_HP = 13;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "96% 15A ≥14HP") {
+		total_IVs = 43;
+		max_IV_Atk = 15;
+		max_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 13;
+		min_IV_HP = 14;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "93% 15A") {
+		total_IVs = 42;
+		max_IV_Atk = 15;
+		max_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 12;
+		min_IV_HP = 12;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "93% 15A ≥14HP") {
+		total_IVs = 42;
+		max_IV_Atk = 15;
+		max_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 12;
+		min_IV_HP = 14;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "91% 15A") {
+		total_IVs = 41;
+		max_IV_Atk = 15;
+		max_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 11;
+		min_IV_HP = 11;
+	}
+	else if ( (document.getElementById("CP_Search_IVs_Filter").value) == "91% 15A 14HP") {
+		total_IVs = 41;
+		max_IV_Atk = 15;
+		max_IV = 15;
+
+		min_IV_Atk = 15;
+		min_IV_Def = 11;
+		min_IV_HP = 14;
 	}
 
 	/*==== Set output ====*/
@@ -363,99 +470,93 @@ function Get_CP_Search() {
 
 	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('Alola','').replace('alola','').split(' ').join('').replace('Nidoran♀','Nidoran').replace('Nidoran♂','Nidoran') + "&" );
 
+	/*==== Get the search code ====*/
+	contador_CP_values = 0;
+	var CP_values = [];
+	var HP_values = [];
 	for(var Level=35; Level>=1; Level -= 1) {
 
-		contador_CP_values = 0;
-		var CP_values = [];
-
-		for (var i = max_IV; i >= min_IV; i--) {
-			for (var j = max_IV; j >= min_IV; j--) {
-				for (var k = max_IV; k >= min_IV; k--) {
+		for (var i = max_IV; i >= min_IV_Atk; i--) {
+			for (var j = max_IV; j >= min_IV_Def; j--) {
+				for (var k = max_IV; k >= min_IV_HP; k--) {
 
 					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
 
 					if ( condicion_CP_Search_filter == 1) {
 						CP_values[contador_CP_values] = CP_Formula(Pokemon_CP_Search,[i, j, k],Level);
+						HP_values[contador_CP_values] = Get_HP(Pokemon_CP_Search,[i, j, k],Level);
 						contador_CP_values++;
 					}
-
 				}
-			}
-		}
-
-		for (var i = 0; i < CP_values.length; i++) {
-			for (var j = i+1; j < CP_values.length; j++) {
-				var temp;
-				if ( CP_values[i] < CP_values[j] ) {
-					CP_values[i] = CP_values[i];
-				}
-				else {
-					temp = CP_values[i];
-					CP_values[i] = CP_values[j];
-					CP_values[j] = temp;
-				}
-			}
-		}
-
-		if (Level != 1) {
-			if (CP_values[0] == CP_values[CP_values.length - 1]) {
-				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[0] + "," );
-			}
-			else {
-				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[CP_values.length - 1] + "-" + CP_values[0] + "," );
-			}
-		}
-		else {
-			if (CP_values[0] == CP_values[CP_values.length - 1]) {
-				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[0] + "&" );
-			}
-			else {
-				$( "#Output_CP_Search_2" ).append( CP_String + CP_values[CP_values.length - 1] + "-" + CP_values[0] + "&" );
 			}
 		}
 	}
 
-	for(var Level=35; Level>=1; Level -= 1) {
+	CP_values.sort(function(a, b) {
+			return parseFloat(b) - parseFloat(a);
+	});
 
-		contador_HP_values = 0;
-		var HP_values = [];
+	HP_values.sort(function(a, b) {
+			return parseFloat(b) - parseFloat(a);
+	});
 
-		for (var i = max_IV; i >= min_IV; i--) {
-			for (var j = max_IV; j >= min_IV; j--) {
-				for (var k = max_IV; k >= min_IV; k--) {
+	CP_values_norepeated = [];
+	CP_values_norepeated = Stat_values_filter_norepeated(CP_values);
 
-					var condicion_CP_Search_filter = Get_CP_Check_Filter((document.getElementById("CP_Search_IVs_Filter").value), i, j, k, max_IV_Atk, max_IV_Def, max_IV_HP, total_IVs);
 
-					if ( condicion_CP_Search_filter == 1) {
-						HP_values[contador_HP_values] = Get_HP(Pokemon_CP_Search,[i, j, k],Level);
-						contador_HP_values++;
-					}
+	HP_values_norepeated = [];
+	HP_values_norepeated = Stat_values_filter_norepeated(HP_values);
 
-				}
+	var cp_min = CP_values_norepeated[0];
+	var cp_max = CP_values_norepeated[0];
+	for (var i = 1; i < CP_values_norepeated.length; i++) {
+
+		if (CP_values_norepeated[i-1] - CP_values_norepeated[i] == 1) {
+			cp_min = CP_values_norepeated[i];
+		}
+		if (CP_values_norepeated[i-1] - CP_values_norepeated[i] > 1) {
+			if (cp_max == cp_min) {
+				$( "#Output_CP_Search_2" ).append( CP_String + cp_min + ",");
 			}
-		}
-
-		for (var i = 0; i < HP_values.length; i++) {
-			for (var j = i+1; j < HP_values.length; j++) {
-				var temp;
-				if ( HP_values[i] < HP_values[j] ) {
-					HP_values[i] = HP_values[i];
-				}
-				else {
-					temp = HP_values[i];
-					HP_values[i] = HP_values[j];
-					HP_values[j] = temp;
-				}
+			else {
+				$( "#Output_CP_Search_2" ).append( CP_String + cp_max + "-" + cp_min + ",");
 			}
-		}
-
-		if (HP_values[0] == HP_values[HP_values.length - 1]) {
-			$( "#Output_CP_Search_2" ).append( HP_String + HP_values[0] + "," );
-		}
-		else {
-			$( "#Output_CP_Search_2" ).append( HP_String + HP_values[HP_values.length - 1] + "-" + HP_values[0] + "," );
+			cp_min = CP_values_norepeated[i];
+			cp_max = CP_values_norepeated[i];
 		}
 	}
+	if (CP_values_norepeated[CP_values_norepeated.length-2] - CP_values_norepeated[CP_values_norepeated.length - 1] > 1) {
+		$( "#Output_CP_Search_2" ).append( CP_String + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&");
+	}
+	else {
+		$( "#Output_CP_Search_2" ).append( CP_String + CP_values_norepeated[CP_values_norepeated.length - 2] + "-" + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&");
+	}
+
+	var hp_min = HP_values_norepeated[0];
+	var hp_max = HP_values_norepeated[0];
+	for (var i = 1; i < HP_values_norepeated.length; i++) {
+
+		if (HP_values_norepeated[i-1] - HP_values_norepeated[i] == 1) {
+			hp_min = HP_values_norepeated[i];
+		}
+		if (HP_values_norepeated[i-1] - HP_values_norepeated[i] > 1) {
+			if (hp_max == hp_min) {
+				$( "#Output_CP_Search_2" ).append( HP_String + hp_min + ",");
+			}
+			else {
+				$( "#Output_CP_Search_2" ).append( HP_String + hp_max + "-" + hp_min + ",");
+			}
+			hp_min = HP_values_norepeated[i];
+			hp_max = HP_values_norepeated[i];
+		}
+	}
+	if (HP_values_norepeated[HP_values_norepeated.length-2] - HP_values_norepeated[HP_values_norepeated.length - 1] > 1) {
+		$( "#Output_CP_Search_2" ).append( HP_String + HP_values_norepeated[HP_values_norepeated.length - 1]);
+	}
+	else {
+		$( "#Output_CP_Search_2" ).append( HP_String + HP_values_norepeated[HP_values_norepeated.length - 2] + "-" + HP_values_norepeated[HP_values_norepeated.length - 1]);
+	}
+	/*== Get the search code ==*/
 	/*== Set output ==*/
 }
 
@@ -479,12 +580,10 @@ function check_filter(filter_value,PVP_Stats_array){
 	return rows_checked_filter
 }
 
-
-
 function Get_PVP_Stats(csv_mode) {
 
 	/*==== Set variables 1/2 ====*/
-	var code_filter = 0.95; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
+	var code_filter = 0.9; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
 	var display_filter = 0.75; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -773,111 +872,89 @@ function Get_PVP_Stats(csv_mode) {
 			}
 			/*== Get the Pokemon's name ==*/
 
+
+			contador_CP_values_PVP = 0;
+			var CP_values_PVP = [];
+			var HP_values_PVP = [];
+
 			for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
-				/*==== Get maximun and minimum CP for each level ====*/
-				max_CP = 0;
-				max_CP_Basic = 0;
 				for (var i = 0; i <= rows_checked_code_filter; i++) {
-					if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_CP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
+					if ((CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
 						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-							max_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-						}
-						max_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-					}
-				}
-
-				min_CP = max_CP;
-				min_CP_Basic = max_CP_Basic;
-				for (var i = 0; i <= rows_checked_code_filter; i++) {
-					if (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_CP) {
-						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-							min_CP_Basic = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-						}
-						min_CP = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-					}
-				}
-
-				if (Level != 1) {
-					if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-						if (min_CP_Basic == max_CP_Basic) {
-							PVP_Code += CP_String + min_CP_Basic + ",";
+							CP_values_PVP[contador_CP_values_PVP] = CP_Formula(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+							HP_values_PVP[contador_CP_values_PVP] = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
 						}
 						else {
-							PVP_Code += CP_String + max_CP_Basic + "-" + min_CP_Basic + ",";
+							CP_values_PVP[contador_CP_values_PVP] = CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+							HP_values_PVP[contador_CP_values_PVP] = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
 						}
-					}
-					else {
-						if (min_CP == max_CP) {
-							PVP_Code += CP_String + min_CP + ",";
-						}
-						else {
-							PVP_Code += CP_String + max_CP + "-" + min_CP + ",";
-						}
+						contador_CP_values_PVP++;
 					}
 				}
-				else {
-					if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-						if (min_CP_Basic == max_CP_Basic) {
-							PVP_Code += CP_String + min_CP_Basic;
-						}
-						else {
-							PVP_Code += CP_String + max_CP_Basic + "-" + min_CP_Basic + "&";
-						}
-					}
-					else {
-						if (min_CP == max_CP) {
-							PVP_Code += CP_String + min_CP;
-						}
-						else {
-							PVP_Code += CP_String + max_CP + "-" + min_CP + "&";
-						}
-					}
-
-				}
-				/*== Get maximun and minimum CP for each level ==*/
 			}
 
-			for(var Level=Math.trunc(max_Level); Level>=1; Level -= 1) {
-				/*==== Get maximun and minimum HP for each level ====*/
-				max_HP = 0;
-				max_HP_Basic = 0;
-				for (var i = 0; i <= rows_checked_code_filter; i++) {
-					if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) > max_HP && (CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) <= League_CP_Limit || League_CP_Limit == null)) {
-						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-							max_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-						}
-						max_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
+			CP_values_PVP.sort(function(a, b) {
+			    return parseFloat(b) - parseFloat(a);
+			});
 
-					}
-				}
-				min_HP = max_HP;
-				min_HP_Basic = max_HP_Basic;
-				for (var i = 0; i <= rows_checked_code_filter; i++) {
-					if (Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level) < min_HP) {
-						if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-							min_HP_Basic = Get_HP(Pokemon_PVP_Stats_Basic_evolution,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-						}
-						min_HP = Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Level);
-					}
-				}
+			HP_values_PVP.sort(function(a, b) {
+			    return parseFloat(b) - parseFloat(a);
+			});
 
-				if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-					if (min_HP_Basic == max_HP_Basic) {
-						PVP_Code += HP_String + min_HP_Basic + ",";
-					}
-					else {
-						PVP_Code += HP_String + max_HP_Basic + "-" + min_HP_Basic + ",";
-					}
-				}
-				else {
-					if (min_HP == max_HP) {
-						PVP_Code += HP_String + min_HP + "," ;
-					}
-					else {
-						PVP_Code += HP_String + max_HP + "-" + min_HP + ",";
-					}
-				}
-				/*== Get maximun and minimum HP for each level ==*/
+			CP_values_PVP_norepeated = [];
+			CP_values_PVP_norepeated = Stat_values_filter_norepeated(CP_values_PVP);
+
+			HP_values_PVP_norepeated = [];
+			HP_values_PVP_norepeated = Stat_values_filter_norepeated(HP_values_PVP);
+
+			var cp_min = CP_values_PVP_norepeated[0];
+			var cp_max = CP_values_PVP_norepeated[0];
+			for (var i = 1; i < CP_values_PVP_norepeated.length; i++) {
+
+			  if (CP_values_PVP_norepeated[i-1] - CP_values_PVP_norepeated[i] == 1) {
+			    cp_min = CP_values_PVP_norepeated[i];
+			  }
+			  if (CP_values_PVP_norepeated[i-1] - CP_values_PVP_norepeated[i] > 1) {
+			    if (cp_max == cp_min) {
+			      PVP_Code += ( CP_String + cp_min + ",");
+			    }
+			    else {
+			      PVP_Code += ( CP_String + cp_max + "-" + cp_min + ",");
+			    }
+			    cp_min = CP_values_PVP_norepeated[i];
+			    cp_max = CP_values_PVP_norepeated[i];
+			  }
+			}
+			if (CP_values_PVP_norepeated[CP_values_PVP_norepeated.length-2] - CP_values_PVP_norepeated[CP_values_PVP_norepeated.length - 1] > 1) {
+			  PVP_Code += ( CP_String + CP_values_PVP_norepeated[CP_values_PVP_norepeated.length - 1]  + "&");
+			}
+			else {
+			  PVP_Code += ( CP_String + CP_values_PVP_norepeated[CP_values_PVP_norepeated.length - 2] + "-" + CP_values_PVP_norepeated[CP_values_PVP_norepeated.length - 1]  + "&");
+			}
+
+			var hp_min = HP_values_PVP_norepeated[0];
+			var hp_max = HP_values_PVP_norepeated[0];
+			for (var i = 1; i < HP_values_PVP_norepeated.length; i++) {
+
+			  if (HP_values_PVP_norepeated[i-1] - HP_values_PVP_norepeated[i] == 1) {
+			    hp_min = HP_values_PVP_norepeated[i];
+			  }
+			  if (HP_values_PVP_norepeated[i-1] - HP_values_PVP_norepeated[i] > 1) {
+			    if (hp_max == hp_min) {
+			      PVP_Code += ( HP_String + hp_min + ",");
+			    }
+			    else {
+			      PVP_Code += ( HP_String + hp_max + "-" + hp_min + ",");
+			    }
+			    hp_min = HP_values_PVP_norepeated[i];
+			    hp_max = HP_values_PVP_norepeated[i];
+			  }
+			}
+			if (HP_values_PVP_norepeated[HP_values_PVP_norepeated.length-2] - HP_values_PVP_norepeated[HP_values_PVP_norepeated.length - 1] > 1) {
+			  PVP_Code += ( HP_String + HP_values_PVP_norepeated[HP_values_PVP_norepeated.length - 1]);
+			}
+			else {
+			  PVP_Code += ( HP_String + HP_values_PVP_norepeated[HP_values_PVP_norepeated.length - 2] + "-" + HP_values_PVP_norepeated[HP_values_PVP_norepeated.length - 1]);
 			}
 			/*== Get the search code ==*/
 
