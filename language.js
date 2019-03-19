@@ -42,6 +42,8 @@ function language(){
     $(".STRING_PVP_STATS_CSV").html("Estadísticas PVP CSV");
     $(".STRING_INCLUDED_POKEMON").html("Pokémon incluidos");
 
+    $(".STRING_PVP_SIMULATOR").html("Simulador PVP (Alpha)");
+
     $(".STRING_INFORMATION").html("Información");
 
     $(".STRING_TEAM").html("Equipo");

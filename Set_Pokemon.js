@@ -8,7 +8,7 @@ var example = {
 var bulbasaur = {
     Stats      : [118, 111, 128],
     Evolutions : ["ivysaur", "venusaur"],
-    Basic_evolution : "bulbasaur"
+    Basic_evolution : "bulbasaur",
 };
 var ivysaur = {
     Stats      : [151, 143, 155],
@@ -34,7 +34,10 @@ var charmeleon = {
 var charizard = {
     Stats      : [223, 173, 186],
     Evolutions : null,
-    Basic_evolution : "charmander"
+    Basic_evolution : "charmander",
+    Element : ["Fire", "Flying"],
+    Fast_moves : ["Fire Spin", "Air Slash", "Ember", "Wing Attack"],
+    Charged_moves : ["Blast Burn", "Dragon Claw", "Fire Blast", "Flamethrower", "Overheat"]
 };
 
 var squirtle = {
@@ -2071,7 +2074,10 @@ var swablu = {
 var altaria = {
     Stats      : [141, 201, 181],
     Evolutions : null,
-    Basic_evolution : "swablu"
+    Basic_evolution : "swablu",
+    Element : ["Dragon", "Flying"],
+    Fast_moves : ["Dragon Breath", "Peck"],
+    Charged_moves : ["Dazzling Gleam", "Dragon Pulse", "Sky Attack"]
 };
 
 var zangoose = {
@@ -2244,7 +2250,10 @@ var spheal = {
 var sealeo = {
     Stats      : [137, 132, 207],
     Evolutions : ["walrein"],
-    Basic_evolution : "spheal"
+    Basic_evolution : "spheal",
+    Element : ["Ice", "Water"],
+    Fast_moves : ["Powder Snow", "Water Gun"],
+    Charged_moves : ["Aurora Beam", "Body Slam", "Water Pulse"]
 };
 var walrein = {
     Stats      : [182, 176, 242],
