@@ -55,10 +55,10 @@ input::-webkit-inner-spin-button {
 	position: relative;
 	box-sizing: border-box;
 	width: 630px;
-	min-height: 55px;
-	max-height: 55px;
+	min-height: 65px;
+	max-height: 65px;
 	margin: 0 auto;
-	line-height: 25px;
+	line-height: 24px;
 
 }
 
@@ -68,8 +68,8 @@ input::-webkit-inner-spin-button {
 	width: 33.33%;
 	box-sizing: border-box;
 	padding: 0 10px;
-	min-height: 65px;
-	max-height: 65px;
+	min-height: 70px;
+	max-height: 70px;
 	margin: 0;
 }
 
