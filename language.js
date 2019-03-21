@@ -36,6 +36,7 @@ function language(){
     $(".STRING_PERFECT_CP_SEARCH").html("Códigos de busqueda");
     $(".STRING_IVS_FILTER").html("Filtro IVs");
 
+    $(".STRING_PVP_MOVES").html("Movimientos PVP (beta)");
     $(".STRING_PVP_STATS").html("Estadísticas PVP");
     $(".STRING_LEAGUE").html("Liga");
     $(".STRING_SELECT_TEXT").html("Seleccionar texto");
