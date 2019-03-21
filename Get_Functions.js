@@ -621,7 +621,7 @@ function Get_PVP_Stats(csv_mode) {
 		/*== Set PVP League ==*/
 
 		/*==== Set PVP Pokemon ====*/
-		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_CP").value);
+		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_PVP").value);
 		total_number_pokemon = 1;
 		/*== Set PVP Pokemon ==*/
 		/*== Set variables 2/2 ==*/
@@ -1578,7 +1578,7 @@ function Get_PVP_Simulator() {
 	/*==== Configuration of the simulation ====*/
 	HP_1 = Pokemon_PVP1_Stats[2];
 	HP_2 = Pokemon_PVP2_Stats[2];
-	
+
 	Energy_1 = 0;
 	Energy_2 = 0;
 
