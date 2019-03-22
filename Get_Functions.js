@@ -1488,6 +1488,13 @@ function effectiveness_multiplier(attacker_attack_element,defender_element) {
 			}
 		}
 	}
+	if (attacker_attack_element == "Ice") {
+		for (var i = 0; i < defender_element.length; i++) {
+			if (defender_element[i] == "Dragon" || defender_element[i] == "Grass" || defender_element[i] == "Ground" || defender_element[i] == "Flying") {
+				effectiveness_multiplier_value = effectiveness_multiplier_value * 1.6;
+			}
+		}
+	}
 	return effectiveness_multiplier_value
 }
 
@@ -1509,50 +1516,57 @@ function effectiveness_multiplier(attacker_attack_element,defender_element) {
 
 
 
-function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,charged1_move1,charged1_move2,charged2_move1,charged2_move2,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats) {
+function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,charged1_move1,charged1_move2,charged2_move1,charged2_move2,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats,verbose) {
+
 	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br><b>Inputs simulación</b>");
+	if (verbose == 1) {
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Pokemon 1: " + Pokemon_Name_PVP1);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• IVs 1: " + IV_PVP_1);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP 1: " + HP_1);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Energía 1: " + Energy_1);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento rápido 1: " + Pokemon_PVP1["Fast_moves"][fast_move1]);
+	}
+		if (charged1_move1 == null) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + charged1_move1);
+		}
+		else {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + Pokemon_PVP1["Charged_moves"][charged1_move1]);
+		}
+		if (charged2_move1 == null) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + charged2_move1);
+		}
+		else {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + Pokemon_PVP1["Charged_moves"][charged2_move1]);
+		}
 
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Pokemon 1: " + Pokemon_Name_PVP1);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• IVs 1: " + IV_PVP_1);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP 1: " + HP_1);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Energía 1: " + Energy_1);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento rápido 1: " + Pokemon_PVP1["Fast_moves"][fast_move1]);
-	if (charged1_move1 == null) {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + charged1_move1);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Escudos 1: " + shields1);
+	if (verbose == 1) {
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Pokemon 2: " + Pokemon_Name_PVP2);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• IVs 2: " + IV_PVP_2);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP 2: " + HP_2);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Energía 2: " + Energy_2);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento rápido 2: " + Pokemon_PVP2["Fast_moves"][fast_move2]);
 	}
-	else {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + Pokemon_PVP1["Charged_moves"][charged1_move1]);
-	}
-	if (charged2_move1 == null) {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + charged2_move1);
-	}
-	else {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + Pokemon_PVP1["Charged_moves"][charged2_move1]);
-	}
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Escudos 1: " + shields1);
+		if (charged1_move2 == null) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + charged1_move2);
+		}
+		else {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + Pokemon_PVP2["Charged_moves"][charged1_move2]);
+		}
+		if (charged2_move2 == null) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + charged2_move2);
+		}
+		else {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + Pokemon_PVP2["Charged_moves"][charged2_move2]);
+		}
 
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Pokemon 2: " + Pokemon_Name_PVP2);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• IVs 2: " + IV_PVP_2);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP 2: " + HP_2);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Energía 2: " + Energy_2);
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento rápido 2: " + Pokemon_PVP2["Fast_moves"][fast_move2]);
-	if (charged1_move2 == null) {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + charged1_move2);
-	}
-	else {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 1: " + Pokemon_PVP2["Charged_moves"][charged1_move2]);
-	}
-	if (charged2_move2 == null) {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + charged2_move2);
-	}
-	else {
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Movimiento cargado 2: " + Pokemon_PVP2["Charged_moves"][charged2_move2]);
-	}
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Escudos 2: " + shields2);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Escudos 2: " + shields2);
+	if (verbose == 1) {
 
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>---------<br><b>Simulacion</b></div>");
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
+	}
 
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>---------<br><b>Simulacion</b></div>");
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
 
 	Move_skipturns1 = 0;
 	Move_skipturns2 = 0;
@@ -1572,11 +1586,27 @@ function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,En
 
 	var charged_move2_pending = 0;
 
+	var allow_fast_move_1 = 1;
+
 	for (var turn = 0; turn < battle_turns; turn++) {
 
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Turno " + turn + "");
+		real_condicion_test = true;
+		condicion_test = (Move_skipturns1 == 0 && Move_skipturns2 == 0 && shields2 == 0 && (move_turns1[fast_move1] <= move_turns2[fast_move2]) && (charged1_move1 != null && Energy_1 >= move_charged_energy1[charged1_move1] || charged2_move1 != null && Energy_1 >= move_charged_energy1[charged2_move1]) && (charged2_move2 != null && Energy_2 < move_charged_energy2[charged2_move2]) );
+		if (condicion_test == true) {
+			real_condicion_test = false;
+		}
 
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
+		real_condicion_test2 = true;
+		condicion_test2 = (Move_skipturns1 == 0 && Move_skipturns2 == 0 && shields1 == 0 && (move_turns2[fast_move2] <= move_turns1[fast_move1]) && (charged1_move2 != null && Energy_2 >= move_charged_energy2[charged1_move2] || charged2_move2 != null && Energy_2 >= move_charged_energy2[charged2_move2]) && (charged2_move1 != null && Energy_1 < move_charged_energy1[charged2_move1]) );
+		if (condicion_test2 == true) {
+			real_condicion_test2 = false;
+		}
+
+		if (verbose == 1) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Turno " + turn + ", " + Move_skipturns1 + ", " + Move_skipturns2 + ", " + (move_charged_energy2[charged2_move2] <= null) );
+
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
+		}
 
 		//Pokemon 1
 		var charged_move_used1 = null;
@@ -1588,161 +1618,150 @@ function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,En
 		var use_charged_move2 = 0;
 		var shield_used2 = null;
 
+		/*==== CHARGED ATTACK 1-1 ====*/
+		if (Move_skipturns1 == 0 && charged1_move1 != null && Energy_1 >= move_charged_energy1[charged1_move1] && real_condicion_test == true) {
+
+			use_charged_move1 = 1;
+
+			time += time_charged_move;
+			turn = turn + 14;
+
+			if (verbose == 1) {
+				$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso " + moves_charged1[charged1_move1]);
+			}
+
+			if (shields2 > 0) {
+				HP_2 --;
+				shields2--;
+				if (verbose == 1) {
+					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
+				}
+			}
+			else {
+				HP_2 -= damage_charged1[charged1_move1];
+			}
+			Energy_1 -= move_charged_energy1[charged1_move1];
+		}
+		/*== CHARGED ATTACK 1-1 ==*/
+
+		/*==== CHARGED ATTACK 2-1 ====*/
+		else if (Move_skipturns1 == 0 && charged2_move1 != null && Energy_1 >= move_charged_energy1[charged2_move1] && (   (HP_2 - damage_charged1[charged2_move1] <= 0) || (shields2 > 0) ||  ( Move_skipturns2 <= 1 && ( ( charged1_move2 != null && Energy_2 >= move_charged_energy2[charged1_move2] && (HP_1 - damage_charged2[charged1_move2] <= 0)  ) || ( charged2_move2 != null && Energy_2 >= move_charged_energy2[charged2_move2] && (HP_1 - damage_charged2[charged2_move2] <= 0) ) || (HP_1 - damage_fast2[fast_move2] <= 0)              )    )    )     && real_condicion_test == true        ) {
+
+			use_charged_move1 = 1;
+
+			time += time_charged_move;
+			turn = turn + 14;
+
+			if (verbose == 1) {
+				$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso " + moves_charged1[charged2_move1]);
+			}
+
+			if (shields2 > 0) {
+				HP_2 --;
+				shields2--;
+				shield_used2 = 1;
+				if (verbose == 1) {
+					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
+				}
+			}
+			else {
+				HP_2 -= damage_charged1[charged2_move1];
+			}
+			Energy_1 -= move_charged_energy1[charged2_move1];
+		}
+		/*== CHARGED ATTACK 2-1 ==*/
+
 		/*==== FAST ATTACK 1 ====*/
-		if (Move_skipturns1 == 0 && willuse_charged_move1 == 0 && charged_move2_pending == 0) {
+		else if (Move_skipturns1 == 0) {
+
 			HP_2 -= damage_fast1[fast_move1];
 			Energy_1 += move_fast_energy1[fast_move1]; if (Energy_1 > 100) {Energy_1 = 100;}
-			Move_skipturns1 = move_turns1[fast_move1];
+			Move_skipturns1 = move_turns1[fast_move1] - 1;
+
 		}
-		/*==== FAST ATTACK 1 ====*/
-
-		/*==== FAST ATTACK 2 ====*/
-		if (Move_skipturns2 == 0 && willuse_charged_move2 == 0) {
-			HP_1 -= damage_fast2[fast_move2];
-			Energy_2 += move_fast_energy2[fast_move2]; if (Energy_2 > 100) {Energy_2 = 100;}
-			Move_skipturns2 = move_turns2[fast_move2];
-		}
-		/*== FAST ATTACK 2 ==*/
-
-
-		if (Move_skipturns1 == 0 && willuse_charged_move1 == 1) {
-
-			/*==== CHARGED ATTACK 1-1 ====*/
-			if (charged1_move1 != null && charged_move_used1 == null) {
-				if (Energy_1 >= move_charged_energy1[charged1_move1]) {
-					use_charged_move1 = 1;
-					willuse_charged_move1 = 0;
-					time += time_charged_move;
-					turn = turn + 14;
-
-					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso " + moves_charged1[charged1_move1]);
-
-
-
-					if (shields2 > 0) {
-						HP_2 --;
-						shields2--;
-						shield_used2 = 1;
-						$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
-					}
-					else {
-						HP_2 -= damage_charged1[charged1_move1];
-					}
-					Energy_1 -= move_charged_energy1[charged1_move1];
-					charged_move_used1 = moves_charged1[charged1_move1];
-
-					Move_skipturns1 = 0;
-					if (HP_2 > 0) {
-						Move_skipturns2 = 0;
-					}
-
-				}
-			}
-			/*== CHARGED ATTACK 1-1 ==*/
-
-			/*==== CHARGED ATTACK 2-1 ====*/
-			if ((charged2_move1 != null) && (charged_move_used1 == null)) {
-				if (Energy_1 >= move_charged_energy1[charged2_move1]) {
-					use_charged_move1 = 1;
-					willuse_charged_move1 = 0;
-					time += time_charged_move;
-					turn = turn + 14;
-
-					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso " + moves_charged1[charged2_move1]);
-
-					if (shields2 > 0) {
-						HP_2 --;
-						shields2--;
-						shield_used2 = 1;
-						$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
-					}
-					else {
-						HP_2 -= damage_charged1[charged2_move1];
-					}
-					Energy_1 -= move_charged_energy1[charged2_move1];
-					charged_move_used1 = moves_charged1[charged2_move1];
-
-					Move_skipturns1 = 0;
-					if (HP_2 > 0) {
-						Move_skipturns2 = 0;
-					}
-				}
-			}
-			/*== CHARGED ATTACK 2-1 ==*/
-		}
-
-		if (Move_skipturns2 == 0 && willuse_charged_move2 == 1 && use_charged_move1 == 1) {
-			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) tiene pendiente un cargado");
-			charged_move2_pending = 1;
-		}
-
-
-
-		if (Move_skipturns2 == 0 && willuse_charged_move2 == 1 && use_charged_move1 == 0) {
-			charged_move2_pending = 0;
-
-			if (charged1_move2 != null && charged_move_used2 == null) {
-			  if (Energy_2 >= move_charged_energy2[charged1_move2]) {
-			    use_charged_move2 = 1;
-					willuse_charged_move2 = 0;
-					time += time_charged_move;
-					turn = turn + 14;
-
-					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + "(2) uso " + moves_charged2[charged1_move1]);
-
-					if (shields1 > 0) {
-						HP_1 --;
-						shields1--;
-						shield_used1 = 1;
-						$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso un escudo");
-					}
-					else {
-						HP_1 -= damage_charged2[charged1_move2];
-					}
-					Energy_2 -= move_charged_energy2[charged1_move2];
-			    charged_move_used2 = moves_charged2[charged1_move2];
-
-					if (HP_1 > 0) {
-					  Move_skipturns1 = 0;
-					}
-					Move_skipturns2 = 0;
-			  }
-			}
-
-			if (charged2_move2 != null && charged_move_used2 == null) {
-			  if (Energy_2 >= move_charged_energy2[charged2_move2]) {
-			    use_charged_move2 = 1;
-					willuse_charged_move2 = 0;
-					time += time_charged_move;
-					turn = turn + 14;
-
-					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + "(2) uso " + moves_charged2[charged2_move1]);
-
-					if (shields1 > 0) {
-						HP_1 --;
-						shields1--;
-						shield_used1 = 1;
-						$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) uso un escudo");
-					}
-					else {
-						HP_1 -= damage_charged2[charged2_move2];
-					}
-			    Energy_2 -= move_charged_energy2[charged2_move2];
-			    charged_move_used2 = moves_charged2[charged2_move2];
-
-					if (HP_1 > 0) {
-					  Move_skipturns1 = 0;
-					}
-					Move_skipturns2 = 0;
-			  }
-			}
-		}
-
-		if (Move_skipturns1 != 0){
+		/*== FAST ATTACK 1 ==*/
+		else {
 			Move_skipturns1--;
 		}
-		if (Move_skipturns2 != 0){
+
+
+		/*==== CHARGED ATTACK 1-2 ====*/
+		if (Move_skipturns2 == 0 && charged1_move2 != null && Energy_2 >= move_charged_energy2[charged1_move2] && real_condicion_test2 == true) {
+
+			use_charged_move2 = 1;
+
+			time += time_charged_move;
+			turn = turn + 14;
+
+			if (verbose == 1) {
+				$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso " + moves_charged2[charged1_move2]);
+			}
+
+			if (shields1 > 0) {
+				HP_1 --;
+				shields1--;
+				if (verbose == 1) {
+					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
+				}
+			}
+			else {
+				HP_1 -= damage_charged2[charged1_move2];
+			}
+			Energy_2 -= move_charged_energy2[charged1_move2];
+		}
+		/*==== CHARGED ATTACK 1-2 ====*/
+		else if ( Move_skipturns2 == 0 && charged2_move2 != null && Energy_2 >= move_charged_energy2[charged2_move2] && ( (HP_1 - damage_charged2[charged2_move2] <= 0) || (shields1 > 0) || (( Move_skipturns1 <= 1 && ( ( charged1_move1 != null && Energy_1 >= move_charged_energy1[charged1_move1] && (HP_2 - damage_charged1[charged1_move1] <= 0)  ) || ( charged2_move1 != null && Energy_1 >= move_charged_energy1[charged2_move1] && (HP_2 - damage_charged1[charged2_move1] <= 0) ) || (HP_2 - damage_fast1[fast_move1] <= 0)              )    ))  )   && real_condicion_test2 == true ) {
+
+			use_charged_move2 = 1;
+
+			time += time_charged_move;
+			turn = turn + 14;
+
+			if (verbose == 1) {
+				$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso " + moves_charged2[charged2_move2]);
+			}
+
+			if (shields1 > 0) {
+				HP_1 --;
+				shields1--;
+				if (verbose == 1) {
+					$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) uso un escudo");
+				}
+			}
+			else {
+				HP_1 -= damage_charged2[charged2_move2];
+			}
+			Energy_2 -= move_charged_energy2[charged2_move2];
+		}
+
+		/*==== FAST ATTACK 2 ====*/
+		else if (Move_skipturns2 == 0) {
+			HP_1 -= damage_fast2[fast_move2];
+			Energy_2 += move_fast_energy2[fast_move2]; if (Energy_2 > 100) {Energy_2 = 100;}
+			Move_skipturns2 = move_turns2[fast_move2] - 1;
+		}
+		/*== FAST ATTACK 2 ==*/
+		else {
 			Move_skipturns2--;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if (use_charged_move1 == 1 || use_charged_move2 == 1) {
+			Move_skipturns1 = 0;
+			Move_skipturns2 = 0;
 		}
 
 
@@ -1767,27 +1786,16 @@ function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,En
 		old_HP1 = HP_1;
 		old_HP2 = HP_2;
 
-		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
+		if (verbose == 1) {
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• HP: " + HP_1 + ", " + HP_2 + ", Energía: " + Energy_1 + ", " + Energy_2);
+		}
 
-		if ( ( (charged1_move1 != null && Energy_1 >= move_charged_energy1[charged1_move1]) || (charged2_move1 != null && Energy_1 >= move_charged_energy1[charged2_move1] && ( (shields2 > 0) || (HP_2 - damage_charged1[charged2_move1] <= 0) || (HP_1 - damage_fast2[fast_move2] <= 0) || (Energy_2 >= move_charged_energy2[charged1_move2] && (Move_skipturns2 == 0) && (shields1 == 0) && (HP_1 - damage_charged2[charged1_move2] <= 0)) || (Energy_2 >= move_charged_energy2[charged2_move2] && (Move_skipturns2 == 0) && (shields1 == 0) && (HP_1 - damage_charged2[charged2_move2] <= 0)) ) ) )  ) {
-			willuse_charged_move1 = 1;
-			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP1 + " (1) puede lanzar un cargado. Turnos de espera " + Move_skipturns1);
-		}
-		if ( ( (charged1_move2 != null && Energy_2 >= move_charged_energy2[charged1_move2]) || (charged2_move2 != null && Energy_2 >= move_charged_energy2[charged2_move2] && ( (shields1 > 0) || (HP_1 - damage_charged2[charged2_move2] <= 0) || (HP_2 - damage_fast1[fast_move1] <= 0) || (Energy_1 >= move_charged_energy1[charged1_move1] && (Move_skipturns1 == 0) && (shields2 == 0) && (HP_2 - damage_charged1[charged1_move1] <= 0)) || (Energy_1 >= move_charged_energy1[charged2_move1] && (Move_skipturns1 == 0) && (shields2 == 0) && (HP_2 - damage_charged1[charged2_move1] <= 0)) ) ) ) ) {
-			willuse_charged_move2 = 1;
-			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>- " + Pokemon_Name_PVP2 + " (2) puede lanzar un cargado. Turnos de espera "  + Move_skipturns2);
-		}
+
 
 
 		time += time_turn;
 		/*==== if one of the Pokemon has fainted then end the battle ====*/
-		if ((HP_1 != 0 && HP_2 == 0 && charged_move2_pending == 1)) {
-
-		}
-		else if ((HP_1 == 0 && HP_2 != 0 && charged_move2_pending == 1)) {
-			break;
-		}
-		else if ((HP_1 == 0 || HP_2 == 0)) {
+		if ((HP_1 == 0 || HP_2 == 0)) {
 			break;
 		}
 
@@ -1796,11 +1804,13 @@ function PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,En
 
 
 	}
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Turnos simulación: " + turn + " (" + time + " segundos)" + (2+turn)*0.5);
 	var battle_rating1 = (500.0 * damage_dealt1 / Pokemon_PVP2_Stats[2]) + (500.0 * HP_1 / Pokemon_PVP1_Stats[2]);
 	var battle_rating2 = (500.0 * damage_dealt2 / Pokemon_PVP1_Stats[2]) + (500.0 * HP_2 / Pokemon_PVP2_Stats[2]);
 
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Battle rating: " + Math.trunc(battle_rating1) + ", " + Math.trunc(battle_rating2));
+	if (verbose == 1) {
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Turnos simulación: " + turn + " (" + time + " segundos)" + (2+turn)*0.5);
+		$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br><br>Battle rating: " + Math.trunc(battle_rating1) + ", " + Math.trunc(battle_rating2));
+	}
 
 	return battle_rating1
 }
@@ -1891,7 +1901,23 @@ function Get_PVP_Simulator() {
 	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Daño cargados: " + damage_charged2);
 	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>• Energía cargados: " + move_charged_energy2);
 
+	var a_00 = 0.13;
+	var a_11 = 0.14;
+	var a_22 = 0.12;
+
+	var a_01 = 0.11;
+	var a_02 = 0.12;
+	var a_12 = 0.11;
+
+	var a_10 = 0.10;
+	var a_21 = 0.10;
+	var a_20 = 0.07;
+
+
+
 	/*==== Configuration of the simulation ====*/
+	verbose = 1;
+
 	HP_1 = Pokemon_PVP1_Stats[2];
 	HP_2 = Pokemon_PVP2_Stats[2];
 
@@ -1901,27 +1927,130 @@ function Get_PVP_Simulator() {
 	var fast_move1 = 1;
 	var fast_move2 = 0;
 
+	var battle_rating_total = [];
+
+	var simulate_multiple_charged_moves = 0;
+
+	var simulate_multiple_shields = 1;
+
+	var shields1 = 1;
+	var shields2 = 0;
+
 	var charged1_move1 = 2;
 	var charged2_move1 = 1;
 	var charged1_move2 = 0;
 	var charged2_move2 = 1;
 
-	var shields1 = 1;
-	var shields2 = 2;
+	if (simulate_multiple_charged_moves == 0) {
+		/*==== Simular 1 combinación de cargados ====*/
+
+
+		var charged1_move1_use;
+		var charged2_move1_use;
+		var charged1_move2_use;
+		var charged2_move2_use;
+
+		if ((damage_charged1[charged1_move1]/move_charged_energy1[charged1_move1]) > (damage_charged1[charged2_move1]/move_charged_energy1[charged2_move1])) {
+			charged1_move1_use = charged1_move1;
+			charged2_move1_use = charged2_move1;
+		}
+		else {
+			charged1_move1_use = charged2_move1;
+			charged2_move1_use = charged1_move1;
+		}
+
+
+		if ((damage_charged2[charged1_move2]/move_charged_energy2[charged1_move2]) > (damage_charged2[charged2_move2]/move_charged_energy2[charged2_move2])) {
+			charged1_move2_use = charged1_move2;
+			charged2_move2_use = charged2_move2;
+		}
+		else {
+			charged1_move2_use = charged2_move2;
+			charged2_move2_use = charged1_move2;
+		}
+
+		if (simulate_multiple_shields == 0) {
+
+			battle_rating_total[0] = Math.trunc(PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,charged1_move1_use,charged1_move2_use,charged2_move1_use,charged2_move2_use,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats,verbose));
+
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Todos los battle rating: " + battle_rating_total);
+		}
+		else {
+			contador_battle_rating = 0;
+			for (var i = 0; i <= 2; i++) {
+				for (var j = 0; j <= 2; j++) {
+					battle_rating_total[contador_battle_rating] = Math.trunc(PVP_Simulator(i,j,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,charged1_move1_use,charged1_move2_use,charged2_move1_use,charged2_move2_use,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats,verbose));
+					contador_battle_rating++;
+				}
+			}
+			battle_rating_total_criterio = battle_rating_total[0] * a_00 + battle_rating_total[1] * a_01 + battle_rating_total[2] * a_02 + battle_rating_total[3] * a_10 + battle_rating_total[4] * a_11 + battle_rating_total[5] * a_12 + battle_rating_total[6] * a_20 + battle_rating_total[7] * a_21 + battle_rating_total[8] * a_22;
+
+			$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Todos los battle rating: " + battle_rating_total + "; " + battle_rating_total_criterio);
+		}
+
+
+
+		/*== Simular 1 combinación de cargados ==*/
+	}
+	if (simulate_multiple_charged_moves == 1) {
+		/*==== Simular multiples combinaciones de cargados para Pokemon 1 ====*/
+		for (var i = 0; i < Pokemon_PVP1["Charged_moves"].length; i++) {
+		    for (var j = i+1; j < Pokemon_PVP1["Charged_moves"].length; j++) {
+		      if (damage_charged1[i]/move_charged_energy1[i] > damage_charged1[j]/move_charged_energy1[j]) {
+
+		      }
+		      else {
+						temp1 = damage_charged1[i];
+		        damage_charged1[i] = damage_charged1[j];
+		        damage_charged1[j] = temp1;
+
+						temp2 = move_charged_energy1[i];
+		        move_charged_energy1[i] = move_charged_energy1[j];
+		        move_charged_energy1[j] = temp2;
+
+						temp3 = moves_charged1[i];
+		        moves_charged1[i] = moves_charged1[j];
+		        moves_charged1[j] = temp3;
+		      }
+		    }
+		}
+
+
+		for (var i = 0; i < Pokemon_PVP1["Charged_moves"].length - 1; i++) {
+			for (var j = i+1; j < Pokemon_PVP1["Charged_moves"].length; j++) {
+				if (simulate_multiple_shields == 0) {
+					contador_battle_rating = 0;
+					battle_rating_total[contador_battle_rating] = Math.trunc(PVP_Simulator(shields1,shields2,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,i,charged1_move2,j,charged2_move2,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats,verbose));
+					contador_battle_rating++;
+
+				}
+				battle_rating_total_criterio = battle_rating_total[0] * a_00 + battle_rating_total[1] * a_01 + battle_rating_total[2] * a_02 + battle_rating_total[3] * a_10 + battle_rating_total[4] * a_11 + battle_rating_total[5] * a_12 + battle_rating_total[6] * a_20 + battle_rating_total[7] * a_21 + battle_rating_total[8] * a_22;
+
+				$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Todos los battle rating: " + battle_rating_total);
+			}
+
+		}
+
+
+	}
+
+
+
+
+	//$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Todos fjdsfjkdsjhkf battle rating: " + damage_charged1 + ", " + move_charged_energy1 + ", " + moves_charged1);
+
+
+
 	/*== Configuration of the simulation ==*/
 
-	var battle_rating_total = [];
-	contador_battle_rating = 0;
-	for (var i = 0; i <= 2; i++) {
-		for (var j = 0; j <= 2; j++) {
-			battle_rating_total[contador_battle_rating] = Math.trunc(PVP_Simulator(i,j,IV_PVP_1,IV_PVP_2,HP_1,HP_2,Energy_1,Energy_2,fast_move1,fast_move2,charged1_move1,charged1_move2,charged2_move1,charged2_move2,damage_fast1,damage_fast2,move_turns1,move_turns2,move_fast_energy1,move_fast_energy2,damage_charged1,damage_charged2,move_charged_energy1,move_charged_energy2,Pokemon_Name_PVP1,Pokemon_Name_PVP2,Pokemon_PVP1,Pokemon_PVP2,moves_charged1,moves_charged2,Pokemon_PVP1_Stats,Pokemon_PVP2_Stats));
-			contador_battle_rating++;
-		}
-	}
-	$("#Output_PVP_Simulator").html($('#Output_PVP_Simulator').html() + "<br>Todos los battle rating: " + battle_rating_total);
 
 
-	
+
+
+
+
+
+
 
 
 }
