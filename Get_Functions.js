@@ -585,6 +585,7 @@ function Get_PVP_Stats(csv_mode) {
 	/*==== Set variables 1/2 ====*/
 	var code_filter = 0.9; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
 	var display_filter = 0.75; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
+	var show_best_n_qualities = 4;
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
@@ -765,10 +766,10 @@ function Get_PVP_Stats(csv_mode) {
 					if (Pokemon_Stats_PVP[i][4] != Pokemon_Stats_PVP[i-1][4]) {
 						contador_code_filter++;
 					}
-					if (contador_code_filter < 3) {
+					if (contador_code_filter < show_best_n_qualities) {
 						$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*10)/10 + "%)</th></tr>" );
 					}
-					else if (contador_code_filter >= 3) {break;}
+					else if (contador_code_filter >= show_best_n_qualities) {break;}
 				}
 
 				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -831,13 +832,13 @@ function Get_PVP_Stats(csv_mode) {
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones con una calidad superior al " + display_filter*100.0 + "% se consideran que están entre las mejores. Esto incluye " + rows_checked_display_filter + " combinaciones (" + percentage_display + "%). Rango de calidades: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_display_filter][4] + " (" + quality_percentage_low + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Para generar el código se han tenido en cuenta las combinaciones con calidades superiores al " + code_filter*100.0 + "% lo cual incluye " + rows_checked_code_filter + " combinaciones (" + percentage_code + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones que tienen las 3 mejores calidades son:</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones que tienen las " + show_best_n_qualities + " mejores calidades son:</div>");
 				}
 				else {
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with a quality higher than " + display_filter*100.0 + "% are considered to be among the best. This includes " + rows_checked_display_filter + " combinations (" + percentage_display + "%). Range of qualities: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_code_filter][4] + " (" + quality_percentage_low + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>To generate the code, combinations with qualities higher than " + code_filter*100.0 + "% have been taken into account which includes " + rows_checked_code_filter + " combinations (" + percentage_code + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with 3 highest qualities are:</div>");
+					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with " + show_best_n_qualities + " highest qualities are:</div>");
 				}
 				/*== Tell the user some info about the data ==*/
 			}
@@ -2051,6 +2052,77 @@ function Get_PVP_Simulator() {
 
 
 
+
+
+}
+
+function Get_PVP_Moves() {
+	/*==== Clear the output ====*/
+	$("#Output_CP").html("<hr class='hrseparador'>");
+
+	/*==== Set variables 1/2 ====*/
+	var Pokemon_Name_PVP_Moves = "Altaria";//(document.getElementById("Pokemon_Name_PVP").value);
+	var Pokemon_Name_PVP_Moves_String = Pokemon_Name_PVP_Moves;
+	Pokemon_Name_PVP_Moves = Pokemon_Name_PVP_Moves.toLowerCase();
+	Pokemon_Name_PVP_Moves = Input_Problematic_Pokemon(Pokemon_Name_PVP_Moves);
+	var Pokemon_PVP_Moves = window[Pokemon_Name_PVP_Moves];
+	/*===Set variables 1/2 ==*/
+
+	notaneasteregg(Pokemon_Name_PVP_Moves);
+
+	/*==== Check if inputs are correct ====*/
+	if (typeof Pokemon_PVP_Moves == 'undefined'){
+		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+			$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'>Pokemon incorrecto.</div>");
+		}
+		else {
+			$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'>Incorrect Pokemon.</div>");
+		}
+		return;
+	}
+	/*== Check if inputs are correct ==*/
+
+	$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'>De momento solo se muestran los movimientos de Altaria</div>");
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'>Los resultados obtenidos son:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Moves_String + "</h4></div>");
+		$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'><h4 style='text-align: center'>Moviminetos rápidos</h4></div>");
+	}
+	else {
+		$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Moves_String + "</h4></div>");
+		$("#Output_PVP_Moves").html($('#Output_PVP_Moves').html() + "<div id='output_text'><h4 style='text-align: center'>Fast moves</h4></div>");
+	}
+
+
+
+	for (var i = 0; i < Pokemon_PVP_Moves["Fast_moves"].length; i++) {
+		$( "#Output_PVP_Moves_2" ).append( "<tr><th>" + Pokemon_PVP_Moves["Fast_moves"][i] + "<br>(" + moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Element"] + ")</th><th>" + moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Power"] + "<br>(" + (moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Power"]/moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Duration"]) + ")</th><th>" + moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Energy"] + "<br>(" + (moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Energy"]/moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Duration"]) + ")</th><th>" + moves_pvp[Pokemon_PVP_Moves["Fast_moves"][i]]["Duration"] + "</th></tr>" );
+	}
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$( "#Output_PVP_Moves_2" ).append( "<tr><td>Movimiento</td><td>Daño<br>(DPT)</td><td>Energía<br>(EPT)</td><td>Turnos</td></tr>" );
+	}
+	else {
+		$( "#Output_PVP_Moves_2" ).append( "<tr><td>Move</td><td>Damage<br>(DPT)</td><td>Energy<br>(EPT)</td><td>Turns</td></tr>" );
+	}
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$("#Output_PVP_Moves_3").html($('#Output_PVP_Moves_3').html() + "<div id='output_text'><h4 style='text-align: center'>Moviminetos cargados</h4></div>");
+	}
+	else {
+		$("#Output_PVP_Moves_3").html($('#Output_PVP_Moves_3').html() + "<div id='output_text'><h4 style='text-align: center'>Charged moves</h4></div>");
+	}
+
+	for (var i = 0; i < Pokemon_PVP_Moves["Charged_moves"].length; i++) {
+		$( "#Output_PVP_Moves_4" ).append( "<tr><th>" + Pokemon_PVP_Moves["Charged_moves"][i] + "<br>(" + moves_pvp[Pokemon_PVP_Moves["Charged_moves"][i]]["Element"] + ")</th><th>" + moves_pvp[Pokemon_PVP_Moves["Charged_moves"][i]]["Power"] + "<br>(" + Math.round(moves_pvp[Pokemon_PVP_Moves["Charged_moves"][i]]["Power"]/moves_pvp[Pokemon_PVP_Moves["Charged_moves"][i]]["Energy"] *100)/100 + ")</th><th>" + moves_pvp[Pokemon_PVP_Moves["Charged_moves"][i]]["Energy"] + "</th></tr>" );
+	}
+
+	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
+		$( "#Output_PVP_Moves_4" ).append( "<tr><td>Movimiento</td><td>Daño<br>(DPE)</td><td>Energía</td></tr>" );
+	}
+	else {
+		$( "#Output_PVP_Moves_4" ).append( "<tr><td>Move</td><td>Damage<br>(DPE)</td><td>Energy</td></tr>" );
+	}
 
 
 }
