@@ -659,6 +659,14 @@ function Get_PVP_Stats(csv_mode) {
 			}
 			$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[Pokemon_Set_PVP_CSV.length - 1]);
 		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Kingdom") {
+			Pokemon_Set_PVP_CSV = ["Lapras","Lucario","Bastiodon","Sealeo","Walrein","Flygon","Steelix","Marowak Alola","Melmetal","Blaziken","Empoleon","Typhlosion","Charizard","Dragonair", "Altaria","Skarmory","Ninetales","Shelgon","Piloswine","Magneton"];
+
+			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
+				$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[i] + "," );
+			}
+			$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[Pokemon_Set_PVP_CSV.length - 1]);
+		}
 
 		total_number_pokemon = Pokemon_Set_PVP_CSV.length;
 		/*== Set PVP Pokemon ==*/
@@ -1013,6 +1021,9 @@ function Get_PVP_Stats(csv_mode) {
 		}
 		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") {
 			file_name_includedpokemon= "tempest";
+		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Kingdom") {
+			file_name_includedpokemon= "kingdom";
 		}
 
 		var file_name_basicevols = "";
