@@ -566,7 +566,8 @@ function PVP_Stats_Quality(Atk,Def,HP){
 }
 
 function PVP_Stats_Quality_percentage(Max,Min,Value){
-	return (Value - Min) / (Max - Min)
+	//return (Value - Min) / (Max - Min)
+	return (Value / Max)
 }
 
 function check_filter(filter_value,PVP_Stats_array){
@@ -583,8 +584,8 @@ function check_filter(filter_value,PVP_Stats_array){
 function Get_PVP_Stats(csv_mode) {
 
 	/*==== Set variables 1/2 ====*/
-	var code_filter = 0.9; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
-	var display_filter = 0.75; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
+	var code_filter = 0.99; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
+	var display_filter = 0.95; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
 	var show_best_n_qualities = 4;
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -625,6 +626,7 @@ function Get_PVP_Stats(csv_mode) {
 		Pokemon_Set_PVP_CSV = (document.getElementById("Pokemon_Name_PVP").value);
 		total_number_pokemon = 1;
 		/*== Set PVP Pokemon ==*/
+		var min_IV = document.getElementById("PVP_Stats_Min_IV").value;
 		/*== Set variables 2/2 ==*/
 	}
 	else if (csv_mode == 1) {
@@ -653,15 +655,16 @@ function Get_PVP_Stats(csv_mode) {
 		}
 		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") {
 			Pokemon_Set_PVP_CSV = ["Lapras","Sealeo","Altaria","Skarmory","Charizard","Tropius","Abomasnow","Whiscash","Lanturn","Quagsire","Marshtomp","Glalie","Froslass", "Sandslash Alola","Mantine","Magneton","Drifblim"];
-
-			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
-				$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[i] + "," );
-			}
-			$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[Pokemon_Set_PVP_CSV.length - 1]);
 		}
 		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Kingdom") {
-			Pokemon_Set_PVP_CSV = ["Lapras","Lucario","Bastiodon","Sealeo","Walrein","Flygon","Steelix","Marowak Alola","Melmetal","Blaziken","Empoleon","Typhlosion","Charizard","Dragonair", "Altaria","Skarmory","Ninetales","Shelgon","Piloswine","Magneton"];
+			Pokemon_Set_PVP_CSV = ["Lapras","Lucario","Bastiodon","Sealeo","Walrein","Flygon","Steelix","Marowak Alola","Melmetal","Blaziken","Empoleon","Typhlosion","Charizard","Dragonair","Altaria","Skarmory","Ninetales","Shelgon","Piloswine","Magneton"];
+		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Nightmare") {
+			Pokemon_Set_PVP_CSV = ["Spiritomb","Skuntank","Toxicroak","Lucario","Machoke","Machamp","Raichu Alola","Shiftry","Muk Alola","Grimer Alola","Primeape","Poliwrath","Umbreon","Hitmonchan","Hitmontop","Xatu","Heracross","Drapion","Gallade","Gardevoir","Hypno","Raticate Alola","Breloom","Hariyama","Crawdaunt","Alakazam","Murkrow","Honchkrow","Metang","Metagross","Wobbuffet"];
+		}
 
+		if ( ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Tempest") || ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Kingdom") || (document.getElementById("PVP_CSV_Included_Pokemon").value) == "Nightmare" ) {
+			$("#Output_PVP_CSV_textarea").html("");
 			for (var i = 0; i < Pokemon_Set_PVP_CSV.length - 1; i++) {
 				$( "#Output_PVP_CSV_textarea" ).append( Pokemon_Set_PVP_CSV[i] + "," );
 			}
@@ -670,6 +673,7 @@ function Get_PVP_Stats(csv_mode) {
 
 		total_number_pokemon = Pokemon_Set_PVP_CSV.length;
 		/*== Set PVP Pokemon ==*/
+		var min_IV = document.getElementById("PVP_Stats_Min_IV_csv").value;
 		/*== Set variables 2/2 ==*/
 
 		if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -718,9 +722,9 @@ function Get_PVP_Stats(csv_mode) {
 			/*==== Set IVs and best level combinations ====*/
 			var Pokemon_Stats_PVP = [];
 			var row_Stats_PVP = 0;
-			for (var i = 15; i >= 0; i--) {
-			  for (var j = 15; j >= 0; j--) {
-			    for (var k = 15; k >= 0; k--) {
+			for (var i = 15; i >= min_IV; i--) {
+			  for (var j = 15; j >= min_IV; j--) {
+			    for (var k = 15; k >= min_IV; k--) {
 						if (League_CP_Limit == null) { // In master league the best combination is always level 40 so no need to do a loop
 							Pokemon_Stats_PVP[row_Stats_PVP] = [i, j, k, 40, PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[i,j,k],40),Get_DEF(Pokemon_PVP_Stats,[i,j,k],40),Get_HP(Pokemon_PVP_Stats,[i,j,k],40))]
 							row_Stats_PVP++;
@@ -768,14 +772,14 @@ function Get_PVP_Stats(csv_mode) {
 
 				/*==== Create table with the 3 best qualities ====*/
 				var contador_code_filter = 0;
-				$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*10)/10 + "%)</th></tr>" );
+				$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*100)/100 + "%)</th></tr>" );
 
 				for(var i=1; i < Pokemon_Stats_PVP.length; i++) {
 					if (Pokemon_Stats_PVP[i][4] != Pokemon_Stats_PVP[i-1][4]) {
 						contador_code_filter++;
 					}
 					if (contador_code_filter < show_best_n_qualities) {
-						$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*10)/10 + "%)</th></tr>" );
+						$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*100)/100 + "%)</th></tr>" );
 					}
 					else if (contador_code_filter >= show_best_n_qualities) {break;}
 				}
@@ -817,7 +821,7 @@ function Get_PVP_Stats(csv_mode) {
 				}
 
 				/*==== Create table with IVs combination introduced ====*/
-				$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + Stats_PVP_Check[0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Stats_PVP_Check[0], Stats_PVP_Check[1], Stats_PVP_Check[2]],Stats_PVP_Check[3]) + "<br>(" + Stats_PVP_Check[3] + ")</th><th>" + Stats_PVP_Check[4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Stats_PVP_Check[4]) )*100*10)/10 + "%)</th></tr>" );
+				$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + Stats_PVP_Check[0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Stats_PVP_Check[0], Stats_PVP_Check[1], Stats_PVP_Check[2]],Stats_PVP_Check[3]) + "<br>(" + Stats_PVP_Check[3] + ")</th><th>" + Stats_PVP_Check[4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Stats_PVP_Check[4]) )*100*100)/100 + "%)</th></tr>" );
 
 				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 					$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
@@ -974,7 +978,7 @@ function Get_PVP_Stats(csv_mode) {
 
 			if (csv_mode == 1) {
 				/*==== Send the search code to the variable that contains the data of the csv file ====*/
-				csv_data.push([Pokemon_Name_PVP_Stats_String, Pokemon_Stats_PVP[0][0] + " / " + Pokemon_Stats_PVP[0][1] + " / " + Pokemon_Stats_PVP[0][2],Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]),Pokemon_Stats_PVP[1][0] + " / " + Pokemon_Stats_PVP[1][1] + " / " + Pokemon_Stats_PVP[1][2],Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0], Pokemon_Stats_PVP[1][1], Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]),Pokemon_Stats_PVP[2][0] + " / " + Pokemon_Stats_PVP[2][1] + " / " + Pokemon_Stats_PVP[2][2],Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0], Pokemon_Stats_PVP[2][1], Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]), '"' + PVP_Code + '"']);
+				csv_data.push([Pokemon_Name_PVP_Stats_String, Pokemon_Stats_PVP[0][0] + " / " + Pokemon_Stats_PVP[0][1] + " / " + Pokemon_Stats_PVP[0][2] + " (" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*100)/100 + "%)",Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1] ,Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]),Pokemon_Stats_PVP[1][0] + " / " + Pokemon_Stats_PVP[1][1] + " / " + Pokemon_Stats_PVP[1][2] + " (" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[1][4]) )*100*100)/100 + "%)",Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0],Pokemon_Stats_PVP[1][1],Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[1][0], Pokemon_Stats_PVP[1][1], Pokemon_Stats_PVP[1][2]],Pokemon_Stats_PVP[1][3]),Pokemon_Stats_PVP[2][0] + " / " + Pokemon_Stats_PVP[2][1] + " / " + Pokemon_Stats_PVP[2][2] + " (" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[2][4]) )*100*100)/100 + "%)",Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) *10)/10 + " / " + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]) *10)/10 + " / " + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0],Pokemon_Stats_PVP[2][1],Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]),CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[2][0], Pokemon_Stats_PVP[2][1], Pokemon_Stats_PVP[2][2]],Pokemon_Stats_PVP[2][3]), '"' + PVP_Code + '"']);
 				/*== Send the search code to the variable that contains the data of the csv file ==*/
 
 				$("#Output_PVP_CSV").html($('#Output_PVP_CSV').html() + "<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_PVP_Stats_String + "</h4>");
@@ -1024,6 +1028,9 @@ function Get_PVP_Stats(csv_mode) {
 		}
 		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Kingdom") {
 			file_name_includedpokemon= "kingdom";
+		}
+		else if ((document.getElementById("PVP_CSV_Included_Pokemon").value) == "Nightmare") {
+			file_name_includedpokemon= "nightmare";
 		}
 
 		var file_name_basicevols = "";
