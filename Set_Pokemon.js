@@ -2514,6 +2514,22 @@ var bastiodon = {
     Basic_evolution : "shieldon"
 };
 
+var burmy = {
+    Stats      : [53, 83, 120],
+    Evolutions : ["wormadam", "mothim"],
+    Basic_evolution : "burmy"
+};
+var wormadam = {
+    Stats      : [141, 180, 155],
+    Evolutions : null,
+    Basic_evolution : "burmy"
+};
+var mothim = {
+    Stats      : [185, 98, 172],
+    Evolutions : null,
+    Basic_evolution : "burmy"
+};
+
 var combee = {
     Stats      : [59, 83, 102],
     Evolutions : ["vespiquen"],
@@ -2540,6 +2556,17 @@ var floatzel = {
     Stats      : [221, 114, 198],
     Evolutions : null,
     Basic_evolution : "buizel"
+};
+
+var cherubi = {
+    Stats      : [108, 92, 128],
+    Evolutions : ["cherrim"],
+    Basic_evolution : "cherubi"
+};
+var cherrim = {
+    Stats      : [170, 153, 172],
+    Evolutions : null,
+    Basic_evolution : "cherubi"
 };
 
 var shellos = {
