@@ -2542,6 +2542,17 @@ var floatzel = {
     Basic_evolution : "buizel"
 };
 
+var shellos = {
+    Stats      : [103, 105, 183],
+    Evolutions : ["gastrodon"],
+    Basic_evolution : "shellos"
+};
+var gastrodon = {
+    Stats      : [169, 143, 244],
+    Evolutions : null,
+    Basic_evolution : "shellos"
+};
+
 var drifloon = {
     Stats      : [117, 80, 207],
     Evolutions : ["drifblim"],
