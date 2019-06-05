@@ -36,10 +36,11 @@ function language(){
 
     $(".STRING_PVP_MOVES").html("Movimientos PVP (beta)");
     $(".STRING_PVP_STATS").html("Estadísticas PVP");
+    $(".STRING_SETTINGS").html("Ajustes");
     $(".STRING_LEAGUE").html("Liga");
     $(".STRING_MINIMUM_IV").html("IV mínimo");
     $(".STRING_SELECT_TEXT").html("Seleccionar texto");
-    $(".STRING_GENERATE_CODE_BASIC").html("Generar código con evolución básica");
+    $(".STRING_GENERATE_CODE_BASIC").html("Código con evolución básica");
     $(".STRING_PVP_STATS_CSV").html("Estadísticas PVP CSV");
     $(".STRING_INCLUDED_POKEMON").html("Pokémon incluidos");
 

@@ -53,6 +53,7 @@
 			<div id="estructura">
 				<!--==== cuerpo ====-->
 				<div id="cuerpo" class="cuerpo_fullwidthonecol">
+					<h3 class="STRING_PVP_STATS">PVP Stats</h3>
 
 					<h4>Pokémon</h4>
 
@@ -128,84 +129,56 @@
 						</div>
 					</div>
 
-				</div>
-				<!--== cuerpo ==-->
+					<h4 class="STRING_SETTINGS">Settings</h4>
 
-				<!--==== cuerpo ====-->
-				<!--
-				<div id="cuerpo" class="cuerpo_fullwidthonecol">
-					<div style="width:100%">
-						<h3 class="STRING_PVP_MOVES">PVP Moves (beta)</h3>
-
-						<button onclick="Get_PVP_Moves()" class="STRING_OBTAIN">Obtain</button>
-
-						<div id="Output_PVP_Moves" class="output"></div>
-						<table id="Output_PVP_Moves_2" class="output"></table>
-
-						<div id="Output_PVP_Moves_3" class="output"></div>
-						<table id="Output_PVP_Moves_4" class="output"></table>
-
+					<div id="select_block">
+						<div>
+							<span id="select_text" class="STRING_LEAGUE">League</span>
+							<select id="PVP_Stats_Liga">
+								<option selected="selected">Super</option>
+								<option>Ultra</option>
+								<option>Master</option>
+							</select>
+						</div>
 					</div>
 
-				</div>
-				-->
-				<!--== cuerpo ==-->
-
-				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="cuerpo_fullwidthonecol">
-					<div style="width:100%">
-						<h3 class="STRING_PVP_STATS">PVP Stats</h3>
-
-						<div id="select_block">
-							<div>
-								<span id="select_text" class="STRING_LEAGUE">League</span>
-								<select id="PVP_Stats_Liga">
-									<option selected="selected">Super</option>
-									<option>Ultra</option>
-									<option>Master</option>
-								</select>
-							</div>
+					<div id="select_block">
+						<div>
+							<span id="select_text" class="STRING_MINIMUM_IV">Minimum IV</span>
+							<select id="PVP_Stats_Min_IV">
+								<option selected="selected">0</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>10</option>
+								<option>12</option>
+							</select>
 						</div>
-
-						<div id="select_block">
-							<div>
-								<span id="select_text" class="STRING_MINIMUM_IV">Minimum IV</span>
-								<select id="PVP_Stats_Min_IV">
-									<option selected="selected">0</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>10</option>
-									<option>12</option>
-								</select>
-							</div>
-						</div>
-
-						<div id="checkbox_element">
-							<div>
-								<span id="checkbox_text" class="frase STRING_GENERATE_CODE_BASIC">Generate code with basic evolution</span>
-								<div class="checkbox">
-									<input type="checkbox" id="generate_code_basic">
-									<label for="generate_code_basic"></label>
-								</div>
-							</div>
-						</div>
-
-						<button onclick="Get_PVP_Stats(0)" class="STRING_OBTAIN">Obtain</button>
-
-						<textarea id="Output_PVP_Stats_textarea" class="output"></textarea>
-						<button class="mini STRING_SELECT_TEXT" id="clickme_PVP_Stats">Select text</button>
-						<div id="Output_PVP_Stats" class="output"></div>
-
-						<table id="Output_PVP_Stats_2" class="output"></table>
-						<div id="Output_PVP_Stats_3" class="output"></div>
-						<table id="Output_PVP_Stats_4" class="output"></table>
-						<div id="Output_PVP_Stats_5" class="output"></div>	
-						<div id="Output_PVP_Stats_6" class="output"></div>					
-
 					</div>
+
+					<div id="checkbox_element">
+						<div>
+							<span id="checkbox_text" class="frase STRING_GENERATE_CODE_BASIC">Code with basic evolution</span>
+							<div class="checkbox">
+								<input type="checkbox" id="generate_code_basic">
+								<label for="generate_code_basic"></label>
+							</div>
+						</div>
+					</div>
+
+					<button onclick="Get_PVP_Stats(0)" class="STRING_OBTAIN">Obtain</button>
+
+					<textarea id="Output_PVP_Stats_textarea" class="output"></textarea>
+					<button class="mini STRING_SELECT_TEXT" id="clickme_PVP_Stats">Select text</button>
+					<div id="Output_PVP_Stats" class="output"></div>
+
+					<table id="Output_PVP_Stats_2" class="output"></table>
+					<div id="Output_PVP_Stats_3" class="output"></div>
+					<table id="Output_PVP_Stats_4" class="output"></table>
+					<div id="Output_PVP_Stats_5" class="output"></div>	
+					<div id="Output_PVP_Stats_6" class="output"></div>					
 
 				</div>
 				<!--== cuerpo ==-->
@@ -256,7 +229,7 @@
 
 						<div id="checkbox_element">
 							<div>
-								<span id="checkbox_text" class="frase STRING_GENERATE_CODE_BASIC">Generate code with basic evolution</span>
+								<span id="checkbox_text" class="frase STRING_GENERATE_CODE_BASIC">Code with basic evolution</span>
 								<div class="checkbox">
 									<input type="checkbox" id="generate_code_basic_csv">
 									<label for="generate_code_basic_csv"></label>
@@ -272,6 +245,26 @@
 					</div>
 
 				</div>
+				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<!--
+				<div id="cuerpo" class="cuerpo_fullwidthonecol">
+					<div style="width:100%">
+						<h3 class="STRING_PVP_MOVES">PVP Moves (beta)</h3>
+
+						<button onclick="Get_PVP_Moves()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_PVP_Moves" class="output"></div>
+						<table id="Output_PVP_Moves_2" class="output"></table>
+
+						<div id="Output_PVP_Moves_3" class="output"></div>
+						<table id="Output_PVP_Moves_4" class="output"></table>
+
+					</div>
+
+				</div>
+				-->
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
