@@ -40,8 +40,7 @@
 
 					<h4>Pokémon</h4>
 
-					
-					<input onfocus="this.value = '';" id="Pokemon_CP" class="form-control" type="text" list="pokemon">
+					<input onclick="this.setSelectionRange(0, this.value.length)" id="Pokemon_CombatPower" class="form-control" type="text" list="pokemon" value="Altaria">
 					<datalist id="pokemon">
 					</datalist>
 

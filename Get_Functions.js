@@ -23,7 +23,7 @@ function Get_CP() {
 	$("#Output_CP").html("<hr class='hrseparador'>");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP = (document.getElementById("Pokemon_CP").value);
+	var Pokemon_Name_CP = (document.getElementById("Pokemon_CombatPower").value);
 	var Pokemon_Name_CP_String = Pokemon_Name_CP;
 	Pokemon_Name_CP = Pokemon_Name_CP.toLowerCase();
 	Pokemon_Name_CP = Input_Problematic_Pokemon(Pokemon_Name_CP);
@@ -69,7 +69,7 @@ function Get_Candy_Dust() {
 	$("#Output_Candy_Dust").html("<hr class='hrseparador'>");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_Candy_Dust = (document.getElementById("Pokemon_CP").value);
+	var Pokemon_Name_Candy_Dust = (document.getElementById("Pokemon_CombatPower").value);
 	var Pokemon_Name_Candy_Dust_String = Pokemon_Name_Candy_Dust;
 	Pokemon_Name_Candy_Dust = Pokemon_Name_Candy_Dust.toLowerCase();
 	Pokemon_Name_Candy_Dust = Input_Problematic_Pokemon(Pokemon_Name_Candy_Dust);
@@ -138,7 +138,7 @@ function Get_CP_Raids() {
 	$("#Output_CP_Raids_3").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP_Raid = (document.getElementById("Pokemon_CP").value);
+	var Pokemon_Name_CP_Raid = (document.getElementById("Pokemon_CombatPower").value);
 	var Pokemon_Name_CP_Raid_String = Pokemon_Name_CP_Raid;
 	Pokemon_Name_CP_Raid = Pokemon_Name_CP_Raid.toLowerCase();
 	Pokemon_Name_CP_Raid = Input_Problematic_Pokemon(Pokemon_Name_CP_Raid);
@@ -226,7 +226,7 @@ function Get_CP_Wild() {
 	$("#Output_CP_Wild_2").html("");
 
 	/*==== Set variables 1/2 ====*/
-	var Pokemon_Name_CP_Wild = (document.getElementById("Pokemon_CP").value);
+	var Pokemon_Name_CP_Wild = (document.getElementById("Pokemon_CombatPower").value);
 	var Pokemon_Name_CP_Wild_String = Pokemon_Name_CP_Wild;
 	Pokemon_Name_CP_Wild = Pokemon_Name_CP_Wild.toLowerCase();
 	Pokemon_Name_CP_Wild = Input_Problematic_Pokemon(Pokemon_Name_CP_Wild);
@@ -321,7 +321,7 @@ function Get_CP_Search() {
 	$("#Output_CP_Search_2").html("");
 
 	/*==== Set variables ====*/
-	var Pokemon_Name_CP_Search = (document.getElementById("Pokemon_CP").value);
+	var Pokemon_Name_CP_Search = (document.getElementById("Pokemon_CombatPower").value);
 	var Pokemon_Name_CP_Search_String = Pokemon_Name_CP_Search;
 	Pokemon_Name_CP_Search = Pokemon_Name_CP_Search.toLowerCase();
 	Pokemon_Name_CP_Search = Input_Problematic_Pokemon(Pokemon_Name_CP_Search);
