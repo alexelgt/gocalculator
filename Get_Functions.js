@@ -589,7 +589,6 @@ function Get_PVP_Stats(csv_mode) {
 	/*==== Set variables 1/2 ====*/
 	var code_filter = 0.99; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
 	var display_filter = 0.95; //filter that determines what is considered good quality. Kind of arbitrary value and hence the name
-	var show_best_n_qualities = 4;
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
@@ -616,6 +615,7 @@ function Get_PVP_Stats(csv_mode) {
 		$("#Output_PVP_Stats_3").html("");
 		$("#Output_PVP_Stats_4").html("");
 		$("#Output_PVP_Stats_5").html("");
+		$("#Output_PVP_Stats_6").html("");
 		$("#Output_PVP_Stats_textarea").html("");
 		Pokemon_Stats_PVP_csv = "IVs,Level,Stats Product,Percentage 1,Percentage 2\n";
  
@@ -797,18 +797,18 @@ function Get_PVP_Stats(csv_mode) {
 
 			if (csv_mode == 0) {
 
-				/*==== Create table with the 3 best qualities ====*/
-				var contador_code_filter = 0;
-				$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*100)/100 + "%)</th></tr>" );
+				/*==== Create table with the 10 best qualities ====*/
+				//$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[0][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[0][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0],Pokemon_Stats_PVP[0][1],Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[0][0], Pokemon_Stats_PVP[0][1], Pokemon_Stats_PVP[0][2]],Pokemon_Stats_PVP[0][3]) + "<br>(" + Pokemon_Stats_PVP[0][3] + ")</th><th>" + Pokemon_Stats_PVP[0][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[0][4]) )*100*100)/100 + "%)</th></tr>" );
 
-				for(var i=1; i < Pokemon_Stats_PVP.length; i++) {
-					if (Pokemon_Stats_PVP[i][4] != Pokemon_Stats_PVP[i-1][4]) {
-						contador_code_filter++;
+				var show_best_n_qualities;
+				for(var i = 0; i < 10; i++) {
+					show_best_n_qualities = i + 1;
+					if (i == Pokemon_Stats_PVP.length) {
+						break;
 					}
-					if (contador_code_filter < show_best_n_qualities) {
-						$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*100)/100 + "%)</th></tr>" );
-					}
-					else if (contador_code_filter >= show_best_n_qualities) {break;}
+					
+					$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*100)/100 + "%)</th></tr>" );
+					
 				}
 
 				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -817,7 +817,7 @@ function Get_PVP_Stats(csv_mode) {
 				else {
 				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
 				}
-				/*== Create table with the 3 best qualities ==*/
+				/*== Create table with the 10 best qualities ==*/
 
 				/*==== Check IVs combination introduced ====*/
 				var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
@@ -873,15 +873,13 @@ function Get_PVP_Stats(csv_mode) {
 				quality_percentage_low = Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4], PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[rows_checked_display_filter][0],Pokemon_Stats_PVP[rows_checked_display_filter][1],Pokemon_Stats_PVP[rows_checked_display_filter][2]],Pokemon_Stats_PVP[rows_checked_display_filter][3]),Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[rows_checked_display_filter][0],Pokemon_Stats_PVP[rows_checked_display_filter][1],Pokemon_Stats_PVP[rows_checked_display_filter][2]],Pokemon_Stats_PVP[rows_checked_display_filter][3]),Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[rows_checked_display_filter][0],Pokemon_Stats_PVP[rows_checked_display_filter][1],Pokemon_Stats_PVP[rows_checked_display_filter][2]],Pokemon_Stats_PVP[rows_checked_display_filter][3])))) *100*10)/10;
 
 				if (navigator.language = "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones con una calidad superior al " + display_filter*100.0 + "% se consideran que están entre las mejores. Esto incluye " + rows_checked_display_filter + " combinaciones (" + percentage_display + "%). Rango de calidades: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_display_filter][4] + " (" + quality_percentage_low + "%).</div>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Para generar el código se han tenido en cuenta las combinaciones con calidades superiores al " + code_filter*100.0 + "% lo cual incluye " + rows_checked_code_filter + " combinaciones (" + percentage_code + "%).</div>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
+					$("#Output_PVP_Stats_6").html($('#Output_PVP_Stats_6').html() + "<div id='output_text'>Las combinaciones con una calidad superior al " + display_filter*100.0 + "% se consideran que están entre las mejores. Esto incluye " + rows_checked_display_filter + " combinaciones (" + percentage_display + "%). Rango de calidades: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_display_filter][4] + " (" + quality_percentage_low + "%).</div>");
+					$("#Output_PVP_Stats_6").html($('#Output_PVP_Stats_6').html() + "<div id='output_text'>Para generar el código se han tenido en cuenta las combinaciones con calidades superiores al " + code_filter*100.0 + "% lo cual incluye " + rows_checked_code_filter + " combinaciones (" + percentage_code + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>Las combinaciones que tienen las " + show_best_n_qualities + " mejores calidades son:</div>");
 				}
 				else {
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with a quality higher than " + display_filter*100.0 + "% are considered to be among the best. This includes " + rows_checked_display_filter + " combinations (" + percentage_display + "%). Range of qualities: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_display_filter][4] + " (" + quality_percentage_low + "%).</div>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>To generate the code, combinations with qualities higher than " + code_filter*100.0 + "% have been taken into account which includes " + rows_checked_code_filter + " combinations (" + percentage_code + "%).</div>");
-					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<hr class='hrseparador'>");
+					$("#Output_PVP_Stats_6").html($('#Output_PVP_Stats_6').html() + "<div id='output_text'>The combinations with a quality higher than " + display_filter*100.0 + "% are considered to be among the best. This includes " + rows_checked_display_filter + " combinations (" + percentage_display + "%). Range of qualities: " + Pokemon_Stats_PVP[0][4] +" (100%) - " + Pokemon_Stats_PVP[rows_checked_display_filter][4] + " (" + quality_percentage_low + "%).</div>");
+					$("#Output_PVP_Stats_6").html($('#Output_PVP_Stats_6').html() + "<div id='output_text'>To generate the code, combinations with qualities higher than " + code_filter*100.0 + "% have been taken into account which includes " + rows_checked_code_filter + " combinations (" + percentage_code + "%).</div>");
 					$("#Output_PVP_Stats_3").html($('#Output_PVP_Stats_3').html() + "<div id='output_text'>The combinations with " + show_best_n_qualities + " highest qualities are:</div>");
 				}
 				/*== Tell the user some info about the data ==*/
