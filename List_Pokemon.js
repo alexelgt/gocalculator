@@ -369,6 +369,7 @@ function pokemonListData() {
     '<option>Torkoal</option>' +
     '<option>Spoink</option>' +
     '<option>Grumpig</option>' +
+    '<option>Spinda</option>' +
     '<option>Trapinch</option>' +
     '<option>Vibrava</option>' +
     '<option>Flygon</option>' +
@@ -393,6 +394,7 @@ function pokemonListData() {
     '<option>Feebas</option>' +
     '<option>Milotic</option>' +
     '<option>Castform</option>' +
+    '<option>Kecleon</option>' +
     '<option>Shuppet</option>' +
     '<option>Banette</option>' +
     '<option>Duskull</option>' +
@@ -426,6 +428,7 @@ function pokemonListData() {
     '<option>Kyogre</option>' +
     '<option>Groudon</option>' +
     '<option>Rayquaza</option>' +
+    '<option>Jirachi</option>' +
     '<option>Deoxys normal</option>' +
     '<option>Deoxys attack</option>' +
     '<option>Deoxys defense</option>' +

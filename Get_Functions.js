@@ -458,7 +458,7 @@ function Get_CP_Search() {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
 
-	$( "#Output_CP_Search_2" ).append( Pokemon_Name_CP_Search_String.replace('Alola','').replace('alola','').split(' ').join('').replace('Nidoran♀','Nidoran').replace('Nidoran♂','Nidoran') + "&" );
+	$( "#Output_CP_Search_2" ).append( Pokemon_CP_Search.Pokedex_number + "&" );
 
 	/*==== Get the search code ====*/
 	contador_CP_values = 0;
@@ -876,10 +876,11 @@ function Get_PVP_Stats(csv_mode) {
 			// Note: if generate_code_basic is checked the code will be generated taking into account the input Pokemon (for the criterias) but the data of the basic evolution will be put in the search code
 			var PVP_Code = "";
 			if(($("#generate_code_basic").is(':checked') && csv_mode == 0) || ($("#generate_code_basic_csv").is(':checked') && csv_mode == 1)) {
-				PVP_Code += Pokemon_PVP_Stats.Basic_evolution.replace('_alola','').replace('nidoranf','nidoran').replace('nidoranm','nidoran') + "&" ;
+				PVP_Code += Pokemon_PVP_Stats_Basic_evolution.Pokedex_number + "&" ;
+				Pokemon_PVP_Stats_Basic_evolution
 			}
 			else {
-				PVP_Code += Pokemon_Name_PVP_Stats_String.replace('Alola','').replace('alola','').split(' ').join('').replace('Nidoran♀','Nidoran').replace('Nidoran♂','Nidoran') + "&";
+				PVP_Code += Pokemon_PVP_Stats.Pokedex_number + "&";
 			}
 			/*== Get the Pokemon's name ==*/
 
