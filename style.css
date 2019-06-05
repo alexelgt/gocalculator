@@ -55,9 +55,9 @@ input::-webkit-inner-spin-button {
 	position: relative;
 	box-sizing: border-box;
 	width: 100%;
-	max-width: 630px;
-	min-height: 65px;
-	max-height: 65px;
+	max-width: 440px;
+	min-height: 45px;
+	max-height: 45px;
 	margin: 0 auto;
 	line-height: 24px;
 
@@ -65,12 +65,12 @@ input::-webkit-inner-spin-button {
 
 #menu a{
 	border-bottom: rgba(0,0,0,0) solid 2px;
-	width: 33.33%;
+	flex-grow: 1;
 	box-sizing: border-box;
 	padding: 0 3px;
 	min-height: 45px;
 	max-height: 45px;
-	margin: 0;
+	margin: 0 2px;
 }
 
 #menu a.seleccionado,#menu a:hover{
@@ -496,7 +496,6 @@ input[type=checkbox]{
 		padding: 0;
 		margin: 0px 0;
 		display: block;
-		vertical-align: top;
 		height: 10px;
 		border: none;
 		border-radius: none;
@@ -626,17 +625,6 @@ th:last-child,th#ultimo{
 }
 
 @media (max-width: 420px){
-	/*==== Menu ====*/
-	#menu{
-		width: 100%;
-		max-height: 120px;
-	}
-	#menu a{
-		width: 50%;
-		max-height: 67px;
-
-	}
-	/*== Menu ==*/
 
 	/*==== Estructura ====*/
 	#cuerpo {
@@ -667,17 +655,6 @@ th:last-child,th#ultimo{
 		font-size: 14px;
 	}
 	/*== Tabla ==*/
-}
-
-@media (max-width: 660px) and (min-width: 421px){
-	#menu{
-		width: 420px;
-		max-height: 120px;
-	}
-
-	#menu a{
-		width: 50%;
-	}
 }
 
 @media (max-width: 940px){

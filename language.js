@@ -4,9 +4,7 @@
 function language(){
 
   if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-    $(".STRING_IV_CALCULATOR").html("Calculadora IV");
-    $(".STRING_CP_CALCULATOR").html("Calculadora PC");
-    $(".STRING_PVP_CALCULATOR").html("Calculadora PVP");
+    $(".STRING_CP_CALCULATOR").html("PC");
     $(".STRING_CALCULATE_IV").html("Calcular IV");
     $(".STRING_CP").html("PC");
     $(".STRING_STARDUST").html("Polvoestelar");
