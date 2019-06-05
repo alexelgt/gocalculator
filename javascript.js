@@ -37,7 +37,7 @@ function ventanaemergente(id,id2) {
 }
 
 function pokemonListData() {
-  document.getElementById("pokemon").innerHTML = '<option>Bulbasaur</option>' +
+  document.getElementById("pokemon2").innerHTML = '<option>Bulbasaur</option>' +
   '<option>Ivysaur</option>' +
   '<option>Venusaur</option>' +
   '<option>Charmander</option>' +
