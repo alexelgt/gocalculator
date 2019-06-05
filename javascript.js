@@ -37,513 +37,513 @@ function ventanaemergente(id,id2) {
 }
 
 function pokemonListData() {
-  document.getElementById("pokemon").innerHTML = '<option value="Bulbasaur">' +
-  '<option value="Ivysaur">' +
-  '<option value="Venusaur">' +
-  '<option value="Charmander">' +
-  '<option value="Charmeleon">' +
-  '<option value="Charizard">' +
-  '<option value="Squirtle">' +
-  '<option value="Wartortle">' +
-  '<option value="Blastoise">' +
-  '<option value="Caterpie">' +
-  '<option value="Metapod">' +
-  '<option value="Butterfree">' +
-  '<option value="Weedle">' +
-  '<option value="Kakuna">' +
-  '<option value="Beedrill">' +
-  '<option value="Pidgey">' +
-  '<option value="Pidgeotto">' +
-  '<option value="Pidgeot">' +
-  '<option value="Rattata">' +
-  '<option value="Raticate">' +
-  '<option value="Rattata Alola">' +
-  '<option value="Raticate Alola">' +
-  '<option value="Spearow">' +
-  '<option value="Fearow">' +
-  '<option value="Ekans">' +
-  '<option value="Arbok">' +
-  '<option value="Pichu">' +
-  '<option value="Pikachu">' +
-  '<option value="Raichu">' +
-  '<option value="Raichu Alola">' +
-  '<option value="Sandshrew">' +
-  '<option value="Sandslash">' +
-  '<option value="Sandshrew Alola">' +
-  '<option value="Sandslash Alola">' +
-  '<option value="Nidoran♀">' +
-  '<option value="Nidorina">' +
-  '<option value="Nidoqueen">' +
-  '<option value="Nidoran♂">' +
-  '<option value="Nidorino">' +
-  '<option value="Nidoking">' +
-  '<option value="Cleffa">' +
-  '<option value="Clefairy">' +
-  '<option value="Clefable">' +
-  '<option value="Vulpix">' +
-  '<option value="Ninetales">' +
-  '<option value="Vulpix Alola">' +
-  '<option value="Ninetales Alola">' +
-  '<option value="Igglybuff">' +
-  '<option value="Jigglypuff">' +
-  '<option value="Wigglytuff">' +
-  '<option value="Zubat">' +
-  '<option value="Golbat">' +
-  '<option value="Crobat">' +
-  '<option value="Oddish">' +
-  '<option value="Gloom">' +
-  '<option value="Vileplume">' +
-  '<option value="Bellossom">' +
-  '<option value="Paras">' +
-  '<option value="Parasect">' +
-  '<option value="Venonat">' +
-  '<option value="Venomoth">' +
-  '<option value="Diglett">' +
-  '<option value="Dugtrio">' +
-  '<option value="Diglett Alola">' +
-  '<option value="Dugtrio Alola">' +
-  '<option value="Meowth">' +
-  '<option value="Persian">' +
-  '<option value="Meowth Alola">' +
-  '<option value="Persian Alola">' +
-  '<option value="Psyduck">' +
-  '<option value="Golduck">' +
-  '<option value="Mankey">' +
-  '<option value="Primeape">' +
-  '<option value="Growlithe">' +
-  '<option value="Arcanine">' +
-  '<option value="Poliwag">' +
-  '<option value="Poliwhirl">' +
-  '<option value="Poliwrath">' +
-  '<option value="Politoed">' +
-  '<option value="Abra">' +
-  '<option value="Kadabra">' +
-  '<option value="Alakazam">' +
-  '<option value="Machop">' +
-  '<option value="Machoke">' +
-  '<option value="Machamp">' +
-  '<option value="Bellsprout">' +
-  '<option value="Weepinbell">' +
-  '<option value="Victreebel">' +
-  '<option value="Tentacool">' +
-  '<option value="Tentacruel">' +
-  '<option value="Geodude">' +
-  '<option value="Graveler">' +
-  '<option value="Golem">' +
-  '<option value="Geodude Alola">' +
-  '<option value="Graveler Alola">' +
-  '<option value="Golem Alola">' +
-  '<option value="Ponyta">' +
-  '<option value="Rapidash">' +
-  '<option value="Slowpoke">' +
-  '<option value="Slowbro">' +
-  '<option value="Slowking">' +
-  '<option value="Magnemite">' +
-  '<option value="Magneton">' +
-  '<option value="Magnezone">' +
-  '<option value="Farfetch´d">' +
-  '<option value="Doduo">' +
-  '<option value="Dodrio">' +
-  '<option value="Seel">' +
-  '<option value="Dewgong">' +
-  '<option value="Grimer">' +
-  '<option value="Muk">' +
-  '<option value="Grimer Alola">' +
-  '<option value="Muk Alola">' +
-  '<option value="Shellder">' +
-  '<option value="Cloyster">' +
-  '<option value="Gastly">' +
-  '<option value="Haunter">' +
-  '<option value="Gengar">' +
-  '<option value="Onix">' +
-  '<option value="Steelix">' +
-  '<option value="Drowzee">' +
-  '<option value="Hypno">' +
-  '<option value="Krabby">' +
-  '<option value="Kingler">' +
-  '<option value="Voltorb">' +
-  '<option value="Electrode">' +
-  '<option value="Exeggcute">' +
-  '<option value="Exeggutor">' +
-  '<option value="Exeggutor Alola">' +
-  '<option value="Cubone">' +
-  '<option value="Marowak">' +
-  '<option value="Marowak Alola">' +
-  '<option value="Tyrogue">' +
-  '<option value="Hitmonlee">' +
-  '<option value="Hitmonchan">' +
-  '<option value="Hitmontop">' +
-  '<option value="Lickitung">' +
-  '<option value="Lickilicky">' +
-  '<option value="Koffing">' +
-  '<option value="Weezing">' +
-  '<option value="Rhyhorn">' +
-  '<option value="Rhydon">' +
-  '<option value="Rhyperior">' +
-  '<option value="Happiny">' +
-  '<option value="Chansey">' +
-  '<option value="Blissey">' +
-  '<option value="Tangela">' +
-  '<option value="Tangrowth">' +
-  '<option value="Kangaskhan">' +
-  '<option value="Horsea">' +
-  '<option value="Seadra">' +
-  '<option value="Kingdra">' +
-  '<option value="Goldeen">' +
-  '<option value="Seaking">' +
-  '<option value="Staryu">' +
-  '<option value="Starmie">' +
-  '<option value="Mime Jr.">' +
-  '<option value="Mr. Mime">' +
-  '<option value="Scyther">' +
-  '<option value="Scizor">' +
-  '<option value="Smoochum">' +
-  '<option value="Jynx">' +
-  '<option value="Elekid">' +
-  '<option value="Electabuzz">' +
-  '<option value="Electivire">' +
-  '<option value="Magby">' +
-  '<option value="Magmar">' +
-  '<option value="Magmortar">' +
-  '<option value="Pinsir">' +
-  '<option value="Tauros">' +
-  '<option value="Magikarp">' +
-  '<option value="Gyarados">' +
-  '<option value="Lapras">' +
-  '<option value="Ditto">' +
-  '<option value="Eevee">' +
-  '<option value="Vaporeon">' +
-  '<option value="Jolteon">' +
-  '<option value="Flareon">' +
-  '<option value="Espeon">' +
-  '<option value="Umbreon">' +
-  '<option value="Leafeon">' +
-  '<option value="Glaceon">' +
-  '<option value="Porygon">' +
-  '<option value="Porygon2">' +
-  '<option value="PorygonZ">' +
-  '<option value="Omanyte">' +
-  '<option value="Omastar">' +
-  '<option value="Kabuto">' +
-  '<option value="Kabutops">' +
-  '<option value="Aerodactyl">' +
-  '<option value="Munchlax">' +
-  '<option value="Snorlax">' +
-  '<option value="Articuno">' +
-  '<option value="Zapdos">' +
-  '<option value="Moltres">' +
-  '<option value="Dratini">' +
-  '<option value="Dragonair">' +
-  '<option value="Dragonite">' +
-  '<option value="Mewtwo">' +
-  '<option value="Mew">' +
-  '<option value="Chikorita">' +
-  '<option value="Bayleef">' +
-  '<option value="Meganium">' +
-  '<option value="Cyndaquil">' +
-  '<option value="Quilava">' +
-  '<option value="Typhlosion">' +
-  '<option value="Totodile">' +
-  '<option value="Croconaw">' +
-  '<option value="Feraligatr">' +
-  '<option value="Sentret">' +
-  '<option value="Furret">' +
-  '<option value="Hoothoot">' +
-  '<option value="Moctowl">' +
-  '<option value="Ledyba">' +
-  '<option value="Ledian">' +
-  '<option value="Spinarak">' +
-  '<option value="Ariados">' +
-  '<option value="Chinchou">' +
-  '<option value="Lanturn">' +
-  '<option value="Togepi">' +
-  '<option value="Togetic">' +
-  '<option value="Togekiss">' +
-  '<option value="Matu">' +
-  '<option value="Xatu">' +
-  '<option value="Mareep">' +
-  '<option value="Flaaffy">' +
-  '<option value="Ampharos">' +
-  '<option value="Azurill">' +
-  '<option value="Marill">' +
-  '<option value="Azumarill">' +
-  '<option value="Bonsly">' +
-  '<option value="Sudowoodo">' +
-  '<option value="Hoppip">' +
-  '<option value="Skiploom">' +
-  '<option value="Jumpluff">' +
-  '<option value="Aipom">' +
-  '<option value="Ambipom">' +
-  '<option value="Sunkern">' +
-  '<option value="Sunflora">' +
-  '<option value="Yanma">' +
-  '<option value="Yanmega">' +
-  '<option value="Wooper">' +
-  '<option value="Quagsire">' +
-  '<option value="Murkrow">' +
-  '<option value="Honchkrow">' +
-  '<option value="Misdreavus">' +
-  '<option value="Mismagius">' +
-  '<option value="Unown">' +
-  '<option value="Wynaut">' +
-  '<option value="Wobbuffet">' +
-  '<option value="Girafarig">' +
-  '<option value="Pineco">' +
-  '<option value="Forretress">' +
-  '<option value="Dunsparce">' +
-  '<option value="Gligar">' +
-  '<option value="Gliscor">' +
-  '<option value="Snubbull">' +
-  '<option value="Granbull">' +
-  '<option value="Qwilfish">' +
-  '<option value="Shuckle">' +
-  '<option value="Heracross">' +
-  '<option value="Sneasel">' +
-  '<option value="Weavile">' +
-  '<option value="Teddiursa">' +
-  '<option value="Ursaring">' +
-  '<option value="Slugma">' +
-  '<option value="Magcargo">' +
-  '<option value="Swinub">' +
-  '<option value="Piloswine">' +
-  '<option value="Mamoswine">' +
-  '<option value="Corsola">' +
-  '<option value="Remoraid">' +
-  '<option value="Octillery">' +
-  '<option value="Delibird">' +
-  '<option value="Mantine">' +
-  '<option value="Skarmory">' +
-  '<option value="Houndour">' +
-  '<option value="Houndoom">' +
-  '<option value="Phanpy">' +
-  '<option value="Donphan">' +
-  '<option value="Stantler">' +
-  '<option value="Smeargle">' +
-  '<option value="Miltank">' +
-  '<option value="Raikou">' +
-  '<option value="Entei">' +
-  '<option value="Suicune">' +
-  '<option value="Larvitar">' +
-  '<option value="Pupitar">' +
-  '<option value="Tyranitar">' +
-  '<option value="Lugia">' +
-  '<option value="Ho-Oh">' +
-  '<option value="Celebi">' +
-  '<option value="Treecko">' +
-  '<option value="Grovyle">' +
-  '<option value="Sceptile">' +
-  '<option value="Torchic">' +
-  '<option value="Combusken">' +
-  '<option value="Blaziken">' +
-  '<option value="Mudkip">' +
-  '<option value="Marshtomp">' +
-  '<option value="Swampert">' +
-  '<option value="Poochyena">' +
-  '<option value="Mightyena">' +
-  '<option value="Zigzagoon">' +
-  '<option value="Linoone">' +
-  '<option value="Wurmple">' +
-  '<option value="Silcoon">' +
-  '<option value="Beautifly">' +
-  '<option value="Cascoon">' +
-  '<option value="Dustox">' +
-  '<option value="Lotad">' +
-  '<option value="Lombre">' +
-  '<option value="Ludicolo">' +
-  '<option value="Seedot">' +
-  '<option value="Nuzleaf">' +
-  '<option value="Shiftry">' +
-  '<option value="Taillow">' +
-  '<option value="Swellow">' +
-  '<option value="Wingull">' +
-  '<option value="Pelipper">' +
-  '<option value="Ralts">' +
-  '<option value="Kirlia">' +
-  '<option value="Gardevoir">' +
-  '<option value="Gallade">' +
-  '<option value="Surskit">' +
-  '<option value="Masquerain">' +
-  '<option value="Shroomish">' +
-  '<option value="Breloom">' +
-  '<option value="Slakoth">' +
-  '<option value="Vigoroth">' +
-  '<option value="Slaking">' +
-  '<option value="Nincada">' +
-  '<option value="Ninjask">' +
-  '<option value="Shedinja">' +
-  '<option value="Whismur">' +
-  '<option value="Loudred">' +
-  '<option value="Exploud">' +
-  '<option value="Makuhita">' +
-  '<option value="Hariyama">' +
-  '<option value="Nosepass">' +
-  '<option value="Probopass">' +
-  '<option value="Skitty">' +
-  '<option value="Delcatty">' +
-  '<option value="Sableye">' +
-  '<option value="Mawile">' +
-  '<option value="Aron">' +
-  '<option value="Lairon">' +
-  '<option value="Aggron">' +
-  '<option value="Meditite">' +
-  '<option value="Medicham">' +
-  '<option value="Electrike">' +
-  '<option value="Manectric">' +
-  '<option value="Plusle">' +
-  '<option value="Minun">' +
-  '<option value="Volbeat">' +
-  '<option value="Illumise">' +
-  '<option value="Budew">' +
-  '<option value="Roselia">' +
-  '<option value="Roserade">' +
-  '<option value="Gulpin">' +
-  '<option value="Swalot">' +
-  '<option value="Carvanha">' +
-  '<option value="Sharpedo">' +
-  '<option value="Wailmer">' +
-  '<option value="Wailord">' +
-  '<option value="Numel">' +
-  '<option value="Camerupt">' +
-  '<option value="Torkoal">' +
-  '<option value="Spoink">' +
-  '<option value="Grumpig">' +
-  '<option value="Trapinch">' +
-  '<option value="Vibrava">' +
-  '<option value="Flygon">' +
-  '<option value="Cacnea">' +
-  '<option value="Cacturne">' +
-  '<option value="Swablu">' +
-  '<option value="Altaria">' +
-  '<option value="Zangoose">' +
-  '<option value="Seviper">' +
-  '<option value="Lunatone">' +
-  '<option value="Solrock">' +
-  '<option value="Barboach">' +
-  '<option value="Whiscash">' +
-  '<option value="Corphish">' +
-  '<option value="Crawdaunt">' +
-  '<option value="Baltoy">' +
-  '<option value="Claydol">' +
-  '<option value="Lileep">' +
-  '<option value="Cradily">' +
-  '<option value="Anorith">' +
-  '<option value="Armaldo">' +
-  '<option value="Feebas">' +
-  '<option value="Milotic">' +
-  '<option value="Castform">' +
-  '<option value="Shuppet">' +
-  '<option value="Banette">' +
-  '<option value="Duskull">' +
-  '<option value="Dusclops">' +
-  '<option value="Dusknoir">' +
-  '<option value="Tropius">' +
-  '<option value="Chimecho">' +
-  '<option value="Chingling">' +
-  '<option value="Absol">' +
-  '<option value="Snorunt">' +
-  '<option value="Glalie">' +
-  '<option value="Spheal">' +
-  '<option value="Sealeo">' +
-  '<option value="Walrein">' +
-  '<option value="Clamperl">' +
-  '<option value="Huntail">' +
-  '<option value="Gorebyss">' +
-  '<option value="Relicanth">' +
-  '<option value="Luvdisc">' +
-  '<option value="Bagon">' +
-  '<option value="Shelgon">' +
-  '<option value="Salamence">' +
-  '<option value="Beldum">' +
-  '<option value="Metang">' +
-  '<option value="Metagross">' +
-  '<option value="Regirock">' +
-  '<option value="Regice">' +
-  '<option value="Registeel">' +
-  '<option value="Latias">' +
-  '<option value="Latios">' +
-  '<option value="Kyogre">' +
-  '<option value="Groudon">' +
-  '<option value="Rayquaza">' +
-  '<option value="Deoxys normal">' +
-  '<option value="Deoxys attack">' +
-  '<option value="Deoxys defense">' +
-  '<option value="Deoxys speed">' +
-  '<option value="Turtwig">' +
-  '<option value="Grotle">' +
-  '<option value="Torterra">' +
-  '<option value="Chimchar">' +
-  '<option value="Monferno">' +
-  '<option value="Infernape">' +
-  '<option value="Piplup">' +
-  '<option value="Prinplup">' +
-  '<option value="Empoleon">' +
-  '<option value="Starly">' +
-  '<option value="Staravia">' +
-  '<option value="Staraptor">' +
-  '<option value="Bidoof">' +
-  '<option value="Bibarel">' +
-  '<option value="Kricketot">' +
-  '<option value="Kricketune">' +
-  '<option value="Shinx">' +
-  '<option value="Luxio">' +
-  '<option value="Luxray">' +
-  '<option value="Cranidos">' +
-  '<option value="Rampardos">' +
-  '<option value="Shieldon">' +
-  '<option value="Bastiodon">' +
-  '<option value="Burmy">' +
-  '<option value="Wormadam">' +
-  '<option value="Mothim">' +
-  '<option value="Combee">' +
-  '<option value="Vespiquen">' +
-  '<option value="Pachirisu">' +
-  '<option value="Buizel">' +
-  '<option value="Floatzel">' +
-  '<option value="Cherubi">' +
-  '<option value="Cherrim">' +
-  '<option value="Shellos">' +
-  '<option value="Gastrodon">' +
-  '<option value="Drifloon">' +
-  '<option value="Drifblim">' +
-  '<option value="Buneary">' +
-  '<option value="Lopunny">' +
-  '<option value="Glameow">' +
-  '<option value="Purugly">' +
-  '<option value="Stunky">' +
-  '<option value="Skuntank">' +
-  '<option value="Bronzor">' +
-  '<option value="Bronzong">' +
-  '<option value="Chatot">' +
-  '<option value="Spiritomb">' +
-  '<option value="Gible">' +
-  '<option value="Gabite">' +
-  '<option value="Garchomp">' +
-  '<option value="Riolu">' +
-  '<option value="Lucario">' +
-  '<option value="Hippopotas">' +
-  '<option value="Hippowdon">' +
-  '<option value="Skorupi">' +
-  '<option value="Drapion">' +
-  '<option value="Croagunk">' +
-  '<option value="Toxicroak">' +
-  '<option value="Carnivine">' +
-  '<option value="Finneon">' +
-  '<option value="Lumineon">' +
-  '<option value="Snover">' +
-  '<option value="Abomasnow">' +
-  '<option value="Rotom">' +
-  '<option value="Uxie">' +
-  '<option value="Mesprit">' +
-  '<option value="Azelf">' +
-  '<option value="Dialga">' +
-  '<option value="Palkia">' +
-  '<option value="Heatran">' +
-  '<option value="Regigigas">' +
-  '<option value="Giratina Altered">' +
-  '<option value="Giratina Origin">' +
-  '<option value="Cresselia">' +
-  '<option value="Darkrai">' +
-  '<option value="Arceus">' +
-  '<option value="Meltan">' +
-  '<option value="Melmetal">'
+  document.getElementById("pokemon").innerHTML = '<option>Bulbasaur</option>' +
+  '<option>Ivysaur</option>' +
+  '<option>Venusaur</option>' +
+  '<option>Charmander</option>' +
+  '<option>Charmeleon</option>' +
+  '<option>Charizard</option>' +
+  '<option>Squirtle</option>' +
+  '<option>Wartortle</option>' +
+  '<option>Blastoise</option>' +
+  '<option>Caterpie</option>' +
+  '<option>Metapod</option>' +
+  '<option>Butterfree</option>' +
+  '<option>Weedle</option>' +
+  '<option>Kakuna</option>' +
+  '<option>Beedrill</option>' +
+  '<option>Pidgey</option>' +
+  '<option>Pidgeotto</option>' +
+  '<option>Pidgeot</option>' +
+  '<option>Rattata</option>' +
+  '<option>Raticate</option>' +
+  '<option>Rattata Alola</option>' +
+  '<option>Raticate Alola</option>' +
+  '<option>Spearow</option>' +
+  '<option>Fearow</option>' +
+  '<option>Ekans</option>' +
+  '<option>Arbok</option>' +
+  '<option>Pichu</option>' +
+  '<option>Pikachu</option>' +
+  '<option>Raichu</option>' +
+  '<option>Raichu Alola</option>' +
+  '<option>Sandshrew</option>' +
+  '<option>Sandslash</option>' +
+  '<option>Sandshrew Alola</option>' +
+  '<option>Sandslash Alola</option>' +
+  '<option>Nidoran♀</option>' +
+  '<option>Nidorina</option>' +
+  '<option>Nidoqueen</option>' +
+  '<option>Nidoran♂</option>' +
+  '<option>Nidorino</option>' +
+  '<option>Nidoking</option>' +
+  '<option>Cleffa</option>' +
+  '<option>Clefairy</option>' +
+  '<option>Clefable</option>' +
+  '<option>Vulpix</option>' +
+  '<option>Ninetales</option>' +
+  '<option>Vulpix Alola</option>' +
+  '<option>Ninetales Alola</option>' +
+  '<option>Igglybuff</option>' +
+  '<option>Jigglypuff</option>' +
+  '<option>Wigglytuff</option>' +
+  '<option>Zubat</option>' +
+  '<option>Golbat</option>' +
+  '<option>Crobat</option>' +
+  '<option>Oddish</option>' +
+  '<option>Gloom</option>' +
+  '<option>Vileplume</option>' +
+  '<option>Bellossom</option>' +
+  '<option>Paras</option>' +
+  '<option>Parasect</option>' +
+  '<option>Venonat</option>' +
+  '<option>Venomoth</option>' +
+  '<option>Diglett</option>' +
+  '<option>Dugtrio</option>' +
+  '<option>Diglett Alola</option>' +
+  '<option>Dugtrio Alola</option>' +
+  '<option>Meowth</option>' +
+  '<option>Persian</option>' +
+  '<option>Meowth Alola</option>' +
+  '<option>Persian Alola</option>' +
+  '<option>Psyduck</option>' +
+  '<option>Golduck</option>' +
+  '<option>Mankey</option>' +
+  '<option>Primeape</option>' +
+  '<option>Growlithe</option>' +
+  '<option>Arcanine</option>' +
+  '<option>Poliwag</option>' +
+  '<option>Poliwhirl</option>' +
+  '<option>Poliwrath</option>' +
+  '<option>Politoed</option>' +
+  '<option>Abra</option>' +
+  '<option>Kadabra</option>' +
+  '<option>Alakazam</option>' +
+  '<option>Machop</option>' +
+  '<option>Machoke</option>' +
+  '<option>Machamp</option>' +
+  '<option>Bellsprout</option>' +
+  '<option>Weepinbell</option>' +
+  '<option>Victreebel</option>' +
+  '<option>Tentacool</option>' +
+  '<option>Tentacruel</option>' +
+  '<option>Geodude</option>' +
+  '<option>Graveler</option>' +
+  '<option>Golem</option>' +
+  '<option>Geodude Alola</option>' +
+  '<option>Graveler Alola</option>' +
+  '<option>Golem Alola</option>' +
+  '<option>Ponyta</option>' +
+  '<option>Rapidash</option>' +
+  '<option>Slowpoke</option>' +
+  '<option>Slowbro</option>' +
+  '<option>Slowking</option>' +
+  '<option>Magnemite</option>' +
+  '<option>Magneton</option>' +
+  '<option>Magnezone</option>' +
+  '<option>Farfetch´d</option>' +
+  '<option>Doduo</option>' +
+  '<option>Dodrio</option>' +
+  '<option>Seel</option>' +
+  '<option>Dewgong</option>' +
+  '<option>Grimer</option>' +
+  '<option>Muk</option>' +
+  '<option>Grimer Alola</option>' +
+  '<option>Muk Alola</option>' +
+  '<option>Shellder</option>' +
+  '<option>Cloyster</option>' +
+  '<option>Gastly</option>' +
+  '<option>Haunter</option>' +
+  '<option>Gengar</option>' +
+  '<option>Onix</option>' +
+  '<option>Steelix</option>' +
+  '<option>Drowzee</option>' +
+  '<option>Hypno</option>' +
+  '<option>Krabby</option>' +
+  '<option>Kingler</option>' +
+  '<option>Voltorb</option>' +
+  '<option>Electrode</option>' +
+  '<option>Exeggcute</option>' +
+  '<option>Exeggutor</option>' +
+  '<option>Exeggutor Alola</option>' +
+  '<option>Cubone</option>' +
+  '<option>Marowak</option>' +
+  '<option>Marowak Alola</option>' +
+  '<option>Tyrogue</option>' +
+  '<option>Hitmonlee</option>' +
+  '<option>Hitmonchan</option>' +
+  '<option>Hitmontop</option>' +
+  '<option>Lickitung</option>' +
+  '<option>Lickilicky</option>' +
+  '<option>Koffing</option>' +
+  '<option>Weezing</option>' +
+  '<option>Rhyhorn</option>' +
+  '<option>Rhydon</option>' +
+  '<option>Rhyperior</option>' +
+  '<option>Happiny</option>' +
+  '<option>Chansey</option>' +
+  '<option>Blissey</option>' +
+  '<option>Tangela</option>' +
+  '<option>Tangrowth</option>' +
+  '<option>Kangaskhan</option>' +
+  '<option>Horsea</option>' +
+  '<option>Seadra</option>' +
+  '<option>Kingdra</option>' +
+  '<option>Goldeen</option>' +
+  '<option>Seaking</option>' +
+  '<option>Staryu</option>' +
+  '<option>Starmie</option>' +
+  '<option>Mime Jr.</option>' +
+  '<option>Mr. Mime</option>' +
+  '<option>Scyther</option>' +
+  '<option>Scizor</option>' +
+  '<option>Smoochum</option>' +
+  '<option>Jynx</option>' +
+  '<option>Elekid</option>' +
+  '<option>Electabuzz</option>' +
+  '<option>Electivire</option>' +
+  '<option>Magby</option>' +
+  '<option>Magmar</option>' +
+  '<option>Magmortar</option>' +
+  '<option>Pinsir</option>' +
+  '<option>Tauros</option>' +
+  '<option>Magikarp</option>' +
+  '<option>Gyarados</option>' +
+  '<option>Lapras</option>' +
+  '<option>Ditto</option>' +
+  '<option>Eevee</option>' +
+  '<option>Vaporeon</option>' +
+  '<option>Jolteon</option>' +
+  '<option>Flareon</option>' +
+  '<option>Espeon</option>' +
+  '<option>Umbreon</option>' +
+  '<option>Leafeon</option>' +
+  '<option>Glaceon</option>' +
+  '<option>Porygon</option>' +
+  '<option>Porygon2</option>' +
+  '<option>PorygonZ</option>' +
+  '<option>Omanyte</option>' +
+  '<option>Omastar</option>' +
+  '<option>Kabuto</option>' +
+  '<option>Kabutops</option>' +
+  '<option>Aerodactyl</option>' +
+  '<option>Munchlax</option>' +
+  '<option>Snorlax</option>' +
+  '<option>Articuno</option>' +
+  '<option>Zapdos</option>' +
+  '<option>Moltres</option>' +
+  '<option>Dratini</option>' +
+  '<option>Dragonair</option>' +
+  '<option>Dragonite</option>' +
+  '<option>Mewtwo</option>' +
+  '<option>Mew</option>' +
+  '<option>Chikorita</option>' +
+  '<option>Bayleef</option>' +
+  '<option>Meganium</option>' +
+  '<option>Cyndaquil</option>' +
+  '<option>Quilava</option>' +
+  '<option>Typhlosion</option>' +
+  '<option>Totodile</option>' +
+  '<option>Croconaw</option>' +
+  '<option>Feraligatr</option>' +
+  '<option>Sentret</option>' +
+  '<option>Furret</option>' +
+  '<option>Hoothoot</option>' +
+  '<option>Moctowl</option>' +
+  '<option>Ledyba</option>' +
+  '<option>Ledian</option>' +
+  '<option>Spinarak</option>' +
+  '<option>Ariados</option>' +
+  '<option>Chinchou</option>' +
+  '<option>Lanturn</option>' +
+  '<option>Togepi</option>' +
+  '<option>Togetic</option>' +
+  '<option>Togekiss</option>' +
+  '<option>Matu</option>' +
+  '<option>Xatu</option>' +
+  '<option>Mareep</option>' +
+  '<option>Flaaffy</option>' +
+  '<option>Ampharos</option>' +
+  '<option>Azurill</option>' +
+  '<option>Marill</option>' +
+  '<option>Azumarill</option>' +
+  '<option>Bonsly</option>' +
+  '<option>Sudowoodo</option>' +
+  '<option>Hoppip</option>' +
+  '<option>Skiploom</option>' +
+  '<option>Jumpluff</option>' +
+  '<option>Aipom</option>' +
+  '<option>Ambipom</option>' +
+  '<option>Sunkern</option>' +
+  '<option>Sunflora</option>' +
+  '<option>Yanma</option>' +
+  '<option>Yanmega</option>' +
+  '<option>Wooper</option>' +
+  '<option>Quagsire</option>' +
+  '<option>Murkrow</option>' +
+  '<option>Honchkrow</option>' +
+  '<option>Misdreavus</option>' +
+  '<option>Mismagius</option>' +
+  '<option>Unown</option>' +
+  '<option>Wynaut</option>' +
+  '<option>Wobbuffet</option>' +
+  '<option>Girafarig</option>' +
+  '<option>Pineco</option>' +
+  '<option>Forretress</option>' +
+  '<option>Dunsparce</option>' +
+  '<option>Gligar</option>' +
+  '<option>Gliscor</option>' +
+  '<option>Snubbull</option>' +
+  '<option>Granbull</option>' +
+  '<option>Qwilfish</option>' +
+  '<option>Shuckle</option>' +
+  '<option>Heracross</option>' +
+  '<option>Sneasel</option>' +
+  '<option>Weavile</option>' +
+  '<option>Teddiursa</option>' +
+  '<option>Ursaring</option>' +
+  '<option>Slugma</option>' +
+  '<option>Magcargo</option>' +
+  '<option>Swinub</option>' +
+  '<option>Piloswine</option>' +
+  '<option>Mamoswine</option>' +
+  '<option>Corsola</option>' +
+  '<option>Remoraid</option>' +
+  '<option>Octillery</option>' +
+  '<option>Delibird</option>' +
+  '<option>Mantine</option>' +
+  '<option>Skarmory</option>' +
+  '<option>Houndour</option>' +
+  '<option>Houndoom</option>' +
+  '<option>Phanpy</option>' +
+  '<option>Donphan</option>' +
+  '<option>Stantler</option>' +
+  '<option>Smeargle</option>' +
+  '<option>Miltank</option>' +
+  '<option>Raikou</option>' +
+  '<option>Entei</option>' +
+  '<option>Suicune</option>' +
+  '<option>Larvitar</option>' +
+  '<option>Pupitar</option>' +
+  '<option>Tyranitar</option>' +
+  '<option>Lugia</option>' +
+  '<option>Ho-Oh</option>' +
+  '<option>Celebi</option>' +
+  '<option>Treecko</option>' +
+  '<option>Grovyle</option>' +
+  '<option>Sceptile</option>' +
+  '<option>Torchic</option>' +
+  '<option>Combusken</option>' +
+  '<option>Blaziken</option>' +
+  '<option>Mudkip</option>' +
+  '<option>Marshtomp</option>' +
+  '<option>Swampert</option>' +
+  '<option>Poochyena</option>' +
+  '<option>Mightyena</option>' +
+  '<option>Zigzagoon</option>' +
+  '<option>Linoone</option>' +
+  '<option>Wurmple</option>' +
+  '<option>Silcoon</option>' +
+  '<option>Beautifly</option>' +
+  '<option>Cascoon</option>' +
+  '<option>Dustox</option>' +
+  '<option>Lotad</option>' +
+  '<option>Lombre</option>' +
+  '<option>Ludicolo</option>' +
+  '<option>Seedot</option>' +
+  '<option>Nuzleaf</option>' +
+  '<option>Shiftry</option>' +
+  '<option>Taillow</option>' +
+  '<option>Swellow</option>' +
+  '<option>Wingull</option>' +
+  '<option>Pelipper</option>' +
+  '<option>Ralts</option>' +
+  '<option>Kirlia</option>' +
+  '<option>Gardevoir</option>' +
+  '<option>Gallade</option>' +
+  '<option>Surskit</option>' +
+  '<option>Masquerain</option>' +
+  '<option>Shroomish</option>' +
+  '<option>Breloom</option>' +
+  '<option>Slakoth</option>' +
+  '<option>Vigoroth</option>' +
+  '<option>Slaking</option>' +
+  '<option>Nincada</option>' +
+  '<option>Ninjask</option>' +
+  '<option>Shedinja</option>' +
+  '<option>Whismur</option>' +
+  '<option>Loudred</option>' +
+  '<option>Exploud</option>' +
+  '<option>Makuhita</option>' +
+  '<option>Hariyama</option>' +
+  '<option>Nosepass</option>' +
+  '<option>Probopass</option>' +
+  '<option>Skitty</option>' +
+  '<option>Delcatty</option>' +
+  '<option>Sableye</option>' +
+  '<option>Mawile</option>' +
+  '<option>Aron</option>' +
+  '<option>Lairon</option>' +
+  '<option>Aggron</option>' +
+  '<option>Meditite</option>' +
+  '<option>Medicham</option>' +
+  '<option>Electrike</option>' +
+  '<option>Manectric</option>' +
+  '<option>Plusle</option>' +
+  '<option>Minun</option>' +
+  '<option>Volbeat</option>' +
+  '<option>Illumise</option>' +
+  '<option>Budew</option>' +
+  '<option>Roselia</option>' +
+  '<option>Roserade</option>' +
+  '<option>Gulpin</option>' +
+  '<option>Swalot</option>' +
+  '<option>Carvanha</option>' +
+  '<option>Sharpedo</option>' +
+  '<option>Wailmer</option>' +
+  '<option>Wailord</option>' +
+  '<option>Numel</option>' +
+  '<option>Camerupt</option>' +
+  '<option>Torkoal</option>' +
+  '<option>Spoink</option>' +
+  '<option>Grumpig</option>' +
+  '<option>Trapinch</option>' +
+  '<option>Vibrava</option>' +
+  '<option>Flygon</option>' +
+  '<option>Cacnea</option>' +
+  '<option>Cacturne</option>' +
+  '<option>Swablu</option>' +
+  '<option>Altaria</option>' +
+  '<option>Zangoose</option>' +
+  '<option>Seviper</option>' +
+  '<option>Lunatone</option>' +
+  '<option>Solrock</option>' +
+  '<option>Barboach</option>' +
+  '<option>Whiscash</option>' +
+  '<option>Corphish</option>' +
+  '<option>Crawdaunt</option>' +
+  '<option>Baltoy</option>' +
+  '<option>Claydol</option>' +
+  '<option>Lileep</option>' +
+  '<option>Cradily</option>' +
+  '<option>Anorith</option>' +
+  '<option>Armaldo</option>' +
+  '<option>Feebas</option>' +
+  '<option>Milotic</option>' +
+  '<option>Castform</option>' +
+  '<option>Shuppet</option>' +
+  '<option>Banette</option>' +
+  '<option>Duskull</option>' +
+  '<option>Dusclops</option>' +
+  '<option>Dusknoir</option>' +
+  '<option>Tropius</option>' +
+  '<option>Chimecho</option>' +
+  '<option>Chingling</option>' +
+  '<option>Absol</option>' +
+  '<option>Snorunt</option>' +
+  '<option>Glalie</option>' +
+  '<option>Spheal</option>' +
+  '<option>Sealeo</option>' +
+  '<option>Walrein</option>' +
+  '<option>Clamperl</option>' +
+  '<option>Huntail</option>' +
+  '<option>Gorebyss</option>' +
+  '<option>Relicanth</option>' +
+  '<option>Luvdisc</option>' +
+  '<option>Bagon</option>' +
+  '<option>Shelgon</option>' +
+  '<option>Salamence</option>' +
+  '<option>Beldum</option>' +
+  '<option>Metang</option>' +
+  '<option>Metagross</option>' +
+  '<option>Regirock</option>' +
+  '<option>Regice</option>' +
+  '<option>Registeel</option>' +
+  '<option>Latias</option>' +
+  '<option>Latios</option>' +
+  '<option>Kyogre</option>' +
+  '<option>Groudon</option>' +
+  '<option>Rayquaza</option>' +
+  '<option>Deoxys normal</option>' +
+  '<option>Deoxys attack</option>' +
+  '<option>Deoxys defense</option>' +
+  '<option>Deoxys speed</option>' +
+  '<option>Turtwig</option>' +
+  '<option>Grotle</option>' +
+  '<option>Torterra</option>' +
+  '<option>Chimchar</option>' +
+  '<option>Monferno</option>' +
+  '<option>Infernape</option>' +
+  '<option>Piplup</option>' +
+  '<option>Prinplup</option>' +
+  '<option>Empoleon</option>' +
+  '<option>Starly</option>' +
+  '<option>Staravia</option>' +
+  '<option>Staraptor</option>' +
+  '<option>Bidoof</option>' +
+  '<option>Bibarel</option>' +
+  '<option>Kricketot</option>' +
+  '<option>Kricketune</option>' +
+  '<option>Shinx</option>' +
+  '<option>Luxio</option>' +
+  '<option>Luxray</option>' +
+  '<option>Cranidos</option>' +
+  '<option>Rampardos</option>' +
+  '<option>Shieldon</option>' +
+  '<option>Bastiodon</option>' +
+  '<option>Burmy</option>' +
+  '<option>Wormadam</option>' +
+  '<option>Mothim</option>' +
+  '<option>Combee</option>' +
+  '<option>Vespiquen</option>' +
+  '<option>Pachirisu</option>' +
+  '<option>Buizel</option>' +
+  '<option>Floatzel</option>' +
+  '<option>Cherubi</option>' +
+  '<option>Cherrim</option>' +
+  '<option>Shellos</option>' +
+  '<option>Gastrodon</option>' +
+  '<option>Drifloon</option>' +
+  '<option>Drifblim</option>' +
+  '<option>Buneary</option>' +
+  '<option>Lopunny</option>' +
+  '<option>Glameow</option>' +
+  '<option>Purugly</option>' +
+  '<option>Stunky</option>' +
+  '<option>Skuntank</option>' +
+  '<option>Bronzor</option>' +
+  '<option>Bronzong</option>' +
+  '<option>Chatot</option>' +
+  '<option>Spiritomb</option>' +
+  '<option>Gible</option>' +
+  '<option>Gabite</option>' +
+  '<option>Garchomp</option>' +
+  '<option>Riolu</option>' +
+  '<option>Lucario</option>' +
+  '<option>Hippopotas</option>' +
+  '<option>Hippowdon</option>' +
+  '<option>Skorupi</option>' +
+  '<option>Drapion</option>' +
+  '<option>Croagunk</option>' +
+  '<option>Toxicroak</option>' +
+  '<option>Carnivine</option>' +
+  '<option>Finneon</option>' +
+  '<option>Lumineon</option>' +
+  '<option>Snover</option>' +
+  '<option>Abomasnow</option>' +
+  '<option>Rotom</option>' +
+  '<option>Uxie</option>' +
+  '<option>Mesprit</option>' +
+  '<option>Azelf</option>' +
+  '<option>Dialga</option>' +
+  '<option>Palkia</option>' +
+  '<option>Heatran</option>' +
+  '<option>Regigigas</option>' +
+  '<option>Giratina Altered</option>' +
+  '<option>Giratina Origin</option>' +
+  '<option>Cresselia</option>' +
+  '<option>Darkrai</option>' +
+  '<option>Arceus</option>' +
+  '<option>Meltan</option>' +
+  '<option>Melmetal</option>'
 }
