@@ -11,7 +11,7 @@ function Input_Problematic_Pokemon(Pokemon_Name){
   else if (Pokemon_Name == "mr. mime") {
     Pokemon_Name = "mrmime";
   }
-  else if (Pokemon_Name == "farfetch'd") {
+  else if (Pokemon_Name == "farfetch´d") {
     Pokemon_Name = "farfetchd";
   }
   else if (Pokemon_Name == "ho-oh") {
