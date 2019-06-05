@@ -396,7 +396,6 @@ button#button_info:hover{
 }
 
 button#button_info label{
-	background-color: red;
 	display: block;
 	position: absolute;
 	box-sizing: border-box;
@@ -671,4 +670,12 @@ th:last-child,th#ultimo{
 	}
 
 }
+
+
+@media only screen and (device-width : 375px) and (width : 812px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+	button#button_info.info{
+		right: env(safe-area-inset-right);
+	}
+}
+
 /*== Media ==*/
