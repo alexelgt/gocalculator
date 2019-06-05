@@ -8,6 +8,7 @@ body{
 	margin: 0;
 	font-family: "Helvetica";
 	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
 	background: linear-gradient(var(--gradient1_color2) 1px, rgba(162,219,149,0.8) 200px, var(--gradient1_color2) 400px);
 	background-color: var(--gradient1_color2);
 	background-repeat: no-repeat;
@@ -190,6 +191,9 @@ h2.informacion{
 }
 #informacion{
 	display: none;
+	box-sizing: border-box;
+	padding-left: env(safe-area-inset-left);
+	padding-right: env(safe-area-inset-right);
 	position: absolute;
 	width: 100%;
 	min-height: 100%;
