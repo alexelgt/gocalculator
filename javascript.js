@@ -1,8 +1,5 @@
-function fullscreen(){var a=document.getElementsByTagName("a");for(var i=0;i<a.length;i++){if(a[i].className.match("noeffect")){}else{a[i].onclick=function(){window.location=this.getAttribute("href");return false}}}}
-
 function start(){
   language();
-  fullscreen();
   team_phrase();
   sliders();
   pokemonListData();
@@ -37,7 +34,7 @@ function ventanaemergente(id,id2) {
 }
 
 function pokemonListData() {
-  document.getElementById("pokemon2").innerHTML = '<option>Bulbasaur</option>' +
+  document.getElementById("pokemon").innerHTML = '<option>Bulbasaur</option>' +
   '<option>Ivysaur</option>' +
   '<option>Venusaur</option>' +
   '<option>Charmander</option>' +
