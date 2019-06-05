@@ -2823,8 +2823,3 @@ var melmetal = {
     Evolutions : null,
     Basic_evolution : "snover"
 };
-
-var easteregg = {
-    Stats      : [-Math.pow(10,4), -Math.pow(10,4), -Math.pow(10,4)],
-    Evolutions : null
-};

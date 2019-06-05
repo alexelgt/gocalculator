@@ -31,8 +31,6 @@ function Get_CP() {
 	var Level = parseFloat(document.getElementById("Level_CP").valueHigh);
 	/*===Set variables 1/2 ==*/
 
-	notaneasteregg(Pokemon_Name_CP);
-
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_CP == 'undefined'){
 		if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
@@ -79,8 +77,6 @@ function Get_Candy_Dust() {
 	var Level_Max_Candy_Dust = parseFloat(document.getElementById("Level").valueHigh);
 	var Level_Min_Candy_Dust = parseFloat(document.getElementById("Level").valueLow);
 	/*===Set variables 1/2 ==*/
-
-	notaneasteregg(Pokemon_Name_Candy_Dust);
 
 	/*=== Set variables 2/2 ===*/
 	var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
@@ -148,8 +144,6 @@ function Get_CP_Raids() {
 	Pokemon_Name_CP_Raid = Input_Problematic_Pokemon(Pokemon_Name_CP_Raid);
 	var Pokemon_CP_Raid = window[Pokemon_Name_CP_Raid];
 	/*===Set variables 1/2 ==*/
-
-	notaneasteregg(Pokemon_Name_CP);
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_CP_Raid == 'undefined'){
@@ -238,8 +232,6 @@ function Get_CP_Wild() {
 	Pokemon_Name_CP_Wild = Input_Problematic_Pokemon(Pokemon_Name_CP_Wild);
 	var Pokemon_CP_Wild = window[Pokemon_Name_CP_Wild];
 	/*===Set variables 1/2 ==*/
-
-	notaneasteregg(Pokemon_Name_CP);
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_CP_Wild == 'undefined'){
@@ -343,8 +335,6 @@ function Get_CP_Search() {
 		var HP_String = "hp";
 	}
 	/*===Set variables ==*/
-
-	notaneasteregg(Pokemon_Name_CP);
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_CP_Search == 'undefined'){
@@ -1075,8 +1065,6 @@ function Get_IV() {
 	var Pokemon_Name_IV = (document.getElementById("Pokemon_Name_IV").value); Pokemon_Name_IV = Pokemon_Name_IV.toLowerCase();
 	Pokemon_Name_IV = Input_Problematic_Pokemon(Pokemon_Name_IV);
 	var Pokemon_IV = window[Pokemon_Name_IV];
-
-	notaneasteregg(Pokemon_Name_IV);
 
 	var HP = (document.getElementById("HP_IV").value);
 	var CP = (document.getElementById("CP_IV").value);
@@ -2095,8 +2083,6 @@ function Get_PVP_Moves() {
 	Pokemon_Name_PVP_Moves = Input_Problematic_Pokemon(Pokemon_Name_PVP_Moves);
 	var Pokemon_PVP_Moves = window[Pokemon_Name_PVP_Moves];
 	/*===Set variables 1/2 ==*/
-
-	notaneasteregg(Pokemon_Name_PVP_Moves);
 
 	/*==== Check if inputs are correct ====*/
 	if (typeof Pokemon_PVP_Moves == 'undefined'){
