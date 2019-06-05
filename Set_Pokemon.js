@@ -2149,7 +2149,7 @@ var cradily = {
 };
 
 var anorith = {
-    Stats      : [141, 100, 128],
+    Stats      : [176, 100, 128],
     Evolutions : ["armaldo"],
     Basic_evolution : "anorith"
 };
