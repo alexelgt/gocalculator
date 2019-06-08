@@ -762,6 +762,40 @@ function Get_PVP_Stats(csv_mode) {
 			    return parseFloat(b[4]) - parseFloat(a[4]);
 			});
 			/*== Sort the data ==*/
+
+			/*==== Get IVs combination introduced ====*/
+			if (csv_mode == 0) {
+				var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
+
+				var Stats_PVP_Check;
+				if (League_CP_Limit == null) { // In master league the best combination is always level 40 so no need to do a loop
+					Stats_PVP_Check = [IV[0],IV[1],IV[2], 40, PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40),Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40),Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40))]
+				}
+				else {
+					for (var l = 40; l >= 1; l = l - 0.5) {
+						if (CP_Formula(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) <= League_CP_Limit) {
+							Stats_PVP_Check = [IV[0],IV[1],IV[2], l, PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l),Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l),Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l))]
+							break; //combination under CP limit found so stop the loop over l
+						}
+					}
+				}
+			}
+
+			/*== Get IVs combination introduced ==*/
+
+			for (const [i, Pokemon_Stats_PVP_element] of Pokemon_Stats_PVP.entries()) {
+				Pokemon_Stats_PVP_element[5] = i + 1;
+
+				if (csv_mode == 0 && JSON.stringify(Pokemon_Stats_PVP_element.slice(0,3)) == JSON.stringify(Stats_PVP_Check.slice(0,3))) {
+					Stats_PVP_Check[5] = Pokemon_Stats_PVP_element[5];
+				}
+			}
+
+			if (csv_mode == 0 && Stats_PVP_Check[5] == undefined) {
+				Stats_PVP_Check[5] = 0
+			}
+
+
 			/*== Set IVs and best level combinations ==*/
 
 			if (csv_mode == 0) {
@@ -799,44 +833,32 @@ function Get_PVP_Stats(csv_mode) {
 						break;
 					}
 					
-					$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*100)/100 + "%)</th></tr>" );
+					$( "#Output_PVP_Stats_4" ).append( "<tr><th>" + Pokemon_Stats_PVP[i][5] + "</th><th>" + Pokemon_Stats_PVP[i][0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) *10)/10 + ")" + "</th><th>" + Pokemon_Stats_PVP[i][2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0],Pokemon_Stats_PVP[i][1],Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Pokemon_Stats_PVP[i][0], Pokemon_Stats_PVP[i][1], Pokemon_Stats_PVP[i][2]],Pokemon_Stats_PVP[i][3]) + "<br>(" + Pokemon_Stats_PVP[i][3] + ")</th><th>" + Pokemon_Stats_PVP[i][4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Pokemon_Stats_PVP[i][4]) )*100*100)/100 + "%)</th></tr>" );
 					
 				}
 
 				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
+				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>#</td><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
 				}
 				else {
-				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
+				  $( "#Output_PVP_Stats_4" ).append( "<tr><td>#</td><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
 				}
 				/*== Create table with the 10 best qualities ==*/
 
 				/*==== Check IVs combination introduced ====*/
-				var IV = [parseFloat(document.getElementById("IV_A").value), parseFloat(document.getElementById("IV_D").value), parseFloat(document.getElementById("IV_HP").value)];
+				
 
-				var Stats_PVP_Check;
-				if (League_CP_Limit == null) { // In master league the best combination is always level 40 so no need to do a loop
-					Stats_PVP_Check = [IV[0],IV[1],IV[2], 40, PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40),Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40),Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],40))]
-				}
-				else {
-					for (var l = 40; l >= 1; l = l - 0.5) {
-						if (CP_Formula(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l) <= League_CP_Limit) {
-							Stats_PVP_Check = [IV[0],IV[1],IV[2], l, PVP_Stats_Quality(Get_ATK(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l),Get_DEF(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l),Get_HP(Pokemon_PVP_Stats,[IV[0],IV[1],IV[2]],l))]
-							break; //combination under CP limit found so stop the loop over l
-						}
-					}
-				}
-
+				
 				
 
 				/*==== Create table with IVs combination introduced ====*/
-				$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + Stats_PVP_Check[0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Stats_PVP_Check[0], Stats_PVP_Check[1], Stats_PVP_Check[2]],Stats_PVP_Check[3]) + "<br>(" + Stats_PVP_Check[3] + ")</th><th>" + Stats_PVP_Check[4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Stats_PVP_Check[4]) )*100*100)/100 + "%)</th></tr>" );
+				$( "#Output_PVP_Stats_2" ).append( "<tr><th>" + Stats_PVP_Check[5] + "</th><th>" + Stats_PVP_Check[0] + "<br>(" + Math.round(Get_ATK(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[1] + "<br>(" + Math.round(Get_DEF(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) *10)/10 + ")" + "</th><th>" + Stats_PVP_Check[2] + "<br>(" + Get_HP(Pokemon_PVP_Stats,[Stats_PVP_Check[0],Stats_PVP_Check[1],Stats_PVP_Check[2]],Stats_PVP_Check[3]) + ")" + "</th><th>" + CP_Formula(Pokemon_PVP_Stats,[Stats_PVP_Check[0], Stats_PVP_Check[1], Stats_PVP_Check[2]],Stats_PVP_Check[3]) + "<br>(" + Stats_PVP_Check[3] + ")</th><th>" + Stats_PVP_Check[4] + "<br>(" + Math.round( ( PVP_Stats_Quality_percentage(Pokemon_Stats_PVP[0][4],Pokemon_Stats_PVP[Pokemon_Stats_PVP.length -1][4],Stats_PVP_Check[4]) )*100*100)/100 + "%)</th></tr>" );
 
 				if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
-					$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
+					$( "#Output_PVP_Stats_2" ).append( "<tr><td>#</td><td>A</td><td>D</td><td>HP</td><td>PC<br>(Nivel)</td><td>Calidad</td></tr>" );
 				}
 				else {
-					$( "#Output_PVP_Stats_2" ).append( "<tr><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
+					$( "#Output_PVP_Stats_2" ).append( "<tr><td>#</td><td>A</td><td>D</td><td>HP</td><td>CP<br>(Level)</td><td>Quality</td></tr>" );
 				}
 				/*== Create table with IVs combination introduced ==*/
 				/*== Check IVs combination introduced ==*/
