@@ -9,7 +9,7 @@ body{
 	font-family: "Helvetica";
 	font-size: 16px;
 	-webkit-text-size-adjust: 100%;
-	background: linear-gradient(var(--gradient1_color2) 1px, rgba(162,219,149,0.8) 200px, var(--gradient1_color2) 400px);
+	background: linear-gradient(var(--gradient1_color2) 1px, var(--gradient1_color1_translucent) 200px, var(--gradient1_color2) 400px);
 	background-color: var(--gradient1_color2);
 	background-repeat: no-repeat;
 	background-size: var(--backgroundsize);
@@ -124,6 +124,8 @@ input::-webkit-inner-spin-button {
 	margin-top: 14px;
 	margin-bottom: 4px;
 	width:100%;
+	box-sizing: border-box;
+	padding: 0 12px
 }
 
 #slider_container.multiple{
@@ -219,6 +221,7 @@ h2.informacion{
 	font-weight: normal;
 	margin-bottom: 20px;
 	padding: 6px;
+	padding-left: 14px;
 	line-height: 24px;
 	text-align: left;
 }
@@ -322,7 +325,7 @@ input, textarea{
 	margin: 5px 0 10px;
 	padding: 6px 8px;
 	font-size: 14px;
-	color: var(--inputtextarea_textcolor);
+	color: var(--inputtextarea_textcolor)!important;
 	border: var(--inputtextarea_border);
 	border-radius: 15px
 }

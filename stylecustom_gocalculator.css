@@ -17,6 +17,7 @@
 	--selectvalue_focus: #d5e9f0;
 
 	--gradient1_color1: #a2db95;
+	--gradient1_color1_translucent: rgba(162,219,149,0.8);
 	--gradient1_color2: #24ccaa;
 	--gradient1_color1_hover: #5fa89a;
 	--gradient1_color2_hover: #209dad;
@@ -47,4 +48,29 @@
 
 	--table_td_textcolor: #95aaab;
 	--table_td_informacion_textcolor: #b5f3e4;
+	
 }
+
+/*==== Dark mode ====*/
+@media (prefers-color-scheme: dark) {
+	:root{
+		--cuerpocolor: #323232;
+
+		--textcolor1: #dcdcdd;
+		--textcolor3: #dcdcdd;
+
+		--selectvalue: #626262;
+
+		--gradient1_color1: #505050;
+		--gradient1_color1_translucent: rgba(80,80,80,0.8);
+		--gradient1_color2: #1e1e1e;
+
+		--inputtextarea_backgroundcolor: #c8c8c8;
+		--inputtextarea_textcolor: #3e3d3d;
+		--inputtextarea_border: #838383 solid 2px;
+		--inputtextarea_bordercolor_focus: #747474;
+		--inputtextarea_backgroundcolor_focus: #bbbbbb
+
+	}
+}
+/*== Dark mode ==*/

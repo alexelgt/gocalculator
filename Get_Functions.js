@@ -458,7 +458,8 @@ function Get_CP_Search() {
 		$("#Output_CP_Search").html($('#Output_CP_Search').html() + "<div id='output_text'>The results obtained are:<h4 style='text-transform: capitalize;text-align: center'>" + Pokemon_Name_CP_Search_String + "</h4></div>");
 	}
 
-	$( "#Output_CP_Search_2" ).append( Pokemon_CP_Search.Pokedex_number + "&" );
+	var cp_search_code = "";
+	cp_search_code += Pokemon_CP_Search.Pokedex_number + "&";
 
 	/*==== Get the search code ====*/
 	contador_CP_values = 0;
@@ -506,20 +507,20 @@ function Get_CP_Search() {
 		}
 		if (CP_values_norepeated[i-1] - CP_values_norepeated[i] > 1) {
 			if (cp_max == cp_min) {
-				$( "#Output_CP_Search_2" ).append( CP_String + cp_min + ",");
+				cp_search_code += CP_String + cp_min + ",";
 			}
 			else {
-				$( "#Output_CP_Search_2" ).append( CP_String + cp_max + "-" + cp_min + ",");
+				cp_search_code += CP_String + cp_max + "-" + cp_min + ",";
 			}
 			cp_min = CP_values_norepeated[i];
 			cp_max = CP_values_norepeated[i];
 		}
 	}
 	if (CP_values_norepeated[CP_values_norepeated.length-2] - CP_values_norepeated[CP_values_norepeated.length - 1] > 1) {
-		$( "#Output_CP_Search_2" ).append( CP_String + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&");
+		cp_search_code += CP_String + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&";
 	}
 	else {
-		$( "#Output_CP_Search_2" ).append( CP_String + CP_values_norepeated[CP_values_norepeated.length - 2] + "-" + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&");
+		cp_search_code += CP_String + CP_values_norepeated[CP_values_norepeated.length - 2] + "-" + CP_values_norepeated[CP_values_norepeated.length - 1]  + "&";
 	}
 
 	var hp_min = HP_values_norepeated[0];
@@ -531,21 +532,22 @@ function Get_CP_Search() {
 		}
 		if (HP_values_norepeated[i-1] - HP_values_norepeated[i] > 1) {
 			if (hp_max == hp_min) {
-				$( "#Output_CP_Search_2" ).append( HP_String + hp_min + ",");
+				cp_search_code += HP_String + hp_min + ",";
 			}
 			else {
-				$( "#Output_CP_Search_2" ).append( HP_String + hp_max + "-" + hp_min + ",");
+				cp_search_code += HP_String + hp_max + "-" + hp_min + ",";
 			}
 			hp_min = HP_values_norepeated[i];
 			hp_max = HP_values_norepeated[i];
 		}
 	}
 	if (HP_values_norepeated[HP_values_norepeated.length-2] - HP_values_norepeated[HP_values_norepeated.length - 1] > 1) {
-		$( "#Output_CP_Search_2" ).append( HP_String + HP_values_norepeated[HP_values_norepeated.length - 1]);
+		cp_search_code += HP_String + HP_values_norepeated[HP_values_norepeated.length - 1];
 	}
 	else {
-		$( "#Output_CP_Search_2" ).append( HP_String + HP_values_norepeated[HP_values_norepeated.length - 2] + "-" + HP_values_norepeated[HP_values_norepeated.length - 1]);
+		cp_search_code += HP_String + HP_values_norepeated[HP_values_norepeated.length - 2] + "-" + HP_values_norepeated[HP_values_norepeated.length - 1];
 	}
+	document.getElementById("Output_CP_Search_2").value = cp_search_code;
 	/*== Get the search code ==*/
 	/*== Set output ==*/
 }
@@ -972,7 +974,7 @@ function Get_PVP_Stats(csv_mode) {
 
 			if (csv_mode == 0) {
 				/*=== Send the search code to textarea so the user can copy it ===*/
-				$( "#Output_PVP_Stats_textarea" ).append( PVP_Code );
+				document.getElementById("Output_PVP_Stats_textarea").value = PVP_Code;
 			}
 
 			if (csv_mode == 1) {

@@ -118,52 +118,34 @@
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calcularpc">
+				<div id="cuerpo" class="cuerpo_fullwidthonecol">
+
 					<div style="width:100%">
-						<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
+						<h3 class="STRING_PERFECT_CP_SEARCH">Search codes</h3>
 
-						<h4 class="STRING_LEVEL">Level</h4>
-
-						<div id="slider_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single_high" id="Level_CP"></div>
-						<div id="estructura_slider">
-							<div id="showslidervalue"></div>
-							<div id="showslidervalue" class="Level_max_CP">40</div>
-						</div>
-
-						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
-
-						<div id="Output_CP" class="output"></div>
-					</div>
-
-				</div>
-				<!--== cuerpo ==-->
-
-				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="calcularpc">
-					<div style="width:100%">
-						<h3 class="STRING_CANDY_STARDUST_COST">Candies and stardusts cost</h3>
-
-						<div id="checkbox_element">
+						<div id="select_block">
 							<div>
-								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS_POKEMON">Use Pokémon's data</span>
-								<div class="checkbox">
-									<input type="checkbox" id="showall_candy_dust">
-									<label for="showall_candy_dust"></label>
-								</div>
+								<span id="select_text" class="mini STRING_IVS_FILTER">IVs filter</span>
+								<select id="CP_Search_IVs_Filter" class="mini">
+									<option selected="selected">100%</option>
+									<option>0%</option>
+									<option>98% 15A</option>
+									<option>96% 15A</option>
+									<option>93% 15A</option>
+									<option>91% 15A</option>
+									<option>96% 15A ≥14HP</option>
+									<option>93% 15A ≥14HP</option>
+									<option>91% 15A ≥14HP</option>
+									<option>98%</option>
+									<option>96%</option>
+								</select>
 							</div>
 						</div>
 
-						<h4 class="STRING_LEVEL_RANGE">Level range</h4>
+						<button onclick="Get_CP_Search()" class="STRING_OBTAIN" id="clickme_CP_Search">Obtain</button>
 
-						<div id="slider_container" class="multiple"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
-						<div id="estructura_slider">
-							<div id="showslidervalue" class="Level_min">1</div>
-							<div id="showslidervalue" class="Level_max">40</div>
-						</div>
-
-						<button onclick="Get_Candy_Dust()" class="STRING_OBTAIN">Obtain</button>
-
-						<div id="Output_Candy_Dust" class="output"></div>
+						<div id="Output_CP_Search" class="output"></div>
+						<textarea id="Output_CP_Search_2" class="output"></textarea>
 					</div>
 
 				</div>
@@ -231,38 +213,60 @@
 				<!--== cuerpo ==-->
 
 				<!--==== cuerpo ====-->
-				<div id="cuerpo" class="cuerpo_fullwidthonecol">
-
+				<div id="cuerpo" class="calcularpc">
 					<div style="width:100%">
-						<h3 class="STRING_PERFECT_CP_SEARCH">Search codes</h3>
+						<h3 class="STRING_CALCULATE_CP">Calculate CP</h3>
 
-						<div id="select_block">
-							<div>
-								<span id="select_text" class="mini STRING_IVS_FILTER">IVs filter</span>
-								<select id="CP_Search_IVs_Filter" class="mini">
-									<option selected="selected">100%</option>
-									<option>0%</option>
-									<option>98% 15A</option>
-									<option>96% 15A</option>
-									<option>93% 15A</option>
-									<option>91% 15A</option>
-									<option>96% 15A ≥14HP</option>
-									<option>93% 15A ≥14HP</option>
-									<option>91% 15A ≥14HP</option>
-									<option>98%</option>
-									<option>96%</option>
-								</select>
-							</div>
+						<h4 class="STRING_LEVEL">Level</h4>
+
+						<div id="slider_container"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" class="single_high" id="Level_CP"></div>
+						<div id="estructura_slider">
+							<div id="showslidervalue"></div>
+							<div id="showslidervalue" class="Level_max_CP">40</div>
 						</div>
 
-						<button onclick="Get_CP_Search()" class="STRING_OBTAIN" id="clickme_CP_Search">Obtain</button>
+						<button onclick="Get_CP()" class="STRING_OBTAIN">Obtain</button>
 
-						<div id="Output_CP_Search" class="output"></div>
-						<textarea id="Output_CP_Search_2" class="output"></textarea>
+						<div id="Output_CP" class="output"></div>
 					</div>
 
 				</div>
 				<!--== cuerpo ==-->
+
+				<!--==== cuerpo ====-->
+				<div id="cuerpo" class="calcularpc">
+					<div style="width:100%">
+						<h3 class="STRING_CANDY_STARDUST_COST">Candies and stardusts cost</h3>
+
+						<div id="checkbox_element">
+							<div>
+								<span id="checkbox_text" class="frase STRING_SHOW_ALL_RESULTS_POKEMON">Use Pokémon's data</span>
+								<div class="checkbox">
+									<input type="checkbox" id="showall_candy_dust">
+									<label for="showall_candy_dust"></label>
+								</div>
+							</div>
+						</div>
+
+						<h4 class="STRING_LEVEL_RANGE">Level range</h4>
+
+						<div id="slider_container" class="multiple"><input type="range" multiple min="1" max="40" value="1,40" step="0.5" id="Level"></div>
+						<div id="estructura_slider">
+							<div id="showslidervalue" class="Level_min">1</div>
+							<div id="showslidervalue" class="Level_max">40</div>
+						</div>
+
+						<button onclick="Get_Candy_Dust()" class="STRING_OBTAIN">Obtain</button>
+
+						<div id="Output_Candy_Dust" class="output"></div>
+					</div>
+
+				</div>
+				<!--== cuerpo ==-->
+
+				
+
+				
 
 			</div>
 			<!--== estructura ==-->
