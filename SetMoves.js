@@ -1,4 +1,4 @@
-var moves_pvp = {
+var movesPVP = {
   "Acid": {
     "Element": "Poison",
     "Power": 6,

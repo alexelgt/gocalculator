@@ -1,5 +1,6 @@
 /*
 var example = {
+    Pokedex_number: 1,
     Stats      : [Attack, Defense, HP],
     Evolutions : ["Evolution1", "Evolution2"],
     Basic_evolution : "example"

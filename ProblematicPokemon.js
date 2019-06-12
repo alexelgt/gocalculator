@@ -1,4 +1,4 @@
-function Input_Problematic_Pokemon(Pokemon_Name){
+function inputProblematicPokemon(Pokemon_Name){
   if (Pokemon_Name == "nidoran♀") {
     Pokemon_Name = "nidoranf";
   }

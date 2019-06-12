@@ -1,7 +1,6 @@
 function start(){
   language();
   team_phrase();
-  sliders();
   pokemonListData();
 
   $('#clickme_CP_Search').click(function() {
