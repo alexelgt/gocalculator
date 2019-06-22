@@ -211,7 +211,7 @@ function pokemonListData() {
     '<option>Sentret</option>' +
     '<option>Furret</option>' +
     '<option>Hoothoot</option>' +
-    '<option>Moctowl</option>' +
+    '<option>Noctowl</option>' +
     '<option>Ledyba</option>' +
     '<option>Ledian</option>' +
     '<option>Spinarak</option>' +
