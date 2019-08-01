@@ -25,7 +25,7 @@ var file_name_league;
 function Get_PVP_Stats(csv_mode) {
 
 	/*==== Set variables 1/2 ====*/
-	var code_filter = 0.98; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
+	var code_filter = 0.99; // filter applied to generate the code. In orther to generate useful codes is has to be really high due to false positives
 
 	if (navigator.language == "es-es" || navigator.language == "es" || navigator.language == "es-ES") {
 		var CP_String = "PC";
