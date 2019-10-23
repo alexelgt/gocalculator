@@ -509,6 +509,62 @@ function pokemonListData() {
     '<option>Cresselia</option>' +
     '<option>Darkrai</option>' +
     '<option>Arceus</option>' +
+    '<option>Victini</option>' +
+    '<option>Snivy</option>' +
+    '<option>Servine</option>' +
+    '<option>Serperior</option>' +
+    '<option>Tepig</option>' +
+    '<option>Pignite</option>' +
+    '<option>Emboar</option>' +
+    '<option>Oshawott</option>' +
+    '<option>Dewott</option>' +
+    '<option>Samurott</option>' +
+    '<option>Patrat</option>' +
+    '<option>Watchog</option>' +
+    '<option>Lillipup</option>' +
+    '<option>Herdier</option>' +
+    '<option>Stoutland</option>' +
+    '<option>Purrloin</option>' +
+    '<option>Liepard</option>' +
+    '<option>Pansage</option>' +
+    '<option>Simisage</option>' +
+    '<option>Pansear</option>' +
+    '<option>Simisear</option>' +
+    '<option>Panpour</option>' +
+    '<option>Simipour</option>' +
+    '<option>Munna</option>' +
+    '<option>Musharna</option>' +
+    '<option>Pidove</option>' +
+    '<option>Tranquill</option>' +
+    '<option>Unfezant</option>' +
+    '<option>Blitzle</option>' +
+    '<option>Zebstrika</option>' +
+    '<option>Roggenrola</option>' +
+    '<option>Boldore</option>' +
+    '<option>Gigalith</option>' +
+    '<option>Woobat</option>' +
+    '<option>Swoobat</option>' +
+    '<option>Drilbur</option>' +
+    '<option>Excadrill</option>' +
+    '<option>Yamask</option>' +
+    '<option>Cofagrigus</option>' +
+    '<option>Foongus</option>' +
+    '<option>Amoonguss</option>' +
+    '<option>Ferroseed</option>' +
+    '<option>Ferrothorn</option>' +
+    '<option>Klink</option>' +
+    '<option>Klang</option>' +
+    '<option>Klinklang</option>' +
+    '<option>Litwick</option>' +
+    '<option>Lampent</option>' +
+    '<option>Chandelure</option>' +
+    '<option>Golett</option>' +
+    '<option>Golurk</option>' +
+    '<option>Heatmor</option>' +
+    '<option>Durant</option>' +
+    '<option>Deino</option>' +
+    '<option>Zweilous</option>' +
+    '<option>Hydreigon</option>' +
     '<option>Meltan</option>' +
     '<option>Melmetal</option>'
   }

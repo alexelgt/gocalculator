@@ -41,10 +41,7 @@ var charizard = {
     Pokedex_number: 6,
     Stats      : [223, 173, 186],
     Evolutions : null,
-    Basic_evolution : "charmander",
-    Element : ["Fire", "Flying"],
-    Fast_moves : ["Fire Spin", "Air Slash", "Ember", "Wing Attack"],
-    Charged_moves : ["Blast Burn", "Dragon Claw", "Fire Blast", "Flamethrower", "Overheat"]
+    Basic_evolution : "charmander"
 };
 
 var squirtle = {
@@ -2460,10 +2457,7 @@ var altaria = {
     Pokedex_number: 334,
     Stats      : [141, 201, 181],
     Evolutions : null,
-    Basic_evolution : "swablu",
-    Element : ["Dragon", "Flying"],
-    Fast_moves : ["Dragon Breath", "Peck"],
-    Charged_moves : ["Dazzling Gleam", "Dragon Pulse", "Sky Attack"]
+    Basic_evolution : "swablu"
 };
 
 var zangoose = {
@@ -2674,10 +2668,7 @@ var sealeo = {
     Pokedex_number: 364,
     Stats      : [137, 132, 207],
     Evolutions : ["walrein"],
-    Basic_evolution : "spheal",
-    Element : ["Ice", "Water"],
-    Fast_moves : ["Powder Snow", "Water Gun"],
-    Charged_moves : ["Aurora Beam", "Body Slam", "Water Pulse"]
+    Basic_evolution : "spheal"
 };
 var walrein = {
     Pokedex_number: 365,
@@ -3342,6 +3333,367 @@ var arceus = {
     Stats      : [238, 238, 236],
     Evolutions : null,
     Basic_evolution : "arceus"
+};
+
+var victini = {
+    Pokedex_number: 494,
+    Stats      : [210, 210, 225],
+    Evolutions : null,
+    Basic_evolution : "victini"
+};
+
+var snivy = {
+    Pokedex_number: 495,
+    Stats      : [88, 107, 128],
+    Evolutions : ["servine", "serperior"],
+    Basic_evolution : "snivy"
+};
+var servine = {
+    Pokedex_number: 496,
+    Stats      : [122, 152, 155],
+    Evolutions : ["serperior"],
+    Basic_evolution : "snivy"
+};
+var serperior = {
+    Pokedex_number: 497,
+    Stats      : [161, 204, 181],
+    Evolutions : null,
+    Basic_evolution : "snivy"
+};
+
+var tepig = {
+    Pokedex_number: 498,
+    Stats      : [115, 85, 163],
+    Evolutions : ["pignite", "emboar"],
+    Basic_evolution : "tepig"
+};
+var pignite = {
+    Pokedex_number: 499,
+    Stats      : [173, 106, 207],
+    Evolutions : ["emboar"],
+    Basic_evolution : "tepig"
+};
+var emboar = {
+    Pokedex_number: 500,
+    Stats      : [235, 127, 242],
+    Evolutions : null,
+    Basic_evolution : "tepig"
+};
+
+var oshawott = {
+    Pokedex_number: 501,
+    Stats      : [117, 85, 146],
+    Evolutions : ["dewott", "samurott"],
+    Basic_evolution : "oshawott"
+};
+var dewott = {
+    Pokedex_number: 502,
+    Stats      : [159, 116, 181],
+    Evolutions : ["samurott"],
+    Basic_evolution : "oshawott"
+};
+var samurott = {
+    Pokedex_number: 503,
+    Stats      : [212, 157, 216],
+    Evolutions : null,
+    Basic_evolution : "oshawott"
+};
+
+var patrat = {
+    Pokedex_number: 504,
+    Stats      : [98, 73, 128],
+    Evolutions : ["watchog"],
+    Basic_evolution : "patrat"
+};
+var watchog = {
+    Pokedex_number: 505,
+    Stats      : [165, 139, 155],
+    Evolutions : null,
+    Basic_evolution : "patrat"
+};
+
+var lillipup = {
+    Pokedex_number: 506,
+    Stats      : [107, 86, 128],
+    Evolutions : ["herdier", "samurott"],
+    Basic_evolution : "lillipup"
+};
+var herdier = {
+    Pokedex_number: 507,
+    Stats      : [145, 126, 163],
+    Evolutions : ["stoutland"],
+    Basic_evolution : "lillipup"
+};
+var stoutland = {
+    Pokedex_number: 508,
+    Stats      : [206, 182, 198],
+    Evolutions : null,
+    Basic_evolution : "lillipup"
+};
+
+var purrloin = {
+    Pokedex_number: 509,
+    Stats      : [98, 73, 121],
+    Evolutions : ["liepard"],
+    Basic_evolution : "purrloin"
+};
+var liepard = {
+    Pokedex_number: 510,
+    Stats      : [187, 106, 162],
+    Evolutions : null,
+    Basic_evolution : "purrloin"
+};
+
+var pansage = {
+    Pokedex_number: 511,
+    Stats      : [104, 94, 137],
+    Evolutions : ["simisage"],
+    Basic_evolution : "pansage"
+};
+var simisage = {
+    Pokedex_number: 512,
+    Stats      : [206, 133, 181],
+    Evolutions : null,
+    Basic_evolution : "pansage"
+};
+
+var pansear = {
+    Pokedex_number: 513,
+    Stats      : [104, 94, 137],
+    Evolutions : ["simisear"],
+    Basic_evolution : "pansear"
+};
+var simisear = {
+    Pokedex_number: 514,
+    Stats      : [206, 133, 181],
+    Evolutions : null,
+    Basic_evolution : "pansear"
+};
+
+var panpour = {
+    Pokedex_number: 515,
+    Stats      : [104, 94, 137],
+    Evolutions : ["simipour"],
+    Basic_evolution : "panpour"
+};
+var simipour = {
+    Pokedex_number: 516,
+    Stats      : [206, 133, 181],
+    Evolutions : null,
+    Basic_evolution : "panpour"
+};
+
+var munna = {
+    Pokedex_number: 517,
+    Stats      : [111, 92, 183],
+    Evolutions : ["musharna"],
+    Basic_evolution : "munna"
+};
+var musharna = {
+    Pokedex_number: 518,
+    Stats      : [183, 166, 253],
+    Evolutions : null,
+    Basic_evolution : "munna"
+};
+
+var pidove = {
+    Pokedex_number: 519,
+    Stats      : [98, 80, 137],
+    Evolutions : ["tranquill", "unfezant"],
+    Basic_evolution : "pidove"
+};
+var tranquill = {
+    Pokedex_number: 520,
+    Stats      : [144, 107, 158],
+    Evolutions : ["unfezant"],
+    Basic_evolution : "pidove"
+};
+var unfezant = {
+    Pokedex_number: 521,
+    Stats      : [226, 146, 190],
+    Evolutions : null,
+    Basic_evolution : "pidove"
+};
+
+var blitzle = {
+    Pokedex_number: 522,
+    Stats      : [118, 64, 128],
+    Evolutions : ["zebstrika"],
+    Basic_evolution : "blitzle"
+};
+var zebstrika = {
+    Pokedex_number: 523,
+    Stats      : [211, 136, 181],
+    Evolutions : null,
+    Basic_evolution : "blitzle"
+};
+
+var roggenrola = {
+    Pokedex_number: 524,
+    Stats      : [121, 110, 146],
+    Evolutions : ["boldore", "gigalith"],
+    Basic_evolution : "roggenrola"
+};
+var boldore = {
+    Pokedex_number: 525,
+    Stats      : [174, 143, 172],
+    Evolutions : ["gigalith"],
+    Basic_evolution : "roggenrola"
+};
+var gigalith = {
+    Pokedex_number: 526,
+    Stats      : [226, 201, 198],
+    Evolutions : null,
+    Basic_evolution : "roggenrola"
+};
+
+var woobat = {
+    Pokedex_number: 527,
+    Stats      : [107, 85, 146],
+    Evolutions : ["swoobat"],
+    Basic_evolution : "woobat"
+};
+var swoobat = {
+    Pokedex_number: 528,
+    Stats      : [161, 119, 167],
+    Evolutions : null,
+    Basic_evolution : "woobat"
+};
+
+var drilbur = {
+    Pokedex_number: 529,
+    Stats      : [154, 85, 155],
+    Evolutions : ["excadrill"],
+    Basic_evolution : "drilbur"
+};
+var excadrill = {
+    Pokedex_number: 530,
+    Stats      : [255, 129, 242],
+    Evolutions : null,
+    Basic_evolution : "drilbur"
+};
+
+var yamask = {
+    Pokedex_number: 562,
+    Stats      : [95, 141, 116],
+    Evolutions : ["cofagrigus"],
+    Basic_evolution : "yamask"
+};
+var cofagrigus = {
+    Pokedex_number: 563,
+    Stats      : [163, 237, 151],
+    Evolutions : null,
+    Basic_evolution : "yamask"
+};
+
+var foongus = {
+    Pokedex_number: 590,
+    Stats      : [97, 91, 170],
+    Evolutions : ["amoonguss"],
+    Basic_evolution : "foongus"
+};
+var amoonguss = {
+    Pokedex_number: 591,
+    Stats      : [155, 139, 249],
+    Evolutions : null,
+    Basic_evolution : "foongus"
+};
+
+var ferroseed = {
+    Pokedex_number: 597,
+    Stats      : [82, 155, 127],
+    Evolutions : ["ferrothorn"],
+    Basic_evolution : "ferroseed"
+};
+var ferrothorn = {
+    Pokedex_number: 598,
+    Stats      : [158, 223, 179],
+    Evolutions : null,
+    Basic_evolution : "ferroseed"
+};
+
+var klink = {
+    Pokedex_number: 599,
+    Stats      : [98, 121, 120],
+    Evolutions : ["klang", "unfezant"],
+    Basic_evolution : "klink"
+};
+var klang = {
+    Pokedex_number: 601,
+    Stats      : [150, 174, 155],
+    Evolutions : ["klinklang"],
+    Basic_evolution : "klink"
+};
+var klinklang = {
+    Pokedex_number: 602,
+    Stats      : [199, 214, 155],
+    Evolutions : null,
+    Basic_evolution : "klink"
+};
+
+var litwick = {
+    Pokedex_number: 607,
+    Stats      : [108, 98, 137],
+    Evolutions : ["lampent", "chandelure"],
+    Basic_evolution : "litwick"
+};
+var lampent = {
+    Pokedex_number: 608,
+    Stats      : [169, 115, 155],
+    Evolutions : ["chandelure"],
+    Basic_evolution : "litwick"
+};
+var chandelure = {
+    Pokedex_number: 609,
+    Stats      : [271, 182, 155],
+    Evolutions : null,
+    Basic_evolution : "litwick"
+};
+
+var golett = {
+    Pokedex_number: 622,
+    Stats      : [127, 92, 153],
+    Evolutions : ["golurk"],
+    Basic_evolution : "golett"
+};
+var golurk = {
+    Pokedex_number: 623,
+    Stats      : [222, 154, 205],
+    Evolutions : null,
+    Basic_evolution : "golett"
+};
+
+var heatmor = {
+    Pokedex_number: 631,
+    Stats      : [204, 129, 198],
+    Evolutions : null,
+    Basic_evolution : "heatmor"
+};
+
+var durant = {
+    Pokedex_number: 632,
+    Stats      : [217, 188, 151],
+    Evolutions : null,
+    Basic_evolution : "durant"
+};
+
+var deino = {
+    Pokedex_number: 633,
+    Stats      : [116, 93, 141],
+    Evolutions : ["zweilous", "hydreigon"],
+    Basic_evolution : "deino"
+};
+var zweilous = {
+    Pokedex_number: 634,
+    Stats      : [159, 135, 176],
+    Evolutions : ["hydreigon"],
+    Basic_evolution : "deino"
+};
+var hydreigon = {
+    Pokedex_number: 635,
+    Stats      : [256, 188, 211],
+    Evolutions : null,
+    Basic_evolution : "deino"
 };
 
 var meltan = {
